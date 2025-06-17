@@ -33,23 +33,7 @@ s0 = 1.0  # GeV^2
 # }
 
 
-#minimized parameters for the models
-# epsilon_atlas = 0.0677
-# epsilon_totem = 0.077
-
-# model_params = {
-#     'atlas': {
-#         'log': {'mg': 0.345, 'a1': 1.5103, 'a2': 2.75},
-#         'pl':  {'mg': 0.402, 'a1': 1.56, 'a2': 1.97}
-#     },
-#     'totem': {
-#         'log': {'mg': 0.365, 'a1': 1.6401, 'a2': 3.047},
-#         'pl':  {'mg': 0.423821, 'a1': 1.454662, 'a2':2.930190}
-#     }
-# }
-
-
-#minimized 2 
+#minimized
 epsilon_atlas = 0.061
 epsilon_totem = 0.078
 
@@ -246,11 +230,11 @@ def main():
     xaxis=dict(
         title='sqrt(s) [GeV]',
         type='log',
-        range=[np.log10(2000), np.log10(15000)],
+        # range=[np.log10(2000), np.log10(15000)],
     ),
     yaxis=dict(
         title='Sigma Tot [mb]',
-        range=[80, 120]
+        # range=[80, 120]
     ),
     showlegend=True,
     legend=dict(
@@ -263,9 +247,9 @@ def main():
     fig.update_xaxes(gridcolor='lightgray')
     fig.update_yaxes(gridcolor='lightgray')
 
-    # fig.show(renderer="browser")
-    fig.write_html("results/sigma_tot/sigma_tot_minimized_zoom.html")
-    fig.write_image("results/sigma_tot/sigma_tot_minimized_zoom.pdf", width=1200, height=600)
+    fig.show(renderer="browser")
+    # fig.write_html("results/sigma_tot/sigma_tot_minimized_zoom.html")
+    # fig.write_image("results/sigma_tot/sigma_tot_minimized_zoom.pdf", width=1200, height=600)
 
 if __name__ == "__main__":
     main()
