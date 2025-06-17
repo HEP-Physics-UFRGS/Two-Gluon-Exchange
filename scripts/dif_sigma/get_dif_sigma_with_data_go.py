@@ -448,8 +448,8 @@ def main():
 
     # Mostrar o gráfico
     fig.show(renderer='browser')
-    fig.write_html(f"results/dif_sigma/dif_sigma_{ensemble}_with_data.html")
-    fig.write_image(f"results/dif_sigma/dif_sigma_{ensemble}_with_data.pdf", width=1200, height=600)
+    # fig.write_html(f"results/dif_sigma/dif_sigma_{ensemble}_with_data.html")
+    # fig.write_image(f"results/dif_sigma/dif_sigma_{ensemble}_with_data.pdf", width=1200, height=600)
 
 if __name__ == "__main__":
     main()

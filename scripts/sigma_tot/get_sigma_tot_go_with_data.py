@@ -4,8 +4,33 @@ import os
 import plotly.graph_objects as go  # Alterado de matplotlib para plotly
 import pandas as pd
 
+
+# Leitura do arquivo com separação por espaços
+data_atlas = pd.read_csv(
+    "data/sigma_tot/ensemble_atlas.dat",
+    delim_whitespace=True,
+    header=None,
+    nrows=69  # lê apenas as 70 primeiras linhas
+)
+
+x_atlas = data_atlas[0].to_numpy()
+y_atlas = data_atlas[1].to_numpy()
+y_error_atlas = data_atlas[2].to_numpy()
+
+
+data_totem = pd.read_csv(
+    "data/sigma_tot/ensemble_totem.dat",
+    delim_whitespace=True,
+    header=None,
+    nrows=84  # lê apenas as 70 primeiras linhas
+)
+x_totem = data_totem[0].to_numpy()
+y_totem = data_totem[1].to_numpy()
+y_error_totem = data_totem[2].to_numpy()
+
+
 # === Global Configuration and Constants ===
-start_sqrt_s = 100  # Global parameter controlling energy scale
+start_sqrt_s = 1  # Global parameter controlling energy scale
 b_0 = (33 - 6) / (12 * np.pi)  # β0 for nf=3
 Lambda = 0.284  # ΛQCD in GeV
 gamma_1 = 0.084
@@ -224,6 +249,41 @@ def main():
             name=f'{mass_model} {ensemble}'
         ))
 
+    fig.add_trace(go.Scatter(
+        x=x_atlas,
+        y=y_atlas,
+        mode='markers',
+        marker=dict(
+            color='black',
+            size=6,
+            symbol='square'
+        ),
+        error_y=dict(
+            type='data',
+            array=y_error_atlas,
+            visible=True
+        ),
+        name='ATLAS Data'
+    ))
+
+    fig.add_trace(go.Scatter(
+        x=x_totem,
+        y=y_totem,
+        mode='markers',
+        marker=dict(
+            color='black',
+            size=6,
+            symbol='circle'
+        ),
+        error_y=dict(
+            type='data',
+            array=y_error_totem,
+            visible=True
+        ),
+        name='TOTEM Data'
+    ))
+
+
     # Configurar layout do gráfico
     fig.update_layout(
     title='Sigma Tot vs. sqrt(s) all models',
@@ -248,8 +308,8 @@ def main():
     fig.update_yaxes(gridcolor='lightgray')
 
     fig.show(renderer="browser")
-    # fig.write_html("results/sigma_tot/sigma_tot_minimized_zoom.html")
-    # fig.write_image("results/sigma_tot/sigma_tot_minimized_zoom.pdf", width=1200, height=600)
+    # fig.write_html("results/sigma_tot/sigma_tot_minimized_with_data.html")
+    # fig.write_image("results/sigma_tot/sigma_tot_minimized_with_data.pdf", width=1200, height=600)
 
 if __name__ == "__main__":
     main()
