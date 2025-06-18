@@ -66,13 +66,11 @@ model_params = {
     'atlas': {
         'log': {
             'mg': 0.334,
-            'epsilon': 0.061,
             'a1': 1.604,
             'a2': 3.044
         },
         'pl': {
             'mg': 0.389,
-            'epsilon': 0.061,
             'a1': 1.495,
             'a2': 2.161
         }
@@ -80,13 +78,11 @@ model_params = {
     'totem': {
         'log': {
             'mg': 0.363,
-            'epsilon': 0.079,
             'a1': 1.63,
             'a2': 3.28
         },
         'pl': {
             'mg': 0.424,
-            'epsilon': 0.0775,
             'a1': 1.454,
             'a2': 2.93
         }
@@ -254,7 +250,7 @@ def main():
         y=y_atlas,
         mode='markers',
         marker=dict(
-            color='black',
+            color='blue',
             size=6,
             symbol='square'
         ),

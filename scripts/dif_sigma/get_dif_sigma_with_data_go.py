@@ -60,7 +60,7 @@ x_13000_totem, y_13000_totem, y_error_13000_totem = lst_x_totem[2], lst_y_totem[
 # === Global Configuration and Constants ===
 start_q2 = 0.006  # Start of q2 range
 max_q2 = 0.204   # End of q2 range
-q2_step = 0.005
+q2_step = 0.001
 
 b_0 = (33 - 6) / (12 * np.pi)  # β0 for nf=3
 Lambda = 0.284  # ΛQCD in GeV
@@ -85,16 +85,16 @@ sqrt_s = 7000
 epsilon_atlas = 0.0753
 epsilon_totem = 0.0892
 
-model_params = {
-    'atlas': {
-        'log': {'mg': 0.356, 'a1': 1.373, 'a2': 2.5},
-        'pl':  {'mg': 0.421, 'a1': 1.517, 'a2': 2.05}
-    },
-    'totem': {
-        'log': {'mg': 0.380, 'a1': 1.491, 'a2': 2.77},
-        'pl':  {'mg': 0.447, 'a1': 1.689, 'a2': 1.70}
-    }
-}
+# model_params = {
+#     'atlas': {
+#         'log': {'mg': 0.356, 'a1': 1.373, 'a2': 2.5},
+#         'pl':  {'mg': 0.421, 'a1': 1.517, 'a2': 2.05}
+#     },
+#     'totem': {
+#         'log': {'mg': 0.380, 'a1': 1.491, 'a2': 2.77},
+#         'pl':  {'mg': 0.447, 'a1': 1.689, 'a2': 1.70}
+#     }
+# }
 
 
 #minimized parameters for the models
@@ -113,35 +113,35 @@ model_params = {
 # }
 
 #minimized 2 
-# epsilon_atlas = 0.061
-# epsilon_totem = 0.078
+epsilon_atlas = 0.061
+epsilon_totem = 0.078
 
-# model_params = {
-#     'atlas': {
-#         'log': {
-#             'mg': 0.334,
-#             'a1': 1.604,
-#             'a2': 3.044
-#         },
-#         'pl': {
-#             'mg': 0.389,
-#             'a1': 1.495,
-#             'a2': 2.161
-#         }
-#     },
-#     'totem': {
-#         'log': {
-#             'mg': 0.363,
-#             'a1': 1.63,
-#             'a2': 3.28
-#         },
-#         'pl': {
-#             'mg': 0.424,
-#             'a1': 1.454,
-#             'a2': 2.93
-#         }
-#     }
-# }
+model_params = {
+    'atlas': {
+        'log': {
+            'mg': 0.334,
+            'a1': 1.604,
+            'a2': 3.044
+        },
+        'pl': {
+            'mg': 0.389,
+            'a1': 1.495,
+            'a2': 2.161
+        }
+    },
+    'totem': {
+        'log': {
+            'mg': 0.363,
+            'a1': 1.63,
+            'a2': 3.28
+        },
+        'pl': {
+            'mg': 0.424,
+            'a1': 1.454,
+            'a2': 2.93
+        }
+    }
+}
 
 
 epsilon_values = {
@@ -308,7 +308,7 @@ def main():
         fig.add_trace(go.Scatter(
             x=q2_lst,
             y=dif_sigma_lst_log,
-            mode='lines',
+            mode='lines+markers',
             line=dict(color='red'),
             name=f'log √s={sqrt_s//1000} TeV ×{scale}'
         ))
