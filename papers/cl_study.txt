@@ -1,0 +1,10 @@
+Varrendo valores de minos(cl) - sem definir errordef:
+	- o output do resultado minimzado e os erros nao se alteraram, mas os erros assimetricos sim
+	- chi2 igual em todos os outputs
+
+Varrendo valores de errordef - sem definir minos:
+	- Valores dos parametros minimizados mudam
+	- os erros mudam de acordo com o valor, erros assimetricos permanecem iguais (concordancia com minos)
+	- chi2 igual em todos os outputs
+	- Pelo oq eu entendi, serve como threshold
+
