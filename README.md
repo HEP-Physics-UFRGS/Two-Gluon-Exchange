@@ -40,7 +40,7 @@ This repository contains research and analysis related to the paper titled **"No
 | $$\epsilon$$   | $$0.0753 \pm 0.0024$$     | $$0.0892 \pm 0.0027$$     |
 | $$a_1$$ (GeV²) | $$1.373 \pm 0.017$$       | $$1.491 \pm 0.019$$       |
 | $$a_2$$ (GeV²) | $$2.50 \pm 0.53$$         | $$2.77 \pm 0.60$$         |
-| DoF $$\nu$$    | 88                       | 328                      |
+| DoF $$\nu$$    | 108                       | 328                      |
 | $$\chi^2/\nu$$ | 0.71                     | 0.67                     |
 
 ### Table 2 — LN Pomeron parameters for the **power-law mass** $$m_{\text{pl}}(q^2)$$:
@@ -51,7 +51,7 @@ This repository contains research and analysis related to the paper titled **"No
 | $$\epsilon$$   | $$0.0753 \pm 0.0025$$     | $$0.0892 \pm 0.0027$$     |
 | $$a_1$$ (GeV²) | $$1.517 \pm 0.019$$       | $$1.689 \pm 0.021$$       |
 | $$a_2$$ (GeV²) | $$2.05 \pm 0.45$$         | $$1.70 \pm 0.51$$         |
-| DoF $$\nu$$    | 88                       | 328                      |
+| DoF $$\nu$$    | 108                       | 328                      |
 | $$\chi^2/\nu$$ | 0.64                     | 0.90                     |
 
 ## References
