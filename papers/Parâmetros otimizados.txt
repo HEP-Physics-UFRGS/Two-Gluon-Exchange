@@ -1,0 +1,70 @@
+        
+ --------------------------------------------------------------------------------
+Parâmetros otimizados para log em atlas: 
+
+mg: 0.3571215784669253 ± 0.002988473260700869
+eps: 0.07479644627030313 ± 0.0014249871301580432
+a1: 1.723133104462048 ± 0.17597540902253445
+a2: 2.518903478321727 ± 0.29569831311569184
+chi2/ndof: 0.6304868687866028
+
+Parâmetros otimizados para log em totem: 
+
+mg: 0.3820555329928801 ± 0.0016483581647451784
+eps: 0.08878839734704354 ± 0.000738462278412748
+a1: 1.7126142942094342 ± 0.007168562786763963
+a2: 2.9915950653100127 ± 0.017622421560238744
+chi2/ndof: 0.800607776781216
+
+
+down = 0.92
+        up = 2- down
+
+        m.limits['mg'] = (down * initial_params['mg'], up * initial_params['mg'])
+        # m.limits['eps'] = (initial_params_low['epsilon'], initial_params_high['epsilon'])
+        m.limits['a2'] = (down * initial_params['a2'], up * initial_params['a2'])
+        # m.limits['a1'] = (initial_params_low['a1'], initial_params_high['a1'])
+
+        # Configurações adicionais
+        m.strategy = 2
+        m.errordef = 7.79
+        m.tol = 1e-2
+        
+        m.migrad(ncall=75)
+        m.hesse(ncall=10)
+
+        
+
+--------------------------------------------------------------------------------
+Parâmetros otimizados para log em atlas: 
+
+mg: 0.3577262115246439 ± 0.004807306886587814
+eps: 0.07456810329425452 ± 0.0022825096621086408
+a1: 1.6885025095503345 ± 0.03621787568517851
+a2: 2.607770940427228 ± 0.1253275360688677
+chi2/ndof: 0.6146819420179199
+
+
+Parâmetros otimizados para log em totem: 
+
+mg: 0.3823157415782721 ± 0.0011511650526883632
+eps: 0.08915509973588404 ± 0.0005169230909921399
+a1: 1.735263803865846 ± 0.007135860431357868
+a2: 2.9084953781370335 ± 0.038178571808113126
+chi2/ndof: 0.907066889370657
+
+down = 0.95
+        up = 2- down
+
+        m.limits['mg'] = (down * initial_params['mg'], up * initial_params['mg'])
+        m.limits['eps'] = (down * initial_params['epsilon'], up * initial_params['epsilon'])
+        m.limits['a2'] = (down * initial_params['a2'], up * initial_params['a2'])
+        # m.limits['a1'] = (down * initial_params['a1'], up * initial_params['a1'])
+
+        # Configurações adicionais
+        m.strategy = 2
+        m.errordef = 7.79
+        m.tol = 1e-2
+        
+        m.migrad(ncall=75)
+        m.hesse(ncall=10)
