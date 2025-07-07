@@ -29,9 +29,12 @@ def write_output(common_lines, output_path):
             f.write(f"{down} | {strategy} | {migrad}\n")
 
 def main():
-    arquivo1 = '/home/victor/personal/Two-Gluon-Exchange/results/iteration_over_all/resultados_otimizacao_log_atlas_eps_0_mg_1_a2_1.txt'
-    arquivo2 = '/home/victor/personal/Two-Gluon-Exchange/results/iteration_over_all/resultados_otimizacao_log_totem_eps_0_mg_1_a2_1.txt'
-    saida = 'comum_down_strategy_migrad_0_1_1.txt'
+    eps = 1
+    mg = 1
+    a2 = 1
+    arquivo1 = f'results/iteration_over_all_log/resultados_otimizacao_log_atlas_eps_{eps}_mg_{mg}_a2_{a2}.txt'
+    arquivo2 = f'results/iteration_over_all_log/resultados_otimizacao_log_totem_eps_{eps}_mg_{mg}_a2_{a2}.txt'
+    saida = f'results/comum_down_strategy_migrad_eps_{eps}_mg_{mg}_a2_{a2}.txt'
 
     dados1 = read_file(arquivo1)
     dados2 = read_file(arquivo2)
