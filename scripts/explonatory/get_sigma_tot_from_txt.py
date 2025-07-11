@@ -74,8 +74,8 @@ def extrair_valores(linha):
         return None
     try:
         down = float(partes[0])
-        strategy = float(partes[1])  # Corrigido: era int, agora float
-        ncall = int(partes[2])
+        strategy = float(partes[2])  # Corrigido: era int, agora float
+        ncall = int(partes[3])
         mg = float(partes[4].split('±')[0].strip())
         eps = float(partes[5].split('±')[0].strip())
         a1 = float(partes[6].split('±')[0].strip())
@@ -88,8 +88,9 @@ def extrair_valores(linha):
 
 
 # === Loop principal ===
-input_file = 'results/iteration_over_all_log/resultados_otimizacao_log_atlas_eps_0_mg_0_a2_0.txt'
-output_file = 'saida_sigma_tot_log_atlas.txt'
+file = 'resultados_otimizacao_log_totem_eps_1_mg_1_a2_1.txt'
+input_file = f'results/iteration_over_all_log/{file}'
+output_file = f'sigma_tot_{file}.txt'
 
 with open(input_file, 'r') as arq, open(output_file, 'w') as saida:
     saida.write("down | strategy | ncall | sigma_tot\n")
