@@ -91,7 +91,7 @@ def extrair_valores(linha):
         return None
 
 # === Caminhos ===
-input_dir = 'results/iteration_over_all_log'
+input_dir = 'results/all_possible_iterations/worked'
 output_dir = os.path.join(input_dir, 'sigma_tot')
 os.makedirs(output_dir, exist_ok=True)
 
