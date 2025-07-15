@@ -1,3 +1,3 @@
-Otimização para log em ATLAS - Limites: eps_0_mg_0_a2_1
+Otimização para log em TOTEM - Limites: eps_0_mg_0_a2_1
 Configuração: down | up | strategy | migrad | mg ± error | eps ± error | a1 ± error | a2 ± error | χ²/ndof
 ========================================================================================================================
