@@ -1,0 +1,28 @@
+varrendo todas as combinacoes entre eps, mg, a1 e a2 entre 0.9 - 0.99
+para as calls 200, 300, 400, 500, 600, 700, 800 apenas os seguintes
+resultados foram mais adiante para log totem (log atlas deram bons 
+resultados no geral):
+
+0 1 1 0
+1 1 1 0 
+1 0 1 0
+
+como vemos a1 deve ser limitado e a2 nao deve ser limitado, varrendo
+entao apenas em eps e mg. No caso de "0 1 1 0" nenhum dos ensembles 
+para ser promissor, talvez podemos descartar esta 
+- conclusao: limitar a1 e nao limitar a2 descartando a config 0 1 1 0
+
+
+analisando os valores de down, quanto menor o down mais perto o sigma tot
+fica do valor esperado, para o totem os valores comecaram a convergir com
+0.95 em diante enquanto q para atlas 0.92 em diante
+- conclusao: varrer valores de down menores q 0.95 (ate 0.8 talvez, ou seja
+de 0.8 - 0.95 de passo 0.01)
+
+analisando strategy podemos ver q em essencia nao muda muito entre 0-2.
+- conclusao: retirar 1, deixar 0 e 2 
+
+analisando ncall a maioria das convergencias ocorre em 600-800, com raros casos
+em 300.
+- conclusao: podemos tirar 200 e fazer 300 - 1300 de passo 200, mudando o passo 
+perto de 600-800

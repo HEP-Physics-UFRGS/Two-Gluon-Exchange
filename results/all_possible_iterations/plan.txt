@@ -1,0 +1,7 @@
+pegar configs comum 
+
+eliminar configs em q o erro e muito pequeno 
+
+eliminar configs em q sigma tot nao e muito bom, muito extrapolado 
+
+pegar configs e os stats
