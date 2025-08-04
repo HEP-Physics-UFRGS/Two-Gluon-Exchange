@@ -15,16 +15,16 @@ n_points = 10000
 
 # === Funções físicas ===
 def m2_log(q2, mg):
-    # lambda_squared = Lambda ** 2
-    # rho_mg_squared = rho * mg ** 2
-    # ratio = np.log((q2 + rho_mg_squared) / lambda_squared) / np.log(rho_mg_squared / lambda_squared)
-    # return mg ** 2 * ratio ** (-1 - gamma_1)
-
-# for pl, remember to alter the files 
     lambda_squared = Lambda ** 2
     rho_mg_squared = rho * mg ** 2
     ratio = np.log((q2 + rho_mg_squared) / lambda_squared) / np.log(rho_mg_squared / lambda_squared)
-    return (mg ** 4 / (q2 + mg ** 2)) * ratio ** (gamma_2 - 1)
+    return mg ** 2 * ratio ** (-1 - gamma_1)
+
+# for pl, remember to alter the files 
+    # lambda_squared = Lambda ** 2
+    # rho_mg_squared = rho * mg ** 2
+    # ratio = np.log((q2 + rho_mg_squared) / lambda_squared) / np.log(rho_mg_squared / lambda_squared)
+    # return (mg ** 4 / (q2 + mg ** 2)) * ratio ** (gamma_2 - 1)
 
 def G_p(q2, a1, a2):
     return np.exp(-(a1 * q2 + a2 * q2 ** 2))
@@ -92,7 +92,7 @@ def extrair_valores(linha):
         return None
 
 # === Caminhos ===
-input_dir = 'results/all_possible_iterations/all_possible_iterations_pl_totem'
+input_dir = 'results/all_possible_iterations/v3/all_possible_iterations_log_totem_v3'
 output_dir = os.path.join(input_dir, 'sigma_tot')
 os.makedirs(output_dir, exist_ok=True)
 
