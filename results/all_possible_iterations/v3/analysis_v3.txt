@@ -1,0 +1,30 @@
+analiser v3 dos resultados:
+
+configs:
+down_values = [0.9, 0.91, 0.92, 0.93, 0.94, 0.95, 0.96, 0.97, 0.98, 0.99]  
+strategies = [0, 2]
+ncalls = [300, 500, 600, 700, 800, 900, 1100]
+
+
+0 0 1 0 - sigma tot = 108.45:
+- resultados e erros bons 
+- chi/dof em 0.408 - nao e ideal
+- comecou a convergir apenas em 0.99 
+- strategy e ncall nao fizeram diferenca
+- comecou a convergir com ncall = 500 e strategy = 0 e ncall = 600 strategy = 2
+
+0 1 1 0 - sigma tot = [106.856, 107.708]:
+- erro em eps muito pequeno (e-05)
+- chi/dof em 0.481 para 0.97, em 0.98 o chi/dof aumentou para 0.59 
+e para 0.99 aumentou para 0.73
+- convergencia a partir de 0.97 em grandes ncall (900 e superior).
+- para uma mesma strategy, o ncall nao fez diferenca em sigma tot.
+- mais alto down, mais baixo sigma tot
+
+1 1 1 0 - sigma tot = [106.690, 108.043]:
+- 0.97 e strategy = 0: sigma tot pequeno mas com bons resultados, tanto
+em valore quanto em erros (um pouco pequeno os erros). 
+- fora o caso anterior, todos tem erro em mg muito pequeno.
+
+1 0 1 0: 
+- erro em mg muito pequeno (e-05)
