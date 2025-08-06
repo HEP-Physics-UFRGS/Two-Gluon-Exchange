@@ -23,7 +23,7 @@ e para 0.99 aumentou para 0.73
 
 1 1 1 0 - sigma tot = [106.690, 108.043]:
 - 0.97 e strategy = 0: sigma tot pequeno mas com bons resultados, tanto
-em valore quanto em erros (um pouco pequeno os erros). 
+em valore quanto em erros (um pouco pequeno os erros). e
 - fora o caso anterior, todos tem erro em mg muito pequeno.
 
 1 0 1 0: 
