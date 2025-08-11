@@ -1,0 +1,38 @@
+log totem 
+
+0 0 1 1
+- erro em eps muito pequeno
+- sigma tot pequeno 
+
+1 0 0 1 
+- valores de sigma tot muito pequeno
+- erro em eps muito pequeno
+
+0 0 0 1
+- valores de sigma tot pequenos
+- o mais aceitavel e para sigma tot = 107.699 com a config: 
+0.95 | 1.05 | 2 | 5e+00 | 400 | 0.376990 ± 0.000520 | 0.084916 ± 0.000230 | 1.565527 ± 0.003578 | 3.586846 ± 0.031569 | 0.526612
+- restante dos valores e erros e chi2/dof oks 
+
+0 1 0 1
+- valores de sigma tot pequenos
+- o mais aceitavel 107.685:
+0.95 | 1.05 | 2 | 5e+00 | 700 | 0.376931 ± 0.000517 | 0.084886 ± 0.000228 | 1.565550 ± 0.003551 | 3.583279 ± 0.031470 | 0.525109
+
+1 1 0 1 -> 0.99 | 0.00 | 0.01 | 700 | 108.454
+- valores dos parametros bons e erros bons.
+- chi2/dof um pouco baixo 0.41
+
+1 0 1 1 
+- oq apresentou melhor sigam tot e chi2/dof foi o mesmo q apresentou o pior erro 
+em mg (0.391008 ± 0.000647), 0.97 | 2.00 | 5.0 | 500 | 109.614
+- todos resultados muito parecidos, mas o melhor balanco entre valor e erro foi 
+a config:
+0.98 | 0.00 | 1.0 | 800 | 109.560
+0.98 | 1.02 | 0 | 1e+00 | 800 | 0.387600 ± 0.008350 | 0.091280 ± 0.000462 | 1.732711 ± 0.043730 | 2.860991 ± 0.194739 | 0.425706
+
+1 0 1 0 
+- erro pequeno em eps, mas esta no limite do aceitavel, a config correspondente e 
+e esta com o maior erro em eps e: 
+0.98 | 0.00 | 0.1 | 800 | 109.673
+0.98 | 1.02 | 0 | 1e-01 | 800 | 0.387600 ± 0.009998 | 0.091363 ± 0.000098 | 1.740606 ± 0.007182 | 2.825399 ± 0.068197 | 0.426423
