@@ -9,7 +9,7 @@ def parse_data_line(line):
     try:
         down = round(float(parts[0]), 3)
         strategy = int(float(parts[1]))
-        tol = (float(parts[2]))
+        tol = float(parts[2])
         ncall = int(float(parts[3]))
         return (down, strategy, tol, ncall)
     except ValueError as e:
@@ -46,21 +46,18 @@ def write_output(common_lines, output_path):
         print(f"[ERRO] Falha ao escrever no arquivo {output_path}: {e}")
 
 def main():
+    # Diretórios ajustados para o que você informou
     base_dir_atlas = "/home/victor/personal/Two-Gluon-Exchange/results/all_possible_iterations/v5/all_possible_iterations_log_atlas_v5/sigma_tot"
     base_dir_totem = "/home/victor/personal/Two-Gluon-Exchange/results/all_possible_iterations/v5/all_possible_iterations_log_totem_v5/sigma_tot"
-    output_base = "results/all_possible_iterations/v5/comum_configs_log/"
+    output_base = "/home/victor/personal/Two-Gluon-Exchange/results/all_possible_iterations/v5/comum_configs"
 
     valores_binarios = [0, 1]
 
     for eps, mg, a1, a2 in product(valores_binarios, repeat=4):
         nome = f"eps_{eps}_mg_{mg}_a1_{a1}_a2_{a2}"
         
-        # Arquivo do ATLAS (padrão pl_atlas)
-        arq_atlas = os.path.join(base_dir_atlas, f"output_resultados_otimizacao_pl_atlas_{nome}.txt")
-        
-        # Arquivo do TOTEM (padrão log_totem)
+        arq_atlas = os.path.join(base_dir_atlas, f"output_resultados_otimizacao_log_atlas_{nome}.txt")
         arq_totem = os.path.join(base_dir_totem, f"output_resultados_otimizacao_log_totem_{nome}.txt")
-        
         arq_saida = os.path.join(output_base, f"{nome}.txt")
 
         print(f"\n[INFO] Processando combinação: {nome}")
@@ -68,23 +65,17 @@ def main():
         dados_atlas = read_file(arq_atlas)
         dados_totem = read_file(arq_totem)
 
-        if not dados_atlas:
-            print(f"[AVISO] Nenhum dado válido encontrado no arquivo ATLAS: {arq_atlas}")
-            continue
-        if not dados_totem:
-            print(f"[AVISO] Nenhum dado válido encontrado no arquivo TOTEM: {arq_totem}")
+        if not dados_atlas or not dados_totem:
+            print(f"[INFO] Pulando {nome} por falta de dados válidos em um dos arquivos.")
             continue
 
         comuns = dados_atlas.intersection(dados_totem)
-        
-        if not comuns:
-            print(f"[AVISO] Nenhuma configuração comum encontrada entre ATLAS e TOTEM para {nome}.")
-            print(f"        ATLAS tem {len(dados_atlas)} configurações únicas")
-            print(f"        TOTEM tem {len(dados_totem)} configurações únicas")
-            continue
-            
-        print(f"[INFO] Encontradas {len(comuns)} configurações comuns entre ATLAS e TOTEM")
-        write_output(comuns, arq_saida)
+        print(f"[INFO] {len(comuns)} configurações comuns encontradas entre ATLAS e TOTEM.")
+
+        if comuns:
+            write_output(comuns, arq_saida)
+        else:
+            print("[INFO] Nenhuma configuração comum encontrada. Nenhum arquivo foi gerado.")
 
 if __name__ == "__main__":
     main()

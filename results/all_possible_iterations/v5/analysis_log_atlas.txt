@@ -1,0 +1,41 @@
+configs em q o sigma tot e pequeno:
+
+0 1 0 1 
+0 0 0 1
+1 0 0 1 
+1 1 0 1 
+
+---------------------------------------------------------------------------------------------------------------------
+0 0 1 0
+- unica config que nao tem erro em mg muito pequeno e:
+0.95 | 1.05 | 2 | 5e+00 | 400 | 0.351436 ± 0.001223 | 0.071537 ± 0.001452 | 1.697475 ± 0.052518 | 2.618341 ± 0.201054 | 0.419832
+
+0 1 1 0
+- erro muito pequeno em mg 
+
+0 0 1 1 
+- a partir de 0.98 em down, todos os valores de chi2/dof sao maiores que 0.5 e para este mesmo regime os sigma tot sao em torno de 
+104 - 104.1
+- a config q se destaca e (104.09):
+0.99 | 1.01 | 0 | 1e+00 | 600 | 0.357597 ± 0.002617 | 0.074547 ± 0.001230 | 1.699260 ± 0.116639 | 2.692719 ± 0.855392 | 0.549517
+- outras configs proximas a essas sao muito parecidas entre si tanto em termos de valores quanto em erros 
+
+0 1 1 1 
+- resultados muito semelhantes com 0 0 1 1, esta config se destaca por possuir maior sigma tot (104.1)
+0.99 | 1.01 | 0 | 1e+00 | 700 | 0.357570 ± 0.003093 | 0.074547 ± 0.001309 | 1.700626 ± 0.117155 | 2.684368 ± 0.858804 | 0.549525
+
+1 0 1 0 
+- erro em eps em 0.000(?), uma ordem de grandeza menor q o paper de ref 
+- apresenta sigma tot na ordem de 104.2
+- todos os valores e erros sao muito semelhantes entre si
+- a config q apresenta melhor sigma tot (104.249) e: 
+0.99 | 1.01 | 0 | 5e+00 | 800 | 0.359560 ± 0.003964 | 0.075838 ± 0.000217 | 1.725946 ± 0.034230 | 2.520994 ± 0.027416 | 0.618571
+
+1 0 1 1 
+- nenhum sigma tot chega a 104, o mais proxima q chega e de 103.796 com a config: 
+0.99 | 1.01 | 0 | 5e+00 | 800 | 0.359560 ± 0.003976 | 0.075013 ± 0.001188 | 1.660789 ± 0.103185 | 2.986210 ± 0.699532 | 0.582006
+
+--------------------------------------------------CONCLUSAO-------------------------------------------------------------------
+0 1 1 1 - 104.1
+0.99 | 1.01 | 0 | 1e+00 | 700 | 0.357570 ± 0.003093 | 0.074547 ± 0.001309 | 1.700626 ± 0.117155 | 2.684368 ± 0.858804 | 0.549525
+se destaca pois apresenta os maiores erros 
