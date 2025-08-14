@@ -1,3 +1,6 @@
+1 1 0 0 
+- chi2/dof muito pequeno
+
 0 0 0 1
 - valores de chi2/dof maiores q 0.5 a partir de 0.97 
 - erro em mg muito pequeno 
@@ -19,4 +22,62 @@
 
 0 0 1 1 
 - chi2/dof maior q 0.5 a partir de 0.98
-(recomeca pq nao terminei)
+- oq apresentou sigma tot mais proximo do valor esperado e: 
+0.98 | 2.00 | 5.0 | 800 | 103.996
+0.98 | 1.02 | 2 | 5e+00 | 800 | 0.416434 ± 0.003883 | 0.073794 ± 0.002190 | 1.618001 ± 0.111357 | 1.853439 ± 0.805912 | 0.521744
+
+0 1 0 0 
+- erros pequenos em mg e, ao remover estes, sobra apenas casos onde o chi2/dof menor q 0.5
+
+0 1 0 1 
+- maioria dos casos em q chi2/dof menor que 0.5 ou erro em mg muito pequeno
+- melhor caso foi em: 
+0.95 | 0.00 | 5.0 | 800 | 103.763
+0.95 | 1.05 | 0 | 5e+00 | 800 | 0.420974 ± 0.003175 | 0.075120 ± 0.001391 | 1.592230 ± 0.151311 | 2.116671 ± 0.938336 | 0.597358
+
+0 1 1 1 
+- de 0.95 ate 0.97 valores de chi2/dof menores q 0.5 
+- a config q apresenta sigma tot mais proximo do valor esperado e: 
+0.98 | 2.00 | 5.0 | 800 | 104.001
+0.98 | 1.02 | 2 | 5e+00 | 800 | 0.416467 ± 0.004229 | 0.073804 ± 0.002011 | 1.617965 ± 0.113597 | 1.856640 ± 0.823668 | 0.522224
+
+0 1 1 0 
+- chi2/dof maiores q 0.5 a partir de 0.98
+- restante tem erro em mg muito pequeno, exceto: 
+0.99 | 2.00 | 5.0 | 300 | 103.774
+0.99 | 1.01 | 2 | 5e+00 | 300 | 0.419697 ± 0.001849 | 0.074688 ± 0.000859 | 1.592048 ± 0.033954 | 2.070497 ± 0.022802 | 0.572767
+- com erro em eps pequeno
+
+1 0 0 0 
+- chi2/dof maior q 0.5 somente em 0.99
+- melhor caso: 
+0.99 | 2.00 | 5.0 | 800 | 102.930
+0.99 | 1.01 | 2 | 5e+00 | 800 | 0.416800 ± 0.001679 | 0.073274 ± 0.000205 | 1.532127 ± 0.020546 | 2.070465 ± 0.039907 | 0.692265
+
+1 0 1 0 
+- chi2/dof maior q 0.5 somente em 0.99
+- melhor caso: 
+0.99 | 2.00 | 1.0 | 800 | 103.728
+0.99 | 1.01 | 2 | 1e+00 | 800 | 0.416794 ± 0.005442 | 0.073491 ± 0.000241 | 1.585403 ± 0.034548 | 2.070500 ± 0.036804 | 0.514675
+
+1 0 0 1
+- chi2/dof maior q 0.5 em 0.95 e 0.99
+- entre esses dois, oq mais se aproxima do valor real de sigma tot e o de 0.99 mas oq apresenta melhores erros e de 0.95
+- erro em a2 para 0.95 muito alto
+- melhor caso com sigma tot proximo do valor real
+0.99 | 0.00 | 0.01 | 800 | 103.361
+0.99 | 1.01 | 0 | 1e-02 | 800 | 0.416790 ± 0.005794 | 0.072857 ± 0.000297 | 1.532170 ± 0.017028 | 2.418885 ± 0.225561 | 0.516588
+
+1 0 1 1 
+- chi2/dof maior q 0.5 somente em 0.99
+- melhor caso: 
+0.99 | 2.00 | 5.0 | 800 | 103.567
+0.99 | 1.01 | 2 | 5e+00 | 800 | 0.416827 ± 0.005051 | 0.073225 ± 0.001418 | 1.563147 ± 0.117081 | 2.218350 ± 0.758658 | 0.512657
+
+------------------------------------------------CONCLUSAO------------------------------------------------
+1 0 1 1 
+- chi2/dof maior q 0.5 somente em 0.99
+- melhor caso: 
+0.99 | 2.00 | 5.0 | 800 | 103.567
+0.99 | 1.01 | 2 | 5e+00 | 800 | 0.416827 ± 0.005051 | 0.073225 ± 0.001418 | 1.563147 ± 0.117081 | 2.218350 ± 0.758658 | 0.512657
+
