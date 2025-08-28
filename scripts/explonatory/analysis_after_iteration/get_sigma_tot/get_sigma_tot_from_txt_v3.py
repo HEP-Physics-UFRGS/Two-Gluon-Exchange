@@ -93,7 +93,7 @@ def extrair_valores(linha):
         return None
 
 # === Caminhos ===
-input_dir = 'results/all_possible_iterations/v6/all_possible_iterations_log_atlas_v6'
+input_dir = 'results/all_possible_iterations/v7/all_possible_iterations_log_atlas_run7'
 output_dir = os.path.join(input_dir, 'sigma_tot')
 os.makedirs(output_dir, exist_ok=True)
 
