@@ -1,0 +1,1 @@
+down | strategy | tol | ncall | sigma_tot
