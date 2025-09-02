@@ -148,7 +148,7 @@ def amp_calculation(diff_T, s, epsilon):
 
 def sigma_tot(amp_value, s):
     return amp_value.imag / s * 0.389379323
-
+lst_amp = []
 # === Main Function ===
 def main():
     global start_sqrt_s
@@ -169,10 +169,11 @@ def main():
     line_styles = ['solid', 'dot', 'dash', 'dashdot']
 
     fig = go.Figure()  # Criar figura do Plotly em vez de matplotlib
-
+    
     for i, (mass_model, ensemble) in enumerate(scenarios):
         sigma_tot_lst = []
         sqrt_s_lst = []
+        
 
         m2_func = get_m2_function(mass_model)
         params = model_params[ensemble][mass_model]
@@ -202,6 +203,7 @@ def main():
 
             sigma_tot_lst.append(sigma_tot_value)
             sqrt_s_lst.append(sqrt_s)
+            lst_amp.append(amp_value)
 
             sqrt_s += step
 
@@ -250,6 +252,7 @@ def main():
     fig.show(renderer="browser")
     # fig.write_html("results/sigma_tot/sigma_tot_minimized_zoom.html")
     # fig.write_image("results/sigma_tot/sigma_tot_minimized_zoom.pdf", width=1200, height=600)
+
 
 if __name__ == "__main__":
     main()

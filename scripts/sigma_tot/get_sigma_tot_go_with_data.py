@@ -194,6 +194,7 @@ def main():
     for i, (mass_model, ensemble) in enumerate(scenarios):
         sigma_tot_lst = []
         sqrt_s_lst = []
+        lst_amp = []
 
         m2_func = get_m2_function(mass_model)
         params = model_params[ensemble][mass_model]
@@ -223,6 +224,7 @@ def main():
 
             sigma_tot_lst.append(sigma_tot_value)
             sqrt_s_lst.append(sqrt_s)
+            lst_amp.append(amp_value)
 
             sqrt_s += step
 
@@ -232,7 +234,7 @@ def main():
         # Adicionar traço ao gráfico do Plotly
         fig.add_trace(go.Scatter(
             x=sqrt_s_lst,
-            y=sigma_tot_lst,
+            y=lst_amp,
             mode='lines+markers',
             line=dict(
                 color=line_color,
@@ -303,9 +305,13 @@ def main():
     fig.update_xaxes(gridcolor='lightgray')
     fig.update_yaxes(gridcolor='lightgray')
 
-    fig.show(renderer="browser")
-    # fig.write_html("results/sigma_tot/sigma_tot_minimized_with_data.html")
+    # fig.show(renderer="browser")
+    fig.write_html("results/temp/sigma_tot_minimized_with_data.html")
     # fig.write_image("results/sigma_tot/sigma_tot_minimized_with_data.pdf", width=1200, height=600)
+
+    # print(lst_amp[-1])
 
 if __name__ == "__main__":
     main()
+
+# 47_194_535_635.00254j
