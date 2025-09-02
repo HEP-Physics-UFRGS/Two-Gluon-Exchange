@@ -1,0 +1,130 @@
+import time
+from iminuit import Minuit
+import gc
+import numpy as np
+
+def otimization(total_cost_func, initial_params, model_type: str, ensemble: str):
+    
+    print('\n' + 80 * '-')
+    print(f"OTIMIZAÇÃO PARA {model_type.upper()} - {ensemble.upper()}")
+    print(80 * '-' + '\n')
+    
+    if model_type == 'log' and ensemble == 'atlas':
+        combo = {'mg': 1, 'eps': 0, 'a1': 1, 'a2': 1}  # Apenas eps livre, outros fixos
+        down = 0.99
+        strategy = 0
+        ncall = 800
+        tol = 1
+        up = 2 - down
+
+    elif model_type == 'log' and ensemble == 'totem':
+        combo = {'mg': 0, 'eps': 1, 'a1': 1, 'a2': 1}  # Apenas eps livre, outros fixos
+        down = 0.5
+        strategy = 2
+        ncall = 800
+        tol = 1
+        up = 2 - down
+
+    elif model_type == 'pl' and ensemble == 'atlas':
+        combo = {'mg': 0, 'eps': 0, 'a1': 1, 'a2': 1}  # Apenas eps livre, outros fixos
+        down = 0.98
+        strategy = 0
+        ncall = 800
+        tol = 5
+        up = 2 - down
+
+    elif model_type == 'pl' and ensemble == 'totem':
+        combo = {'mg': 1, 'eps': 1, 'a1': 1, 'a2': 0}  # Apenas eps livre, outros fixos
+        down = 0.99
+        strategy = 2
+        ncall = 800
+        tol = 1
+        up = 2 - down
+    else:
+        print('Invalid model type or ensemble')
+
+
+    print(f"Configuração de limites: eps_{combo['eps']}_mg_{combo['mg']}_a1_{combo['a1']}_a2_{combo['a2']}")
+    print(f"Parâmetros: down={down}, up={up}, strategy={strategy}, tol={tol}, ncall={ncall}")
+    print("=" * 100)
+
+    start_time = time.time()
+
+    # Verificação inicial da função de custo
+    try:
+        test_val = total_cost_func(
+            initial_params['eps'],
+            initial_params['mg'],
+            initial_params['a1'],
+            initial_params['a2']
+        )
+        if not np.isfinite(test_val):
+            print("Valor inválido detectado! Abortando otimização.")
+            return None
+    except Exception as e:
+        print(f"Erro na função de custo inicial: {e}")
+        return None
+
+    # Cria instância do Minuit
+    m = Minuit(total_cost_func,
+               eps=initial_params['eps'],
+               mg=initial_params['mg'],
+               a1=initial_params['a1'],
+               a2=initial_params['a2'])
+
+    # Aplica limites dinâmicos e fixação de parâmetros
+    for param in ['mg', 'eps', 'a1', 'a2']:
+        if combo[param] == 1:
+            m.fixed[param] = True
+        else:
+            p0 = initial_params[param]  # Todos os parâmetros usam a mesma nomenclatura
+            m.limits[param] = (p0 * down, p0 * up)
+
+    # Configurações de otimização
+    m.errordef = 1
+    m.strategy = strategy
+    m.tol = tol
+    m.minos(cl=0.9)
+
+    try:
+        # Primeira etapa com parâmetros fixados
+        print(">>> Primeira etapa: parâmetros fixados conforme configuração")
+        m.migrad(ncall=ncall//2)
+
+        # Segunda etapa: liberar todos os parâmetros
+        m.fixed = False
+        print(">>> Segunda etapa: todos parâmetros livres")
+        m.migrad(ncall=ncall)
+        m.hesse()
+
+        execution_time = time.time() - start_time
+        mins, secs = divmod(execution_time, 60)
+
+        if m.valid:
+            chi2_ndof = m.fval / m.ndof
+            
+            print('\n' + 80 * '-')
+            print("RESULTADOS DA OTIMIZAÇÃO")
+            print(80 * '-')
+            print(f"Modelo: {model_type} | Ensemble: {ensemble}")
+            print(f"\nParâmetros otimizados:")
+            print(f"  mg  = {m.values['mg']:.6f} ± {m.errors['mg']:.6f}")
+            print(f"  eps = {m.values['eps']:.6f} ± {m.errors['eps']:.6f}")
+            print(f"  a1  = {m.values['a1']:.6f} ± {m.errors['a1']:.6f}")
+            print(f"  a2  = {m.values['a2']:.6f} ± {m.errors['a2']:.6f}")
+            print(f"\nEstatística:")
+            print(f"  χ²/ndof = {chi2_ndof:.6f}")
+            print(f"  Tempo de execução: {int(mins)} min {secs:.1f} s")
+            print(80 * '-' + '\n')
+            
+            return m
+        else:
+            print("Minuit não convergiu para uma solução válida")
+            return None
+            
+    except Exception as e:
+        print(f"Erro durante otimização: {str(e)}")
+        return None
+    finally:
+        # Libera memória explicitamente
+        gc.collect()
