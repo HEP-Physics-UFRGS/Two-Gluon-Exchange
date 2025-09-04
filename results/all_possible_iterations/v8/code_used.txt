@@ -1,0 +1,148 @@
+import time
+from iminuit import Minuit
+import numpy as np
+import gc
+
+def otimization(total_cost_func, initial_params, initial_params_low, initial_params_high, 
+                model_type: str, ensemble: str, output_dir: str):
+    print('\n')
+    print(80 * '-')
+    print(f"Iniciando otimização dos parâmetros para {model_type} em {ensemble.upper()}")
+
+    limit_combinations = [
+        {'mg': 0, 'eps': 0, 'a1': 0, 'a2': 1},
+        {'mg': 0, 'eps': 0, 'a1': 1, 'a2': 0},
+        {'mg': 0, 'eps': 0, 'a1': 1, 'a2': 1},
+        {'mg': 0, 'eps': 1, 'a1': 0, 'a2': 0},
+        {'mg': 0, 'eps': 1, 'a1': 0, 'a2': 1},
+        {'mg': 0, 'eps': 1, 'a1': 1, 'a2': 0},
+        {'mg': 0, 'eps': 1, 'a1': 1, 'a2': 1},
+        {'mg': 1, 'eps': 0, 'a1': 0, 'a2': 0},
+        {'mg': 1, 'eps': 0, 'a1': 0, 'a2': 1},
+        {'mg': 1, 'eps': 0, 'a1': 1, 'a2': 0},
+        {'mg': 1, 'eps': 0, 'a1': 1, 'a2': 1},
+        {'mg': 1, 'eps': 1, 'a1': 0, 'a2': 0},
+        {'mg': 1, 'eps': 1, 'a1': 0, 'a2': 1},
+        {'mg': 1, 'eps': 1, 'a1': 1, 'a2': 0},
+    ]
+
+    down_values = [0.90, 0.91, 0.92, 0.93, 0.94,0.95, 0.96,0.97,0.98,0.99]
+    strategies = [0, 1, 2]
+    ncalls = [300, 400, 500, 600, 700, 800, 900, 1000]
+    tolerance_values = [10, 5, 1, 0.1, 0.01]
+
+    for combo in limit_combinations:
+        filename = f"resultados_otimizacao_{model_type}_{ensemble.lower()}_eps_{combo['eps']}_mg_{combo['mg']}_a1_{combo['a1']}_a2_{combo['a2']}.txt"
+        filepath = f"{output_dir}/{filename}"
+
+        with open(filepath, 'w') as f:
+            f.write(f"Otimização para {model_type} em {ensemble.upper()} - Limites: eps_{combo['eps']}_mg_{combo['mg']}_a1_{combo['a1']}_a2_{combo['a2']}\n")
+            f.write("Configuração: down | up | strategy | tol | migrad | mg ± error | eps ± error | a1 ± error | a2 ± error | χ²/ndof\n")
+            f.write("=" * 150 + "\n")
+
+            for down in down_values:
+                up = 2 - down
+                for strategy in strategies:
+                    for ncall in ncalls:
+                        for tol in tolerance_values:
+                            start_time = time.time()
+
+                            print(f"\nExecutando combinação: mg_{combo['mg']}_eps_{combo['eps']}_a1_{combo['a1']}_a2_{combo['a2']}")
+                            print(f"down: {down}, up: {up}, strategy: {strategy}, tol: {tol}, ncall: {ncall}")
+
+                            try:
+                                test_val = total_cost_func(
+                                    initial_params['epsilon'],
+                                    initial_params['mg'],
+                                    initial_params['a1'],
+                                    initial_params['a2']
+                                )
+                                if not np.isfinite(test_val):
+                                    print("Valor inválido detectado! Pulando essa iteração.")
+                                    continue
+                            except Exception as e:
+                                print(f"Erro na função de custo inicial: {e}")
+                                continue
+
+                            try:
+                                m = Minuit(total_cost_func,
+                                           eps=initial_params['epsilon'],
+                                           mg=initial_params['mg'],
+                                           a1=initial_params['a1'],
+                                           a2=initial_params['a2'])
+
+                                param_name_map = {
+                                    'mg': 'mg',
+                                    'eps': 'epsilon',
+                                    'a1': 'a1',
+                                    'a2': 'a2'
+                                }
+
+                                for param in ['mg', 'eps', 'a1', 'a2']:
+                                    if combo[param] == 1:
+                                        m.fixed[param] = True
+                                    else:
+                                        p0 = initial_params[param_name_map[param]]
+                                        m.limits[param] = (p0 * down, p0 * up)
+
+                                m.errordef = 1
+                                m.strategy = strategy
+                                m.tol = tol
+
+                                # safe minos
+                                try:
+                                    m.minos(cl=0.9)
+                                except Exception:
+                                    continue
+
+                                # etapa 1
+                                try:
+                                    m.migrad(ncall=ncall)
+                                except Exception:
+                                    continue
+                                if not m.valid:
+                                    continue
+
+                                # etapa 2
+                                m.fixed = False
+                                try:
+                                    m.migrad(ncall=ncall)
+                                except Exception:
+                                    continue
+                                if not m.valid:
+                                    continue
+
+                                try:
+                                    m.hesse()
+                                except Exception:
+                                    continue
+                                if not m.valid:
+                                    continue
+
+                                execution_time = time.time() - start_time
+                                chi2_ndof = m.fval / m.ndof
+
+                                if 0.5 < chi2_ndof < 1:
+                                    line = (
+                                        f"{down:.2f} | {up:.2f} | {strategy} | {tol:.0e} | {ncall} | "
+                                        f"{m.values['mg']:.6f} ± {m.errors['mg']:.6f} | "
+                                        f"{m.values['eps']:.6f} ± {m.errors['eps']:.6f} | "
+                                        f"{m.values['a1']:.6f} ± {m.errors['a1']:.6f} | "
+                                        f"{m.values['a2']:.6f} ± {m.errors['a2']:.6f} | "
+                                        f"{chi2_ndof:.6f}\n"
+                                    )
+                                    f.write(line)
+                                    f.flush()
+                                    print(f"Convergido em {execution_time:.2f}s - χ²/ndof: {chi2_ndof:.4f}")
+
+                                else:
+                                    print(f"Não convergiu adequadamente - χ²/ndof: {chi2_ndof:.4f}")
+                                    continue
+                            except Exception as e:
+                                print(f"Erro durante otimização: {str(e)}")
+                                continue
+                            finally:
+                                del m
+                                gc.collect()
+    print("\nOtimização concluída para todas as combinações!")
+
