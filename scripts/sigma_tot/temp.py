@@ -1,6 +1,7 @@
 import numpy as np
 from scipy.integrate import fixed_quad
 import plotly.graph_objects as go
+import os
 
 # === Configurações globais ===
 start_sqrt_s = 100
@@ -15,11 +16,7 @@ gamma_2 = 2.36
 rho = 4.0
 s0 = 1.0  # GeV^2
 
-# --- Escolha do modelo (um mass_model e um ensemble) ---
-mass_model = "log"   # pode ser "log" ou "pl"
-ensemble = "atlas"   # pode ser "atlas" ou "totem"
-
-# --- Parâmetros do modelo (apenas os necessários) ---
+# === Model parameters ===
 model_params = {
     'atlas': {
         'log': {'mg': 0.334, 'epsilon': 0.061, 'a1': 1.604, 'a2': 3.044},
@@ -30,9 +27,6 @@ model_params = {
         'pl':  {'mg': 0.424, 'epsilon': 0.0775, 'a1': 1.454, 'a2': 2.93}
     }
 }
-
-params = model_params[ensemble][mass_model]
-mg, epsilon, a1, a2 = params['mg'], params['epsilon'], params['a1'], params['a2']
 
 # === Funções auxiliares ===
 def m2_log(q2, mg):
@@ -90,14 +84,16 @@ def amp_calculation(diff_T, s, epsilon):
 def sigma_tot(amp_value, s):
     return amp_value.imag / s * 0.389379323
 
-# === Main ===
-def main():
-    sqrt_s_values = []
-    sigma_values = []
-    imag_amp_values = []
-
+def calculate_for_config(mass_model, ensemble):
+    """Calculate both imaginary amplitude and sigma tot for a specific mass model and ensemble"""
+    params = model_params[ensemble][mass_model]
+    mg, epsilon, a1, a2 = params['mg'], params['epsilon'], params['a1'], params['a2']
     m2_func = get_m2_function(mass_model)
-
+    
+    sqrt_s_values = []
+    imag_amp_values = []
+    sigma_values = []
+    
     sqrt_s = start_sqrt_s
     while sqrt_s <= max_sqrt_s:
         def inner_integral(x):
@@ -110,47 +106,92 @@ def main():
 
         s = sqrt_s ** 2
         amp_value = amp_calculation(integral_value, s, epsilon)
-        sigma_value = sigma_tot(amp_value, s)
-
+        
         sqrt_s_values.append(sqrt_s)
-        sigma_values.append(sigma_value)
         imag_amp_values.append(amp_value.imag)
+        sigma_values.append(sigma_tot(amp_value, s))
 
         sqrt_s += step
+    
+    return sqrt_s_values, imag_amp_values, sigma_values
 
-    # --- Plot 1: Sigma Tot ---
-    fig1 = go.Figure()
-    fig1.add_trace(go.Scatter(
-        x=sqrt_s_values, y=sigma_values,
-        mode="lines+markers", name=f"{mass_model} {ensemble}",
-        line=dict(color="blue"), marker=dict(size=3)
-    ))
-    fig1.update_layout(
-        title=f"Sigma Tot vs. sqrt(s) ({mass_model}, {ensemble})",
-        xaxis=dict(title="sqrt(s) [GeV]", type="log"),
-        yaxis=dict(title="Sigma Tot [mb]"),
-        plot_bgcolor="white"
-    )
-    fig1.update_xaxes(gridcolor="lightgray")
-    fig1.update_yaxes(gridcolor="lightgray")
-    fig1.show(renderer="browser")
+def save_plot(fig, filename):
+    """Save plot as HTML file"""
+    # Create directory if it doesn't exist
+    os.makedirs('plots', exist_ok=True)
+    filepath = os.path.join('plots', filename)
+    fig.write_html(filepath)
+    print(f"Plot saved as {filepath}")
 
-    # --- Plot 2: Im(Amplitude) ---
-    fig2 = go.Figure()
-    fig2.add_trace(go.Scatter(
-        x=sqrt_s_values, y=imag_amp_values,
-        mode="lines+markers", name=f"Im(Amp) {mass_model} {ensemble}",
-        line=dict(color="red"), marker=dict(size=3)
-    ))
-    fig2.update_layout(
-        title=f"Im(Amplitude) vs. sqrt(s) ({mass_model}, {ensemble})",
+# === Main ===
+def main():
+    # Define all configurations to calculate
+    configurations = [
+        ('log', 'atlas'),
+        ('log', 'totem'),
+        ('pl', 'atlas'),
+        ('pl', 'totem')
+    ]
+    
+    colors = ['blue', 'red', 'green', 'orange']
+    line_styles = ['solid', 'solid', 'dash', 'dash']
+    
+    # Create figures
+    fig_amp = go.Figure()
+    fig_sigma = go.Figure()
+    
+    # Calculate and plot for each configuration
+    for i, (mass_model, ensemble) in enumerate(configurations):
+        print(f"Calculating for {mass_model} {ensemble}...")
+        sqrt_s_values, imag_amp_values, sigma_values = calculate_for_config(mass_model, ensemble)
+        
+        # Add to Im(Amplitude) plot
+        fig_amp.add_trace(go.Scatter(
+            x=sqrt_s_values, 
+            y=imag_amp_values,
+            mode="lines+markers",
+            name=f"{mass_model} {ensemble}",
+            line=dict(color=colors[i], dash=line_styles[i], width=2)
+        ))
+        
+        # Add to Sigma Tot plot
+        fig_sigma.add_trace(go.Scatter(
+            x=sqrt_s_values, 
+            y=sigma_values,
+            mode="lines+markers",
+            name=f"{mass_model} {ensemble}",
+            line=dict(color=colors[i], dash=line_styles[i], width=2)
+        ))
+    
+    # Update Im(Amplitude) plot layout
+    fig_amp.update_layout(
+        title="Im(Amplitude) vs. sqrt(s) - All Configurations",
         xaxis=dict(title="sqrt(s) [GeV]", type="log"),
         yaxis=dict(title="Im(Amp)"),
-        plot_bgcolor="white"
+        plot_bgcolor="white",
+        legend=dict(x=0.02, y=0.98, bgcolor="rgba(255,255,255,0.8)")
     )
-    fig2.update_xaxes(gridcolor="lightgray")
-    fig2.update_yaxes(gridcolor="lightgray")
-    fig2.show(renderer="browser")
+    fig_amp.update_xaxes(gridcolor="lightgray")
+    fig_amp.update_yaxes(gridcolor="lightgray")
+    
+    # Update Sigma Tot plot layout
+    fig_sigma.update_layout(
+        title="Sigma Tot vs. sqrt(s) - All Configurations",
+        xaxis=dict(title="sqrt(s) [GeV]", type="log"),
+        yaxis=dict(title="Sigma Tot [mb]"),
+        plot_bgcolor="white",
+        legend=dict(x=0.02, y=0.98, bgcolor="rgba(255,255,255,0.8)")
+    )
+    fig_sigma.update_xaxes(gridcolor="lightgray")
+    fig_sigma.update_yaxes(gridcolor="lightgray")
+    
+    # Show plots
+    fig_amp.show(renderer="browser")
+    fig_sigma.show(renderer="browser")
+    
+    # Save plots as HTML files
+    save_plot(fig_amp, "im_amplitude_all_configurations.html")
+    save_plot(fig_sigma, "sigma_tot_all_configurations.html")
 
 if __name__ == "__main__":
     main()
