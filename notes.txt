@@ -1,8 +1,8 @@
 - ordem de grandeza das amplitudes sao diferentes, 10x mais para born 
 
 - amplitude de born e amplitude eikonalizada nao devem ser iguais por 
-causa da formulacao da secao de choque 
+causa da formulacao da secao de choque, diferem por um fator 4pi 
 
-- a curva da amplitude ta quase certa, mas ela precisa alcancar o mesmo
+- a curva da amplitude eik ta quase certa, mas ela precisa alcancar o mesmo
 valor da v1 da amplitude eik mas crescer mais rapido e para um valor mais
 alto de sqrt(s) e atingir o mesmo valor da v1 
