@@ -6,3 +6,28 @@ causa da formulacao da secao de choque, diferem por um fator 4pi
 - a curva da amplitude eik ta quase certa, mas ela precisa alcancar o mesmo
 valor da v1 da amplitude eik mas crescer mais rapido e para um valor mais
 alto de sqrt(s) e atingir o mesmo valor da v1 
+
+
+------------------------------------------------------------------------------------
+18/09
+
+- DONE escrever funcao amp eik em funcao de amp born 
+
+- DONE sigma dif eik pode ser escrita como sigma dif born apenas fazendo a mudanca amp born -> amp eik 
+
+- t1 e t2 tbm receberao q's diferentes -> nao pegar q da minimizacao (tem 2 q's ?)
+
+- o model function vai depender de 2 x's diferentes, um da minimizacao e outra da eiconalizacao
+	- DONE transformar as integrais x -> k [0, sqrt(s)] para facilitar leitura 
+	- adicionar mais uma variavel x_eik -> tera um x_born para minimizacao e um x_eik 
+
+
+- DONE dentro de model function o amp value deve ser avaliando para amp eik 
+
+(qualquer duvida da uma olhada em best fit v5, fiz anotacoes la)
+
+------------------------------------------------------------------------------------
+MUDANCAS FEITAS
+
+- a funcao integrand na versao mudou para phi integral -> ja arruma a mudanca de variavel de x para k
+
