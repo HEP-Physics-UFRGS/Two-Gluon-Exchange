@@ -15,9 +15,9 @@ alto de sqrt(s) e atingir o mesmo valor da v1
 
 - DONE sigma dif eik pode ser escrita como sigma dif born apenas fazendo a mudanca amp born -> amp eik 
 
-- t1 e t2 tbm receberao q's diferentes -> nao pegar q da minimizacao (tem 2 q's ?)
+- DONE? t1 e t2 tbm receberao q's diferentes -> nao pegar q da minimizacao (tem 2 q's ?)
 
-- o model function vai depender de 2 x's diferentes, um da minimizacao e outra da eiconalizacao
+- DISCARD o model function vai depender de 2 x's diferentes, um da minimizacao e outra da eiconalizacao
 	- DONE transformar as integrais x -> k [0, sqrt(s)] para facilitar leitura 
 	- adicionar mais uma variavel x_eik -> tera um x_born para minimizacao e um x_eik 
 
