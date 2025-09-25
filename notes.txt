@@ -31,3 +31,9 @@ MUDANCAS FEITAS
 
 - a funcao integrand na versao mudou para phi integral -> ja arruma a mudanca de variavel de x para k
 
+------------------------------------------------------------------------------------
+25/09
+- best fit v8 1 se refere ao v8 (usando o metodo do trapezio para integrar em q e b) mas usando o 
+metodo quad ao inves de fixed quad nas intergracoes em phi e k 
+- adicionei prints quenas integrais e no minuit pra saber em qual pe o codigo esta 
+- deixei tolerancias e qualquer outro parametro relacionado a isso o menor possivel para tentar ajudar na velocidade 
