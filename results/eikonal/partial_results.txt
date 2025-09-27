@@ -12,5 +12,14 @@ chi2/ndof: 1653.0300842533838
 
 -------------------------------------------------------------
 
-results min v1 dev:
+results best fit v8 2:
+Finalizado a minimização para pl em atlas
+Tempo de execução para pl em atlas: 361 min 44.87 s 
 
+Parâmetros otimizados para pl em atlas: 
+
+mg: 0.3368 ± 0.1163349260113562
+eps: 0.09036000000000001 ± 0.0005455051393415608
+a1: 1.2136000000001408 ± 0.6067713014439758
+a2: 1.6400000000001609 ± 0.8140962792174421
+chi2/ndof: 1701.2268411504863
