@@ -38,3 +38,7 @@ metodo quad ao inves de fixed quad nas intergracoes em phi e k
 - adicionei prints quenas integrais e no minuit pra saber em qual pe o codigo esta 
 - deixei tolerancias e qualquer outro parametro relacionado a isso o menor possivel para tentar ajudar na velocidade 
 - best fit v8_2 versoes vetorizadas
+
+------------------------------------------------------------------------------------
+27/09
+- best fit v8_3 -> copia de v8_2 + alteracoes em chi integral e dependencias de associadas
