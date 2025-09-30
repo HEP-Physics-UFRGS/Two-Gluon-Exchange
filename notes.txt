@@ -35,3 +35,7 @@ metodo quad ao inves de fixed quad nas intergracoes em phi e k
 	- use a versao v8-2 para ser mais rapido pois nao sei quanto tempo vai demorar
 - v8 2 2: versao v8 2 modificada para ser mais rapida
 - alterar a ssecao de choque diferencial para minimizacao
+
+------------------------------------------------------------------------------------
+
+
