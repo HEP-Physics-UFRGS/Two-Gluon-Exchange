@@ -1,13 +1,3 @@
-- ordem de grandeza das amplitudes sao diferentes, 10x mais para born 
-
-- amplitude de born e amplitude eikonalizada nao devem ser iguais por 
-causa da formulacao da secao de choque, diferem por um fator 4pi 
-
-- a curva da amplitude eik ta quase certa, mas ela precisa alcancar o mesmo
-valor da v1 da amplitude eik mas crescer mais rapido e para um valor mais
-alto de sqrt(s) e atingir o mesmo valor da v1 
-
-
 ------------------------------------------------------------------------------------
 18/09
 
@@ -15,7 +5,7 @@ alto de sqrt(s) e atingir o mesmo valor da v1
 
 - DONE sigma dif eik pode ser escrita como sigma dif born apenas fazendo a mudanca amp born -> amp eik 
 
-- DONE? t1 e t2 tbm receberao q's diferentes -> nao pegar q da minimizacao (tem 2 q's ?)
+- DONE t1 e t2 tbm receberao q's diferentes -> nao pegar q da minimizacao (tem 2 q's ?)
 
 - DISCARD o model function vai depender de 2 x's diferentes, um da minimizacao e outra da eiconalizacao
 	- DONE transformar as integrais x -> k [0, sqrt(s)] para facilitar leitura 
@@ -25,11 +15,6 @@ alto de sqrt(s) e atingir o mesmo valor da v1
 - DONE dentro de model function o amp value deve ser avaliando para amp eik 
 
 (qualquer duvida da uma olhada em best fit v5, fiz anotacoes la)
-
-------------------------------------------------------------------------------------
-MUDANCAS FEITAS
-
-- a funcao integrand na versao mudou para phi integral -> ja arruma a mudanca de variavel de x para k
 
 ------------------------------------------------------------------------------------
 25/09
@@ -42,3 +27,11 @@ metodo quad ao inves de fixed quad nas intergracoes em phi e k
 ------------------------------------------------------------------------------------
 27/09
 - best fit v8_3 -> copia de v8_2 + alteracoes em chi integral e dependencias de associadas
+
+------------------------------------------------------------------------------------
+29/09
+- alterar o t/q da amp born para nao usar q_exp
+- testar se identar diff_t para dentro do loop de q_int fara diferenca 
+	- use a versao v8-2 para ser mais rapido pois nao sei quanto tempo vai demorar
+- v8 2 2: versao v8 2 modificada para ser mais rapida
+- alterar a ssecao de choque diferencial para minimizacao
