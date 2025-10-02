@@ -180,10 +180,10 @@ def main():
     n_points = 10000
 
     scenarios = [
-        ('log', 'atlas'),
+        # ('log', 'atlas'),
         ('pl', 'atlas'),
-        ('log', 'totem'),
-        ('pl', 'totem'),
+        # ('log', 'totem'),
+        # ('pl', 'totem'),
     ]
 
     # Estilos de linha diferentes para cada cenário
@@ -217,6 +217,7 @@ def main():
             )[0]
 
             diff_T = integral_value
+            print(diff_T)
             s = sqrt_s * sqrt_s
 
             amp_value = amp_calculation(diff_T, s, epsilon)
@@ -225,6 +226,7 @@ def main():
             sigma_tot_lst.append(sigma_tot_value)
             sqrt_s_lst.append(sqrt_s)
             lst_amp.append(amp_value)
+            # print(sigma_tot_value)
 
             sqrt_s += step
 
@@ -234,7 +236,7 @@ def main():
         # Adicionar traço ao gráfico do Plotly
         fig.add_trace(go.Scatter(
             x=sqrt_s_lst,
-            y=lst_amp,
+            y=sigma_tot_lst,
             mode='lines+markers',
             line=dict(
                 color=line_color,
@@ -306,7 +308,7 @@ def main():
     fig.update_yaxes(gridcolor='lightgray')
 
     # fig.show(renderer="browser")
-    fig.write_html("results/temp/sigma_tot_minimized_with_data.html")
+    # fig.write_html("results/temp/sigma_tot_minimized_with_data.html")
     # fig.write_image("results/sigma_tot/sigma_tot_minimized_with_data.pdf", width=1200, height=600)
 
     # print(lst_amp[-1])
