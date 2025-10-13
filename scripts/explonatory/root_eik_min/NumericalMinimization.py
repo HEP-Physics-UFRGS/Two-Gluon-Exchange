@@ -12,6 +12,8 @@
 #
 #  \author Lorenzo Moneta
 
+from math import e
+from os import error
 import ROOT
 import numpy as np
 
@@ -33,7 +35,7 @@ def RosenBrock(vecx):
 
 
 def NumericalMinimization(minimizerName="Minuit2",
-                          algoName="",
+                          algoName="Migrad",
                           randomSeed=-1):
 
     minimizer = ROOT.Math.Factory.CreateMinimizer(minimizerName, algoName)
@@ -76,10 +78,13 @@ def NumericalMinimization(minimizerName="Minuit2",
     ret = minimizer.Minimize()
 
     xs = minimizer.X()
-    print("Minimum: f({} , {}) = {}".format(xs[0],xs[1],minimizer.MinValue()))
+    errors = minimizer.Errors()
+
+    print(f'errors: {errors[0]}, {errors[1]}')
+    print(f'minimized parameters: {xs[0]}, {xs[1]}')
 
     # Real minimum is f(xmin) = 0
-    if (ret and minimizer.MinValue() < 1.E-4):
+    if (ret and minimizer.MinValue() < 1.E-5):
         print("Minimizer {} - {} converged to the right minimum!".format(minimizerName, algoName))
     else:
         print("Minimizer {} - {} failed to converge !!!".format(minimizerName, algoName))
