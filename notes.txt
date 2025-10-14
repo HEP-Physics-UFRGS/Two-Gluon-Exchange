@@ -38,4 +38,15 @@ metodo quad ao inves de fixed quad nas intergracoes em phi e k
 
 ------------------------------------------------------------------------------------
 
+- amp eik deve ser q experimental 
+- resto q int 
 
+- born amplitude = tem q entrar "q" de t1 e t2 (verificar se esta ao quadrado)
+- pegar mesmos valores de born amp 
+- colocar born amp dentro do for loop 
+- loop 1 deve ter retrone de amp eik e loop 2 tem q ter integral b e q 
+OU
+- novo loop1 em q exp, loop 2 : b e looop 3 em q 
+
+- for q int loop dentro chi integral
+- o return do model function ta certo
