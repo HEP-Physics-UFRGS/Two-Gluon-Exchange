@@ -276,6 +276,7 @@ def main():
             )[0]
 
             diff_T_log = integral_value_log
+            print(f"diff_T_log: {diff_T_log}")
             s = sqrt_s ** 2
             amp_value_log = amp_calculation(diff_T_log, s, epsilon_atlas, t)
             dif_sigma_value_log = differential_sigma(amp_value_log, s) * scale
