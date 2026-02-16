@@ -91,7 +91,7 @@ c
       external integrand
       
       double precision integral(ncomp), error(ncomp), prob(ncomp)
-      double precision diff_t
+      double complex diff_t
       integer verbose, nregions, neval, fail
       
       common/cmener/s,tt	

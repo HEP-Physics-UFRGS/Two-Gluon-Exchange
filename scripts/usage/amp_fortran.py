@@ -80,12 +80,13 @@ print("TESTE: Usando k = sqrt_s * x (momento em GeV)")
 print("=" * 80)
 
 q_values = np.linspace(0.01, 0.200, 50)
-fortran_values = {
-    0.01: 6.8824395154,
-    0.02: 6.8717385387,
-    0.03: 6.8539303612,
-    0.04: 6.8290551842
-}
+
+# fortran_values = {
+#     0.01: 6.8824395154,
+#     0.02: 6.8717385387,
+#     0.03: 6.8539303612,
+#     0.04: 6.8290551842
+# }
 
 for q in q_values:
     q2 = q * q
@@ -104,7 +105,7 @@ for q in q_values:
     print(f"  Python (k=sqrt_s*x): diff_t = {result:12.6f} ± {error:.2e}")
     amp_born = compute_amplitude(q, result)
 
-    print(f"  amp_born = {amp_born}")
+    print(f"  amp_born = {amp_born.real}, {amp_born.imag}")
     print(f"  |amp_born| = {abs(amp_born)}")
 
     # print(f"  Fortran (U=s*x):     diff_t = {diff_t_fortran:12.6f}")

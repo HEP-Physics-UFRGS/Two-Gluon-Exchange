@@ -1,0 +1,15 @@
+ssroot - sqrt_s
+ss - sq_s
+qmin - q_min
+qmax - q_max
+alfalin - alpha_prime
+mm0 - mg
+aa0 - a1
+aaz0 - a2
+bmin/bmax - b_min/b_max
+aa1/aa2 - a1/a2 -> nao aceita sei la pq 
+b - b_val
+epsabs - tt_step
+resultado (80) - chi_val
+resultado (172) - diff_t
+resultado (29) - amp_eik_val

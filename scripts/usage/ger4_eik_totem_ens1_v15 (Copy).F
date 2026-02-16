@@ -8,26 +8,26 @@ c
 c --------------------------------------
 c       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
        implicit none
-       double complex chi2,amp_eik,wgauss,amp_eik_val
-       double precision tt_step,b_min,b_max,sq_s,sqrt_s,b_val,tt
+       double complex amp_eik_integrand_val,amp_eik,wgauss,resultado
+       double precision epsabs,b_min,b_max,sq_s,sqrt_s,b_val,tt
        double precision pi,diff
        integer vai
-       external chi2
+       external amp_eik_integrand_val
        common/cmener/sq_s,tt
        vai=101
        sqrt_s=7000.d0
        sq_s=sqrt_s*sqrt_s
-       tt_step=1d-3
+       epsabs=1d-3
        b_min=0.d0
        b_max=10.d0
        b_val=0.d0
        tt=0.d0
        pi=4.d0*datan(1.d0)
        do
-c       amp_eik=wgauss(chi2,b_min,b_max,tt_step)
+c       amp_eik=wgauss(chi2,b_min,b_max,epsabs)
        	do
-       	amp_eik_val=chi2(b_val)
-       	amp_eik=amp_eik+amp_eik_val
+       	resultado=amp_eik_integrand_val(b_val)
+       	amp_eik=amp_eik+resultado
        	write(*,*)b_val,amp_eik
        	b_val=b_val+1.d0
        	if (b_val.le.10.d0) then
@@ -37,10 +37,10 @@ c       amp_eik=wgauss(chi2,b_min,b_max,tt_step)
        	end if
        	end do
        write(*,*)tt,amp_eik,"----------------------------------"
-       tt=tt+tt_step
-!        diff=(cdabs(amp_eik)**2.d0)**0.389379323d0
-!      *  /(16.d0*pi*sq_s*sq_s)
-!        write(vai,*)tt,diff
+       tt=tt+epsabs
+       diff=(cdabs(amp_eik)**2.d0)**0.389379323d0
+     *  /(16.d0*pi*sq_s*sq_s)
+       write(vai,*)tt,diff
        amp_eik=0.d0
        b_val=0.d0
        if (tt.le.0.1d0) then
@@ -53,10 +53,10 @@ c       write(*,*)amp_eik
        end program
 c
 c       
-       function chi2(b_val)
+       function amp_eik_integrand_val(b_val)
        implicit none
-       double precision tt_step,q_min,q_max,sq_s,sqrt_s,b_val,bb,tt
-       double complex amp_born,chi2,chi2_int,wgauss,chi_val
+       double precision epsabs,q_min,q_max,sq_s,sqrt_s,b_val,bb,tt
+       double complex amp_born,amp_eik_integrand_val,chi2_int,wgauss,chi_val
        COMPLEX(8) :: cd(0:1),j0
        double complex imagi
        external chi2_int
@@ -64,11 +64,11 @@ c
        common/impact/bb
        imagi=dcmplx(0.d0,1.d0)
        bb=b_val
-       tt_step=1d-4
+       epsabs=1d-4
        q_min=0.d0
        q_max=0.2d0
        cd(:)=0.d0
-!       
+c       
        if (bb*dsqrt(tt).le.1.d-30) then
        j0=(1.d0,0.d0)
        else
@@ -77,8 +77,8 @@ c
        continue
        end if 
 c       write(*,*)bb
-       chi_val=wgauss(chi2_int,q_min,q_max,tt_step)/sq_s
-       chi2=bb*j0*(1.d0-cdexp(imagi*chi_val))
+       chi_val=wgauss(chi2_int,q_min,q_max,epsabs)/sq_s
+       amp_eik_integrand_val=bb*j0*(1.d0-cdexp(imagi*chi_val))
 c       chi2=chi2_int(0.1d0)
 c       write(*,*)bb,chi2
        return
@@ -100,13 +100,13 @@ c
        integer nptq,npts,out1,out2,out3,out4,out5,ieqqe,iesse
        integer ndim2,NCALL1,ITMX1,NPRN,IGRAPH
        integer ndim, ncomp, nvec, last, seed, mineval, maxeval
-	double precision epsrel, tt_step, userdata
+	double precision epsrel, epsabs, userdata
 	parameter (ndim = 2)
 	parameter (ncomp = 1)
 	parameter (userdata = 0)
 	parameter (nvec = 1)
 	parameter (epsrel = 1D-3)
-	parameter (tt_step = 1D-16)
+	parameter (epsabs = 1D-16)
 	parameter (last = 4)
 	parameter (seed = 0)
 	parameter (mineval = 50000)
@@ -149,7 +149,7 @@ c
        a2=2.0001d0   !2.7d0
 c
        cb(:)=0.d0
-!       
+c       
        if (bb*q.le.1.d-30) then
        j0=(1.d0,0.d0)
        else
@@ -165,7 +165,7 @@ c     ---------------------------------------------------------------
 c
 c
        call cuhre(ndim, ncomp, integrand, userdata, nvec,
-     &    epsrel, tt_step, verbose + last,
+     &    epsrel, epsabs, verbose + last,
      &    mineval, maxeval, key,
      &    statefile, spin,
      &    nregions, neval, fail, integral, error, prob)
@@ -182,7 +182,7 @@ c       do iesse=0,npts
 c       A1MAXt=sqrt_s0+iesse*deltass
 c       sq_s=A1MAXt*A1MAXt
 c       call cuhre(ndim, ncomp, integr, userdata, nvec,
-c     &    epsrel, tt_step, verbose + last,
+c     &    epsrel, epsabs, verbose + last,
 c     &    mineval, maxeval, key,
 c     &    statefile, spin,
 c     &    nregions, neval, fail, integral, error, prob)
@@ -290,4 +290,4 @@ c
 c
 c
 	integrand = 0
-	end	
+	end

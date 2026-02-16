@@ -8,41 +8,41 @@ c
 c --------------------------------------
 c       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
        implicit none
-       double complex chi2,amp_eik,wgauss,amp_eik_val
-       double precision tt_step,b_min,b_max,sq_s,sqrt_s,b_val,tt
+       double complex chi2,amp_eik,wgauss,resultado
+       double precision epsabs,bmin,bmax,ss,ssroot,b,tt
        double precision pi,diff
        integer vai
        external chi2
-       common/cmener/sq_s,tt
+       common/cmener/ss,tt
        vai=101
-       sqrt_s=7000.d0
-       sq_s=sqrt_s*sqrt_s
-       tt_step=1d-3
-       b_min=0.d0
-       b_max=10.d0
-       b_val=0.d0
+       ssroot=7000.d0
+       ss=ssroot*ssroot
+       epsabs=1d-3
+       bmin=0.d0
+       bmax=10.d0
+       b=0.d0
        tt=0.d0
        pi=4.d0*datan(1.d0)
        do
-c       amp_eik=wgauss(chi2,b_min,b_max,tt_step)
+c       amp_eik=wgauss(chi2,bmin,bmax,epsabs)
        	do
-       	amp_eik_val=chi2(b_val)
-       	amp_eik=amp_eik+amp_eik_val
-       	write(*,*)b_val,amp_eik
-       	b_val=b_val+1.d0
-       	if (b_val.le.10.d0) then
+       	resultado=chi2(b)
+       	amp_eik=amp_eik+resultado
+       	write(*,*)b,amp_eik
+       	b=b+1.d0
+       	if (b.le.10.d0) then
        	continue
        	else 
        	exit
        	end if
        	end do
        write(*,*)tt,amp_eik,"----------------------------------"
-       tt=tt+tt_step
-!        diff=(cdabs(amp_eik)**2.d0)**0.389379323d0
-!      *  /(16.d0*pi*sq_s*sq_s)
-!        write(vai,*)tt,diff
+       tt=tt+epsabs
+       diff=(cdabs(amp_eik)**2.d0)**0.389379323d0
+     *  /(16.d0*pi*ss*ss)
+       write(vai,*)tt,diff
        amp_eik=0.d0
-       b_val=0.d0
+       b=0.d0
        if (tt.le.0.1d0) then
        continue
        else 
@@ -53,20 +53,20 @@ c       write(*,*)amp_eik
        end program
 c
 c       
-       function chi2(b_val)
+       function chi2(b)
        implicit none
-       double precision tt_step,q_min,q_max,sq_s,sqrt_s,b_val,bb,tt
-       double complex amp_born,chi2,chi2_int,wgauss,chi_val
+       double precision epsabs,qmin,qmax,ss,ssroot,b,bb,tt
+       double complex amp_born,chi2,chi2_int,wgauss,resultado
        COMPLEX(8) :: cd(0:1),j0
        double complex imagi
        external chi2_int
-       common/cmener/sq_s,tt
+       common/cmener/ss,tt
        common/impact/bb
        imagi=dcmplx(0.d0,1.d0)
-       bb=b_val
-       tt_step=1d-4
-       q_min=0.d0
-       q_max=0.2d0
+       bb=b
+       epsabs=1d-4
+       qmin=0.d0
+       qmax=0.2d0
        cd(:)=0.d0
 !       
        if (bb*dsqrt(tt).le.1.d-30) then
@@ -77,8 +77,8 @@ c
        continue
        end if 
 c       write(*,*)bb
-       chi_val=wgauss(chi2_int,q_min,q_max,tt_step)/sq_s
-       chi2=bb*j0*(1.d0-cdexp(imagi*chi_val))
+       resultado=wgauss(chi2_int,qmin,qmax,epsabs)/ss
+       chi2=bb*j0*(1.d0-cdexp(imagi*resultado))
 c       chi2=chi2_int(0.1d0)
 c       write(*,*)bb,chi2
        return
@@ -90,23 +90,23 @@ c
        double precision A1MAX,A2MAX,A3MAX,A1MAXt,avgi2,ACC
        double precision sig_tot53,sig_tot70,sig_tot80,sig_tot13
        double precision dif53,dif70,dif80,dif13
-       double precision sq_s,ss53,ss70,ss80,ss13,sqrt_s0,deltass,tt
+       double precision ss,ss53,ss70,ss80,ss13,ssroot0,deltass,tt
        double precision integra,integr53,integr70,integr80,integr13
        double precision deltaq,qq0,qq,qq2,alfa0,alfa,g2,be,bep
-       double precision mm,mg,mm2,lbd,lbd2,Md2,trajPP,deltaPP,alpha_prime
-       double precision a1,a2,sig_tot,bb
+       double precision mm,mm0,mm2,lbd,lbd2,Md2,trajPP,deltaPP,alfalin
+       double precision aa0,aaz0,sig_tot,bb
        double complex imagi,amplitude,amp_born,chi2_int
        COMPLEX(8) :: cb(0:1),j0
        integer nptq,npts,out1,out2,out3,out4,out5,ieqqe,iesse
        integer ndim2,NCALL1,ITMX1,NPRN,IGRAPH
        integer ndim, ncomp, nvec, last, seed, mineval, maxeval
-	double precision epsrel, tt_step, userdata
+	double precision epsrel, epsabs, userdata
 	parameter (ndim = 2)
 	parameter (ncomp = 1)
 	parameter (userdata = 0)
 	parameter (nvec = 1)
 	parameter (epsrel = 1D-3)
-	parameter (tt_step = 1D-16)
+	parameter (epsabs = 1D-16)
 	parameter (last = 4)
 	parameter (seed = 0)
 	parameter (mineval = 50000)
@@ -131,10 +131,10 @@ c
 	integer verbose, nregions, neval, fail
 	character*16 env
 	integer c
-       common/cmener/sq_s,tt	
+       common/cmener/ss,tt	
        common/impact/bb
        common/ener/qq2
-       common/mass/mg,a1,a2
+       common/mass/mm0,aa0,aaz0
        pi=4.d0*datan(1.d0)
        imagi=dcmplx(0.d0,1.d0)
        qq2=q*q
@@ -143,10 +143,10 @@ c
 c
 c
        deltaPP=0.086557d0   ! Marcela
-       alpha_prime=0.25d0
-       mg=0.44137d0   !0.37965d0
-       a1=1.6711d0   !1.5d0
-       a2=2.0001d0   !2.7d0
+       alfalin=0.25d0
+       mm0=0.44137d0   !0.37965d0
+       aa0=1.6711d0   !1.5d0
+       aaz0=2.0001d0   !2.7d0
 c
        cb(:)=0.d0
 !       
@@ -165,31 +165,32 @@ c     ---------------------------------------------------------------
 c
 c
        call cuhre(ndim, ncomp, integrand, userdata, nvec,
-     &    epsrel, tt_step, verbose + last,
+     &    epsrel, epsabs, verbose + last,
      &    mineval, maxeval, key,
      &    statefile, spin,
      &    nregions, neval, fail, integral, error, prob)
-       diff_t=integral(1)
-       trajPP=1.d0+deltaPP-alpha_prime*qq2
-       amp_born=imagi*(sq_s**trajPP)*8.d0*diff_t
+       resultado=integral(1)
+       trajPP=1.d0+deltaPP-alfalin*qq2
+       amp_born=imagi*(ss**trajPP)*8.d0*resultado
+       write(*,*) amp_born,"---born-------------------------------"
        chi2_int=q*j0*amp_born
 c       write(*,*)q,chi2_int
 c
 c       npts=80   !25
-c       sqrt_s0=1000.d0
+c       ssroot0=1000.d0
 c       deltass=260.d0
 c       do iesse=0,npts
-c       A1MAXt=sqrt_s0+iesse*deltass
-c       sq_s=A1MAXt*A1MAXt
+c       A1MAXt=ssroot0+iesse*deltass
+c       ss=A1MAXt*A1MAXt
 c       call cuhre(ndim, ncomp, integr, userdata, nvec,
-c     &    epsrel, tt_step, verbose + last,
+c     &    epsrel, epsabs, verbose + last,
 c     &    mineval, maxeval, key,
 c     &    statefile, spin,
 c     &    nregions, neval, fail, integral, error, prob)
 c       resultado=integral(1)
 c       trajPP=1.d0+deltaPP
-c       amplitude=imagi*(sq_s**trajPP)*8.d0*resultado
-c       sig_tot=amplitude*0.389379323d0/(imagi*sq_s)
+c       amplitude=imagi*(ss**trajPP)*8.d0*resultado
+c       sig_tot=amplitude*0.389379323d0/(imagi*ss)
 c       amplitude=0.d0
 c       write(out4,*)A1MAXt,sig_tot
 ccc       write(*,*)A1MAXt,sig_tot
@@ -207,21 +208,21 @@ c
 	integer ndim, ncomp
 	double precision xx(*), ff(*)
 	double precision A1MAX,A2MAX,JCB,U,V
-       double precision mrho2,aa1,aa2,Qt,Qt2,mm,mg,mm2,integra,Q2
+       double precision mrho2,aa1,aa2,Qt,Qt2,mm,mm0,mm2,integra,Q2
        double precision qq,qq2,Gp_q_k,Gp_q_0,q_inf2,q_sup2
        double precision Umin,Vmin,m_p,m_p2,alfa_sup,alfa_inf
        double precision alfaprop_sup,alfaprop_inf
        double precision lbd,lbd2,g2,be,bep
        double precision Md2,Md2inf,Md2sup
-       double precision a1,a2
-       double precision pi,sq_s,tt
+       double precision aa0,aaz0
+       double precision pi,ss,tt
 	parameter (pi = 3.14159265358979323846D0)
-	common/cmener/sq_s,tt
+	common/cmener/ss,tt
 	common/ener/qq2
-        common/mass/mg,a1,a2
-        mm=mg   !FCN=25897.83
-       aa1=a1
-       aa2=a2
+        common/mass/mm0,aa0,aaz0
+        mm=mm0   !FCN=25897.83
+       aa1=aa0
+       aa2=aaz0
        Qt2=qq2
        Qt=dsqrt(Qt2)
        mm2=mm*mm
@@ -238,7 +239,7 @@ c
 #define f ff(1)
 
 
-	A1MAX=sq_s
+	A1MAX=ss
 	A2MAX=2.d0*pi
 	JCB=A1MAX*A2MAX
 	U=A1MAX*x
