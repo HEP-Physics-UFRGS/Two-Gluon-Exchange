@@ -8,26 +8,24 @@ c
 c --------------------------------------
 c       IMPLICIT DOUBLE PRECISION (A-H,O-Z)
        implicit none
-       double complex amp_eik_integrand_val,amp_eik,wgauss,resultado
-       double precision epsabs,b_min,b_max,sq_s,sqrt_s,b_val,tt
-       double precision pi,diff
-       integer vai
-       external amp_eik_integrand_val
+       double complex chi2,amp_eik,amp_eik_val
+       double precision tt_step,b_min,b_max,sq_s,sqrt_s,b_val,tt
+       double precision pi
+       external chi2
        common/cmener/sq_s,tt
-       vai=101
        sqrt_s=7000.d0
        sq_s=sqrt_s*sqrt_s
-       epsabs=1d-3
+       tt_step=1d-3
        b_min=0.d0
        b_max=10.d0
        b_val=0.d0
        tt=0.d0
        pi=4.d0*datan(1.d0)
        do
-c       amp_eik=wgauss(chi2,b_min,b_max,epsabs)
+
        	do
-       	resultado=amp_eik_integrand_val(b_val)
-       	amp_eik=amp_eik+resultado
+       	amp_eik_val=chi2(b_val)
+       	amp_eik=amp_eik+amp_eik_val
        	write(*,*)b_val,amp_eik
        	b_val=b_val+1.d0
        	if (b_val.le.10.d0) then
@@ -37,10 +35,8 @@ c       amp_eik=wgauss(chi2,b_min,b_max,epsabs)
        	end if
        	end do
        write(*,*)tt,amp_eik,"----------------------------------"
-       tt=tt+epsabs
-       diff=(cdabs(amp_eik)**2.d0)**0.389379323d0
-     *  /(16.d0*pi*sq_s*sq_s)
-       write(vai,*)tt,diff
+       tt=tt+tt_step
+
        amp_eik=0.d0
        b_val=0.d0
        if (tt.le.0.1d0) then
@@ -49,14 +45,13 @@ c       amp_eik=wgauss(chi2,b_min,b_max,epsabs)
        exit
        end if
        end do
-c       write(*,*)amp_eik
+
        end program
-c
-c       
-       function amp_eik_integrand_val(b_val)
+  
+       function chi2(b_val)
        implicit none
-       double precision epsabs,q_min,q_max,sq_s,sqrt_s,b_val,bb,tt
-       double complex amp_born,amp_eik_integrand_val,chi2_int,wgauss,chi_val
+       double precision tt_step,q_min,q_max,sq_s,b_val,bb,tt
+       double complex chi2,chi2_int,wgauss,chi_val
        COMPLEX(8) :: cd(0:1),j0
        double complex imagi
        external chi2_int
@@ -64,11 +59,11 @@ c
        common/impact/bb
        imagi=dcmplx(0.d0,1.d0)
        bb=b_val
-       epsabs=1d-4
+       tt_step=1d-4
        q_min=0.d0
        q_max=0.2d0
        cd(:)=0.d0
-c       
+!       
        if (bb*dsqrt(tt).le.1.d-30) then
        j0=(1.d0,0.d0)
        else
@@ -76,37 +71,30 @@ c
        j0=cd(0)
        continue
        end if 
-c       write(*,*)bb
-       chi_val=wgauss(chi2_int,q_min,q_max,epsabs)/sq_s
-       amp_eik_integrand_val=bb*j0*(1.d0-cdexp(imagi*chi_val))
-c       chi2=chi2_int(0.1d0)
-c       write(*,*)bb,chi2
+
+       chi_val=wgauss(chi2_int,q_min,q_max,tt_step)/sq_s
+       chi2=bb*j0*(1.d0-cdexp(imagi*chi_val))
+
        return
        end 
 c
 c       
        function chi2_int(q)
-       double precision pi,resultado,q
-       double precision A1MAX,A2MAX,A3MAX,A1MAXt,avgi2,ACC
-       double precision sig_tot53,sig_tot70,sig_tot80,sig_tot13
-       double precision dif53,dif70,dif80,dif13
-       double precision sq_s,ss53,ss70,ss80,ss13,sqrt_s0,deltass,tt
-       double precision integra,integr53,integr70,integr80,integr13
-       double precision deltaq,qq0,qq,qq2,alfa0,alfa,g2,be,bep
-       double precision mm,mg,mm2,lbd,lbd2,Md2,trajPP,deltaPP,alpha_prime
-       double precision a1,a2,sig_tot,bb
-       double complex imagi,amplitude,amp_born,chi2_int
+      double precision pi, q, sq_s, tt, qq2, be, bep, mg,
+     &                 trajPP, deltaPP, alpha_prime, a1, a2, bb, diff_t
+
+       double complex imagi,amp_born,chi2_int
        COMPLEX(8) :: cb(0:1),j0
-       integer nptq,npts,out1,out2,out3,out4,out5,ieqqe,iesse
-       integer ndim2,NCALL1,ITMX1,NPRN,IGRAPH
        integer ndim, ncomp, nvec, last, seed, mineval, maxeval
-	double precision epsrel, epsabs, userdata
+	double precision epsrel, tt_step, userdata
+
+       
 	parameter (ndim = 2)
 	parameter (ncomp = 1)
 	parameter (userdata = 0)
 	parameter (nvec = 1)
 	parameter (epsrel = 1D-3)
-	parameter (epsabs = 1D-16)
+	parameter (tt_step = 1D-16)
 	parameter (last = 4)
 	parameter (seed = 0)
 	parameter (mineval = 50000)
@@ -114,7 +102,7 @@ c
 c
 	integer nstart, nincrease, nbatch, gridno
 	integer*8 spin
-	character*(*) statefile	
+	character*(*) statefile
 	parameter (nstart = 1000)
 	parameter (nincrease = 500)
 	parameter (nbatch = 1000)
@@ -129,9 +117,7 @@ c
 
 	double precision integral(ncomp), error(ncomp), prob(ncomp)
 	integer verbose, nregions, neval, fail
-	character*16 env
-	integer c
-       common/cmener/sq_s,tt	
+       common/cmener/sq_s,tt
        common/impact/bb
        common/ener/qq2
        common/mass/mg,a1,a2
@@ -149,7 +135,7 @@ c
        a2=2.0001d0   !2.7d0
 c
        cb(:)=0.d0
-c       
+!       
        if (bb*q.le.1.d-30) then
        j0=(1.d0,0.d0)
        else
@@ -157,15 +143,12 @@ c
        j0=cb(0)
        continue
        end if     
-c       write(*,*)bb,q,j0
-c
-c     ---------------------------------------------------------------
-c     ---------------------------------------------------------------
+
        integral(1)=0.d0
 c
 c
        call cuhre(ndim, ncomp, integrand, userdata, nvec,
-     &    epsrel, epsabs, verbose + last,
+     &    epsrel, tt_step, verbose + last,
      &    mineval, maxeval, key,
      &    statefile, spin,
      &    nregions, neval, fail, integral, error, prob)
@@ -173,29 +156,6 @@ c
        trajPP=1.d0+deltaPP-alpha_prime*qq2
        amp_born=imagi*(sq_s**trajPP)*8.d0*diff_t
        chi2_int=q*j0*amp_born
-c       write(*,*)q,chi2_int
-c
-c       npts=80   !25
-c       sqrt_s0=1000.d0
-c       deltass=260.d0
-c       do iesse=0,npts
-c       A1MAXt=sqrt_s0+iesse*deltass
-c       sq_s=A1MAXt*A1MAXt
-c       call cuhre(ndim, ncomp, integr, userdata, nvec,
-c     &    epsrel, epsabs, verbose + last,
-c     &    mineval, maxeval, key,
-c     &    statefile, spin,
-c     &    nregions, neval, fail, integral, error, prob)
-c       resultado=integral(1)
-c       trajPP=1.d0+deltaPP
-c       amplitude=imagi*(sq_s**trajPP)*8.d0*resultado
-c       sig_tot=amplitude*0.389379323d0/(imagi*sq_s)
-c       amplitude=0.d0
-c       write(out4,*)A1MAXt,sig_tot
-ccc       write(*,*)A1MAXt,sig_tot
-c
-c
-c
       return
       END function
 c
@@ -207,15 +167,16 @@ c
 	integer ndim, ncomp
 	double precision xx(*), ff(*)
 	double precision A1MAX,A2MAX,JCB,U,V
-       double precision mrho2,aa1,aa2,Qt,Qt2,mm,mg,mm2,integra,Q2
-       double precision qq,qq2,Gp_q_k,Gp_q_0,q_inf2,q_sup2
-       double precision Umin,Vmin,m_p,m_p2,alfa_sup,alfa_inf
+       double precision aa1,aa2,Qt,Qt2,mm,mg,mm2
+       double precision qq2,Gp_q_k,Gp_q_0,q_inf2,q_sup2
+       double precision Umin,Vmin,m_p,m_p2
        double precision alfaprop_sup,alfaprop_inf
-       double precision lbd,lbd2,g2,be,bep
+       double precision lbd,lbd2, be,bep
        double precision Md2,Md2inf,Md2sup
        double precision a1,a2
        double precision pi,sq_s,tt
 	parameter (pi = 3.14159265358979323846D0)
+       
 	common/cmener/sq_s,tt
 	common/ener/qq2
         common/mass/mg,a1,a2
