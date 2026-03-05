@@ -80,7 +80,7 @@ c
 c
 c      Itera em q2 de 0.01 a 0.2001, passo 0.001 (igual ao Python)
        qq2 = 0.01d0
-       do while (qq2 .le. 0.2001d0)
+       do while (qq2 .le. 2.001d0)
 c
          integral(1) = 0.d0
 c
@@ -97,7 +97,7 @@ c        trajPP = 1 + epsilon + alpha_prime * t,  t = -q2
          trajPP   = 1.d0 + epsilon - alpha_prime * qq2
          amp_born = imagi * (sq_s**trajPP) * 8.d0 * diff_t
 c
-         write(*,'(5(2X,E14.6))')
+         write(*,'(5(2X,G14.6))')
      &     qq2, diff_t, error(1),
      &     dreal(amp_born), dimag(amp_born)
 c
