@@ -1,17 +1,20 @@
-       program diff_t_scan
+	program diff_t_scan
 c --------------------------------------
 c  Avalia diff_t e A_born em funcao de q
-c  q varia de 0 a 30, com passo q_step
+c  q varia de 0 a 0.2, com passo q_step
 c
 c  diff_t  = integral(cuhre) — integracao 2D (integrand)
-c  trajPP  = 1 + deltaPP - alpha' * q^2
+c  trajPP  = 1 + epsilon - alpha' * q^2
 c  A_born  = i * s^trajPP * 8 * diff_t
+c
+c  Modelo de massa dinamica: m2_pl (power-law)
+c  Md2 = (mg^4/(q2+mg^2)) * (log((q2+rho*mg^2)/lbd^2)/log(rho*mg^2/lbd^2))^1.36
 c --------------------------------------
        implicit none
        double precision sq_s, sqrt_s, tt, qq2
        double precision mg, a1, a2
        double precision q, q_step, diff_t
-       double precision pi, trajPP, deltaPP, alpha_prime
+       double precision pi, trajPP, epsilon, alpha_prime
        double complex amp_born, imagi
        common/cmener/sq_s,tt
        common/ener/qq2
@@ -47,33 +50,43 @@ c
        double precision integral(ncomp), error(ncomp), prob(ncomp)
        integer verbose, nregions, neval, fail
 c
+c      --- variaveis para secao de choque diferencial ---
+       double precision diff_sigma, conv_factor, denominator
+       parameter (conv_factor = 0.389379323d0)  ! conversao GeV^-2 para mb
+c
 c      --- parametros fisicos ---
        pi          = 4.d0*datan(1.d0)
        imagi       = dcmplx(0.d0,1.d0)
        sqrt_s      = 7000.d0
        sq_s        = sqrt_s*sqrt_s
        tt          = 0.d0
-       mg          = 0.44137d0
-       a1          = 1.6711d0
-       a2          = 2.0001d0
-       deltaPP     = 0.086557d0
+c      Parametros ajustados (compativel com Python, modelo pl, atlas)
+       mg          = 0.389d0
+       a1          = 1.50d0
+       a2          = 2.13d0
+       epsilon     = 0.0616d0
        alpha_prime = 0.25d0
 c
-c      --- varredura em q ---
-       q_step  = 0.01d0
-       q       = 0.d0
+c      --- varredura em q2 (Python itera em q2, nao em q) ---
+c          Python: q2 de 0.01 ate 0.2001, passo 0.001
+c          Fortran original iterava em q com passo 0.01
+c          Agora corrigido para iterar em q2 como o Python
+       q_step  = 0.001d0
+       q       = 0.1d0      ! q = sqrt(q2_inicial) = sqrt(0.01)
 c
        write(*,'(A)')
-     & '========================='
+     & '==================='
        write(*,'(A)')
-     & '   q [GeV]     diff_t         error'//
-     & '        Re(A_born)      Im(A_born)'
+     & '   q2 [GeV2]    diff_t         error          Re(A_born)'
        write(*,'(A)')
-     & '========================='
+     & '      Im(A_born)      dsigma/dt [mb/GeV2]'
+       write(*,'(A)')
+     & '==================='
 c
-       do while (q .le. 0.2d0)
+c      Itera em q2 de 0.01 a 0.2001, passo 0.001 (igual ao Python)
+       qq2 = 0.01d0
+       do while (qq2 .le. 0.2001d0)
 c
-         qq2         = q * q
          integral(1) = 0.d0
 c
          call cuhre(ndim, ncomp, integrand, userdata, nvec,
@@ -85,18 +98,25 @@ c
          diff_t  = integral(1)
 c
 c        A_born = i * s^trajPP * 8 * diff_t
-         trajPP  = 1.d0 + deltaPP - alpha_prime * qq2
+c        trajPP = 1 + epsilon + alpha_prime * t,  t = -q2
+         trajPP   = 1.d0 + epsilon - alpha_prime * qq2
          amp_born = imagi * (sq_s**trajPP) * 8.d0 * diff_t
 c
-         write(*,'(5(2X,E14.6))')
-     &     q, diff_t, error(1),
-     &     dreal(amp_born), dimag(amp_born)
+c        Calculo da secao de choque diferencial:
+c        dsigma/dt = (Im(A_born)^2) / (16 * pi * s^2) * 0.389379323
+c        (mesma formula do Python)
+         denominator = 16.d0 * pi * sq_s * sq_s  ! sq_s = s
+         diff_sigma = (dimag(amp_born)**2) / denominator * conv_factor
 c
-         q = q + q_step
+         write(*,'(6(2X,G14.6))')
+     &     qq2, diff_t, error(1),
+     &     dreal(amp_born), dimag(amp_born), diff_sigma
+c
+         qq2 = qq2 + q_step
        end do
 c
        write(*,'(A)')
-     & '========================='
+     & '==================='
 c
        end program
 c
@@ -116,12 +136,14 @@ c
        double precision Md2,Md2inf,Md2sup
        double precision a1,a2
        double precision pi,sq_s,tt
+       double precision rho, rho_mg2, ratio_sup, ratio_inf, ratio_Qt
+       double precision gamma2_m1
 	parameter (pi = 3.14159265358979323846D0)
        
 	common/cmener/sq_s,tt
 	common/ener/qq2
         common/mass/mg,a1,a2
-        mm=mg   !FCN=25897.83
+        mm=mg
        aa1=a1
        aa2=a2
        Qt2=qq2
@@ -129,14 +151,15 @@ c
        mm2=mm*mm
        lbd=0.284d0
        lbd2=lbd*lbd
-       be=27.d0/(48.d0*pi*pi)   !n_f=3
-       bep=27.d0/(12.d0*pi)   !bep=4*pi*be
-       m_p=0.938272029d0
-       m_p2=m_p*m_p
+c      b_0 = (33-6)/(12*pi) = 27/(12*pi)
+       bep=27.d0/(12.d0*pi)
+c      Parametros do modelo power-law (pl)
+       rho       = 4.d0
+       gamma2_m1 = 1.36d0    ! gamma_2 - 1 = 2.36 - 1
+       rho_mg2   = rho * mm2
 
 #define x xx(1)
 #define y xx(2)
-!#define z xx(3)
 #define f ff(1)
 
 
@@ -159,14 +182,17 @@ c
 c
        q_inf2=(Qt2/4.d0)-U*Qt*dcos(V)+U*U
 c
-       Md2=(mm2*mm2/(Qt2+mm2))*((dlog(4.d0*mm2/lbd2)/
-     *   dlog((Qt2+4.d0*mm2)/lbd2))**(-1.36d0))    
+c      Modelo m2_pl: Md2 = (mg^4/(q2+mg^2)) * ratio^(gamma2-1)
+c      ratio = log((q2 + rho*mg^2)/lbd^2) / log(rho*mg^2/lbd^2)
 c
-       Md2sup=(mm2*mm2/(q_sup2+mm2))*((dlog(4.d0*mm2/lbd2)/
-     *   dlog((q_sup2+4.d0*mm2)/lbd2))**(-1.36d0))
+       ratio_Qt  = dlog((Qt2   + rho_mg2)/lbd2) / dlog(rho_mg2/lbd2)
+       Md2       = (mm2*mm2/(Qt2   + mm2)) * ratio_Qt**gamma2_m1
 c
-       Md2inf=(mm2*mm2/(q_inf2+mm2))*((dlog(4.d0*mm2/lbd2)/
-     *   dlog((q_inf2+4.d0*mm2)/lbd2))**(-1.36d0))
+       ratio_sup = dlog((q_sup2 + rho_mg2)/lbd2) / dlog(rho_mg2/lbd2)
+       Md2sup    = (mm2*mm2/(q_sup2 + mm2)) * ratio_sup**gamma2_m1
+c
+       ratio_inf = dlog((q_inf2 + rho_mg2)/lbd2) / dlog(rho_mg2/lbd2)
+       Md2inf    = (mm2*mm2/(q_inf2 + mm2)) * ratio_inf**gamma2_m1
 c
        alfaprop_sup=1.d0/(bep*(q_sup2+Md2sup)*
      *  dlog((q_sup2+4.d0*Md2sup)/lbd2))
