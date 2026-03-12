@@ -109,7 +109,7 @@ program integral_I3
   ! parameter inside the integrand_I3 subroutine below to match.
   !----------------------------------------------------------------------------
   real(8), parameter :: MU    = 1.0d0    ! infrared regulator (must be > 0)
-  real(8), parameter :: Q_MAX = 5.0d0    ! upper limit of q integration
+  real(8), parameter :: Q_MAX = 4.0d0    ! upper limit of q integration
 
   !----------------------------------------------------------------------------
   ! CUBA CUHRE SETTINGS

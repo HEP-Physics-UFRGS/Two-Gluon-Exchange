@@ -1,6 +1,6 @@
 CC = gcc
 SUFFIX = 
-CFLAGS = -O3 -fomit-frame-pointer -ffast-math -Wall -DHAVE_CONFIG_H -DREALSIZE=8 -I$(common) -I. -I$(srcdir)
+CFLAGS = -O0 -fomit-frame-pointer -ffast-math -Wall -DHAVE_CONFIG_H -DREALSIZE=8 -I$(common) -I. -I$(srcdir)
 MCFLAGS = 
 FC = gfortran
 FCFLAGS = -g -O2 -DREALSIZE=8

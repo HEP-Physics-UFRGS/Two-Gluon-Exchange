@@ -91,7 +91,7 @@ program integral_I1
   !   Q2 : the external momentum squared (q^2). Q is derived automatically.
   !----------------------------------------------------------------------------
   real(8), parameter :: MU    = 1.0d0    ! infrared regulator (must be > 0)
-  real(8), parameter :: Q2    = 4.0d0    ! external momentum squared
+  real(8), parameter :: Q2    = 5.0d0    ! external momentum squared
   real(8), parameter :: Q     = sqrt(Q2) ! external momentum, derived from Q2
 
   !----------------------------------------------------------------------------
