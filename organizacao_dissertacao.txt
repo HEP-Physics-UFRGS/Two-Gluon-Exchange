@@ -1,0 +1,17 @@
+organizacao 
+
+
+motivacao geral 
+motivacao unitarizacao 
+	breve introducao, o principal sera disuctido no cap dedicado a ele 
+formalismo (cinematica e expansao em ondas parciais)
+espaco do parametros de impacto e representacao eiconal (revisar) 
+	introducao de alguns conceitos usados em eiconalizacao bopsin
+teoria de regge 
+	introduz regge para discutir modelo original de bopsin 
+modelo bopsin 
+eiconalizacao do modelo bopsin
+
+
+
+bfkl -> propagador?
