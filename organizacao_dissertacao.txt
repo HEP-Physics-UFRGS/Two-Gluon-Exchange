@@ -1,17 +1,1025 @@
-organizacao 
+========================================================================
+DISSERTAÇÃO DE MESTRADO — ESTRUTURA REORGANIZADA
+Título: Fenomenologia da Eiconalização em Espalhamentos Hadrônicos a Altas Energias
+Autor: Victor Li
+Orientador: Prof. Dr. Emerson Gustavo de Souza Luna
+Instituição: Universidade Federal do Rio Grande do Sul — Instituto de Física
+========================================================================
 
 
-motivacao geral 
-motivacao unitarizacao 
-	breve introducao, o principal sera disuctido no cap dedicado a ele 
-formalismo (cinematica e expansao em ondas parciais)
-espaco do parametros de impacto e representacao eiconal (revisar) 
-	introducao de alguns conceitos usados em eiconalizacao bopsin
-teoria de regge 
-	introduz regge para discutir modelo original de bopsin 
-modelo bopsin 
-eiconalizacao do modelo bopsin
+========================================================================
+PRÉ-TEXTUAIS
+========================================================================
+
+CAPA / FOLHA DE ROSTO
+  - Título, nome do autor, nome do orientador, instituição, programa, ano
+
+DEDICATÓRIA
+
+AGRADECIMENTOS
+
+RESUMO (PT)
+  Neste trabalho realizamos um estudo da eiconalização da amplitude de
+  espalhamento elástico próton-próton no modelo de troca de dois glúons com
+  propagadores não-perturbativos. A amplitude de Born é construída a partir
+  do modelo de Landshoff-Nachtmann reggeizado, cujos propagadores incorporam
+  massas dinâmicas obtidas via equações de Schwinger-Dyson não lineares. A
+  unitarização é realizada pelo esquema eiconal, satisfazendo o limite de
+  Froissart-Martin. Os resultados são ajustados a dados de seção de choque
+  diferencial medidos no LHC a 7, 8 e 13 TeV, e o parâmetro de acoplamento
+  quark-Pomeron β₀ obtido é consistente com valores de QCD na rede.
+  Palavras-chave: Pomeron, eiconalização, glúon não-perturbativo, seção de
+  choque diferencial, BFKL, massa dinâmica do glúon, QCD.
+
+ABSTRACT (EN)
+  [versão em inglês do resumo acima]
+  Keywords: Pomeron, eiconalization, nonperturbative gluon, differential
+  cross section, BFKL, dynamical gluon mass, QCD.
+
+LISTA DE FIGURAS
+LISTA DE SÍMBOLOS E ABREVIAÇÕES
+SUMÁRIO
 
 
+========================================================================
+CAPÍTULO 1 — INTRODUÇÃO
+========================================================================
 
-bfkl -> propagador?
+  O objetivo deste capítulo é apresentar o problema físico de forma
+  progressiva, conduzindo o leitor desde a motivação geral até os objetivos
+  específicos da dissertação. A leitura deve criar a sensação de que cada
+  seção prepara naturalmente a próxima.
+
+----------------------------------------------------------------------
+1.1  Motivação Geral: Espalhamentos Soft e o Papel do Confinamento
+----------------------------------------------------------------------
+
+  Abre com a classificação dos processos hadrônicos em hard e soft, baseada
+  na quantidade de momentum transferido. Explica que processos hard permitem
+  o uso de QCD perturbativa graças à liberdade assintótica, enquanto processos
+  soft são dominados pelo confinamento, exigindo métodos não perturbativos.
+  Destaca que, paradoxalmente, são os processos soft — e não os hard — que
+  dominam as seções de choque em colisões a altas energias, tornando seu
+  estudo fenomenologicamente central.
+
+  [Fonte principal: Capítulo 1 atual do TCC — primeiros três parágrafos]
+
+- DONE Classificação dos processos hadrônicos em hard e soft, baseada na quantidade de momento transferido.
+
+- Processos hard:
+  - DONE Envolvem alto momento transferido.
+  - DONE Permitem o uso de QCD perturbativa.
+  - [falta explicar] Isso é possível devido à liberdade assintótica.
+
+- Processos soft:
+  - DONE Envolvem baixo momento transferido.
+  - DONE São dominados pelo fenômeno de confinamento.
+  - [falta explicar] Exigem métodos não perturbativos para descrição.
+
+- Ponto central (paradoxo):
+  - [falta explicar] Em colisões a altas energias, são os processos soft, e não os hard, que dominam as seções de choque.
+  - Isso torna o estudo dos processos soft fenomenologicamente essencial.
+
+----------------------------------------------------------------------
+1.2  O Framework de Regge e o Pomeron
+----------------------------------------------------------------------
+
+  Introduz a Teoria de Regge como a ferramenta fenomenológica adequada para
+  o regime soft. Explica que, nesse framework, o espalhamento é descrito pela
+  troca de trajetórias de Regge (Reggeons) no canal-t, e que a amplitude é
+  controlada por singularidades no plano complexo de momento angular j.
+  Apresenta o Pomeron como a trajetória dominante em processos elásticos e
+  difrativos: um objeto com os números quânticos do vácuo (C = +1, singleto
+  de cor), cujo intercept αP(0) > 1 é responsável pelo crescimento observado
+  da seção de choque total com a energia.
+
+  Menciona brevemente que a origem QCD do Pomeron tem sido investigada via
+  BFKL — uma resoma de logaritmos de energia que produz naturalmente um estado
+  ligado de glúons reggeizados —, e que este será o ponto de partida do modelo
+  desenvolvido na dissertação.
+
+  [Fonte: Cap. 1 atual do TCC, parágrafos 4–6; antecipação do Cap. 4 novo]
+
+- [falta explicar o pq regge e mais adequada] Introdução da Teoria de Regge como a ferramenta fenomenológica adequada para o regime soft.
+- [falta citar] Citar outros meios, que nao seja regge, pra estudar o fenomeno. 
+
+- Descrição no framework de Regge:
+  - [DONE] O espalhamento é descrito pela troca de trajetórias de Regge (Reggeons) no canal-t.
+  - [DONE] A amplitude é controlada por singularidades no plano complexo de momento angular j.
+
+- Pomeron:
+  - [DONE] Trajetória dominante em processos elásticos e difrativos.
+  - [colcocar na secao dedicada] Possui os números quânticos do vácuo (C = +1, singleto de cor).
+  - [DONE] Seu intercepto αP(0) > 1 é responsável pelo crescimento da seção de choque total com a energia.
+
+[reavaliar se irei por]
+- Origem em QCD:
+  - Investigada via formalismo BFKL.
+  - Baseia-se na resoma de logaritmos de energia.
+  - Leva naturalmente a um estado ligado de glúons reggeizados.
+
+- Contexto da dissertação:
+  - O formalismo BFKL será o ponto de partida para o modelo desenvolvido.
+  
+----------------------------------------------------------------------
+1.3  O Problema da Unitaridade e o Limite de Froissart-Martin
+----------------------------------------------------------------------
+
+  Apresenta o Teorema de Froissart-Martin: a seção de choque total não pode
+  crescer mais rápido que ln²s, sob pena de violar a unitaridade. Mostra que
+  um intercept supercrítico αP(0) = 1 + ε > 1, necessário para descrever
+  o crescimento experimental de σ_tot, inevitavelmente viola esse limite em
+  energias suficientemente altas. Cita evidências experimentais recentes de
+  que correções de unitarização já são relevantes nas energias do LHC
+  (√s = 13 TeV): análises difratvas mostram R ≈ 0,6, indicando que a troca
+  de dois Pomerons já compete com a troca de um único Pomeron.
+
+  Conclui que a amplitude de Born do modelo de Regge precisa ser unitarizada,
+  e que existem dois esquemas naturais para isso no canal-s: a eiconalização
+  e a matriz-U. Antecipa que esta dissertação adotará exclusivamente o esquema
+  eiconal, motivando brevemente essa escolha (a matriz-U apresenta
+  inconsistências com as regras AGK no limite assintótico).
+
+  [Fonte: Cap. 1 atual do TCC, parágrafos 7–fim; Cap. 6.1 atual]
+
+- [DONE] Apresentação do Teorema de Froissart-Martin:
+  - [DONE] A seção de choque total não pode crescer mais rápido que ln²s.
+  - [DONE] Caso contrário, há violação da unitaridade.
+
+- Problema com o Pomeron supercrítico:
+  - [DONE] Um intercepto αP(0) = 1 + ε > 1 é necessário para descrever o crescimento experimental de σ_tot.
+  - [DONE] Porém, esse comportamento inevitavelmente viola o limite de Froissart-Martin em energias suficientemente altas.
+
+- Evidências experimentais:
+  - [DONE] Em energias do LHC (√s = 13 TeV), correções de unitarização já são relevantes.
+  - [nao adicionado] Análises difrativas indicam R ≈ 0,6.
+  - [nao adicionado] Isso sugere que a troca de dois Pomerons já compete com a troca de um único Pomeron.
+
+- Consequência teórica:
+  - [DONE] A amplitude de Born no modelo de Regge precisa ser unitarizada.
+
+- [DONE] Esquemas de unitarização no canal-s:
+  - [DONE] Eiconalização.
+  - [DONE] Matriz-U.
+
+- [DONE] Escolha da dissertação:
+  - [DONE] Adota exclusivamente o esquema de eiconalização.
+  - [DONE] Justificativa: a matriz-U apresenta inconsistências com as regras AGK no limite assintótico.
+  
+----------------------------------------------------------------------
+1.4  Estratégia e Objetivos da Dissertação
+----------------------------------------------------------------------
+
+  Apresenta de forma clara e direta o que será feito:
+
+  [DONE] (i)   Construir a amplitude de Born a partir do modelo de troca de dois
+        glúons reggeizados de Landshoff-Nachtmann (LN), incorporando
+        propagadores não-perturbativos com massas dinâmicas obtidas via
+        equações de Schwinger-Dyson.
+
+  [DONE] (ii)  Unitarizar essa amplitude pelo esquema eiconal.
+
+  [DONE] (iii) Ajustar os parâmetros livres do modelo a dados de seção de choque
+        diferencial elástica do LHC a 7, 8 e 13 TeV.
+
+  Objetivo científico central: mostrar que um modelo baseado em física QCD
+  não-perturbativa, convenientemente unitarizado, é capaz de descrever com
+  precisão a fenomenologia hadrônica nas energias do LHC.
+
+----------------------------------------------------------------------
+1.5  Organização do Trabalho
+----------------------------------------------------------------------
+
+  O Capítulo 2 estabelece o formalismo cinemático do espalhamento elástico:
+  invariantes de Mandelstam, expansão em ondas parciais e a representação
+  do parâmetro de impacto. O Capítulo 3 introduz a Teoria de Regge, o momento
+  angular complexo e o Pomeron como trajetória de Regge dominante. O
+  Capítulo 4 desenvolve o formalismo BFKL, mostrando como a resoma de
+  logaritmos de energia leva ao conceito de glúon reggeizado e ao Pomeron
+  BFKL. O Capítulo 5 apresenta o modelo de dois glúons de Landshoff-Nachtmann
+  reggeizado, com ênfase nos propagadores não-perturbativos e na massa
+  dinâmica do glúon. O Capítulo 6 discute os esquemas de unitarização,
+  com foco na eiconalização e na construção da amplitude unitarizada final.
+  O Capítulo 7 apresenta os resultados e discussão. O Capítulo 8 reúne as
+  conclusões e perspectivas.
+
+
+========================================================================
+CAPÍTULO 2 — FORMALISMO DO ESPALHAMENTO ELÁSTICO
+========================================================================
+
+  Este capítulo estabelece a linguagem matemática que será usada ao longo
+  de toda a dissertação. A apresentação é progressiva: começa pela cinemática
+  relativística, passa pela decomposição em ondas parciais e culmina na
+  representação do parâmetro de impacto, que é o espaço natural para a
+  eiconalização do Capítulo 6.
+
+----------------------------------------------------------------------
+2.1  Cinemática do Espalhamento Elástico
+----------------------------------------------------------------------
+
+  Introduz os invariantes de Mandelstam s, t, u para o processo
+  1 + 2 → 3 + 4, com as relações s + t + u = Σmᵢ². Discute os canais s,
+  t e u e a simetria de cruzamento. Para o caso de interesse — espalhamento
+  elástico pp → pp no canal-s —, apresenta a decomposição dos quadrimomentos
+  em componentes longitudinal e transversal, as expressões para as energias
+  em termos de s, t, e os limites assintóticos s → ∞.
+
+  Define a amplitude normalizada F(s,t) e obtém a seção de choque diferencial
+  e a seção de choque total via Teorema Óptico:
+
+      dσ_el/dt = π |F(s,t)|²
+      σ_tot(s) = 4π Im{F(s,t=0)}
+
+  Define também os parâmetros ρ (razão real/imaginária da amplitude frontal)
+  e B (slope nuclear), que serão comparados com dados experimentais no Cap. 7.
+
+  [Fonte: Cap. 2.1 atual do TCC — manter integralmente]
+
+----------------------------------------------------------------------
+2.2  Expansão em Ondas Parciais
+----------------------------------------------------------------------
+
+  Para partículas sem spin, a simetria rotacional permite decompor a
+  amplitude em ondas parciais aₗ(k) via polinômios de Legendre Pₗ(cos θ).
+  Apresenta a expansão f(k,θ) = Σ (2l+1) aₗ(k) Pₗ(cos θ), com as
+  defasagens δₗ(k) como medida da intensidade da interação.
+
+  Deriva a condição de unitariedade elástica Im{aₗ} = k|aₗ|² (para
+  δₗ reais) e a condição geral Im{aₗ} ≥ k|aₗ|² para processos com
+  inelasticidade, introduzindo o coeficiente de absorção ηₗ ∈ [0,1].
+  Obtém as expressões para σ_tot, σ_el e σ_inel em termos de ηₗ e ζₗ.
+
+  [Fonte: Cap. 2.2 atual do TCC — manter integralmente]
+
+----------------------------------------------------------------------
+2.3  Representação do Parâmetro de Impacto
+----------------------------------------------------------------------
+
+  Em regimes de altas energias, um grande número de ondas parciais
+  contribui para o espalhamento. Isso motiva a aproximação da soma
+  discreta por uma integral, usando a identificação semiclássica
+  b = (l + ½)/k e a aproximação Pₗ(cos θ) ≈ J₀[(2l+1)sin(θ/2)].
+
+  Obtém a amplitude na representação eiconal:
+
+      F(s,t) = i ∫₀^∞ b db J₀(b√−t) Γ(b,s)
+
+  com a função de perfil Γ(b,s) = 1 − e^{iχ(b,s)}, onde χ é a função
+  eiconal. A condição de unitariedade no espaço-b assume a forma:
+
+      2 Re{Γ(b,s)} = |Γ(b,s)|² + G_inel(b,s)
+
+  onde G_inel ≥ 0 é a função de recobrimento inelástico.
+
+  As seções de choque na representação eiconal são:
+
+      σ_tot = 4π ∫ b db Re{Γ(b,s)}
+      σ_el  = 2π ∫ b db |Γ(b,s)|²
+      σ_inel = 2π ∫ b db G_inel(b,s)
+
+  NOTA IMPORTANTE: A função de perfil Γ e as relações acima são resultados
+  puramente cinemáticos/formais. A escolha de como construir χ(b,s) a
+  partir de uma amplitude de Born física — ou seja, os esquemas de
+  unitarização — será discutida no Capítulo 6, quando for fisicamente
+  necessário. Aqui, o espaço-b é apenas o espaço natural para expressar
+  as condições de unitariedade.
+
+  [Fonte: Cap. 2.2.1 atual do TCC — manter, mas eliminar menção aos
+   esquemas de unitarização (mover para Cap. 6)]
+
+
+========================================================================
+CAPÍTULO 3 — TEORIA DE REGGE E O POMERON
+========================================================================
+
+  A Teoria de Regge fornece o framework fenomenológico para descrever
+  espalhamentos no regime soft, onde a QCD perturbativa não se aplica.
+  Este capítulo desenvolve os conceitos necessários — da convergência das
+  ondas parciais ao momento angular complexo — e culmina na definição
+  do Pomeron como trajetória dominante, preparando o terreno para sua
+  construção QCD via BFKL no próximo capítulo.
+
+----------------------------------------------------------------------
+3.1  Motivação: Por que a Expansão em Ondas Parciais não Basta
+----------------------------------------------------------------------
+
+  A expansão em ondas parciais no canal-s, Eq. (2.45), é bem definida no
+  domínio físico, mas não admite continuação analítica direta para o canal-t.
+  As singularidades do canal-t manifestam-se apenas indiretamente, pelas
+  propriedades de convergência da série. Isso impede a descrição unificada
+  de diferentes canais de reação e motiva a extensão do momento angular
+  para valores complexos.
+
+  [Fonte: início do Cap. 3.1 atual do TCC]
+
+----------------------------------------------------------------------
+3.2  Convergência das Ondas Parciais e a Elipse de Lehmann
+----------------------------------------------------------------------
+
+  A convergência da série de ondas parciais no plano complexo z = cos θ
+  é limitada à chamada elipse de Lehmann, cuja fronteira é determinada
+  pela singularidade mais próxima no canal-t. Apresenta a elipse
+  explicitamente:
+
+      x²/χ² + y²/(χ²−1) = 1   com χ = cosh η(s) > 1
+
+  e discute como isso reflete a estrutura analítica da amplitude nos
+  canais cruzados. Conclui que, para valores grandes de |t| ou |u|,
+  a expansão diverge — exigindo uma representação alternativa.
+
+  [Fonte: Cap. 3.1 atual do TCC, segunda metade + Figura 3.1]
+
+----------------------------------------------------------------------
+3.3  Momento Angular Complexo e a Representação de Watson-Sommerfeld
+----------------------------------------------------------------------
+
+  Assumindo que os coeficientes de onda parcial Aₗ(s) admitem continuação
+  analítica para ℓ complexo — com singularidades isoladas e decaimento
+  adequado para |ℓ| → ∞ —, reescreve a expansão na representação de
+  Watson-Sommerfeld:
+
+      A(s,z) = [soma finita] − (1/2i) ∫_C (2ℓ+1) A(ℓ,s) Pₗ(−z)/sin(πℓ) dℓ
+
+  Deforma o contorno C para C' = (a−i∞, a+i∞) e desloca-o para a esquerda,
+  coletando os resíduos dos polos de Regge αᵢ(s) no plano complexo de ℓ.
+  Obtém a representação final em termos dos polos de Regge (Figura 3.3).
+
+  No limite assintótico |z| → ∞ (equivalente a s → ∞ no canal-t), o polo
+  mais à direita domina:
+
+      A(s,t) ~_{s→∞}  −β(t) · s^{α(t)} / sin[πα(t)]
+
+  onde α(t) é a trajetória de Regge dominante e β(t) seu resíduo. Na
+  fenomenologia, a trajetória é linearizada: α(t) = α(0) + α' t.
+
+  [Fonte: Cap. 3.2 atual do TCC — manter integralmente]
+
+----------------------------------------------------------------------
+3.4  O Pomeron: A Trajetória Dominante em Altas Energias
+----------------------------------------------------------------------
+
+  Esta seção não existe no TCC atual — deve ser redigida aqui, usando o
+  material que hoje está espalhado no início do Cap. 4 atual e na Introdução.
+
+  O Reggeon ordinário (trajetória ρ, ω, f₂, a₂) possui intercept
+  α_R(0) ≈ 0.5, levando a A(s,t) ~ s^{0.5} e σ_tot ~ s^{−0.5} — uma seção
+  de choque decrescente, em contradição com os dados para √s ≳ 10 GeV.
+  Para descrever o crescimento observado de σ_tot com s, é necessário um
+  objeto com intercept α(0) ≥ 1.
+
+  O Pomeron é exatamente essa trajetória: possui os números quânticos do
+  vácuo (C = +1, singleto de cor, I = 0, P = +1), intercept
+  αP(0) = 1 + ε com ε > 0, e controla o comportamento de σ_tot em
+  processos elásticos e difrativos. Phenomenologicamente, o Pomeron é
+  caracterizado por um intercept supercrítico αP(0) ≈ 1.08 e slope
+  α'P ≈ 0.25 GeV⁻².
+
+  O caráter singleto de cor do Pomeron está diretamente relacionado à sua
+  origem QCD: em ordem mais baixa, um objeto com C = +1 e singleto de cor
+  é a troca de dois glúons. Esta observação, devida a Low e Nussinov (1975),
+  é o ponto de partida do modelo construído no Capítulo 5. A conexão mais
+  profunda com a QCD perturbativa — via resoma de logaritmos de energia —
+  será desenvolvida no próximo capítulo, através do formalismo BFKL.
+
+  [Fonte: primeiros parágrafos do Cap. 4 atual do TCC + Cap. 1 atual]
+
+
+========================================================================
+CAPÍTULO 4 — O FORMALISMO BFKL E O GLÚON REGGEIZADO
+========================================================================
+
+  Este capítulo conecta a descrição fenomenológica do Pomeron com a QCD
+  perturbativa, mostrando como a resoma de logaritmos de energia leva
+  naturalmente ao conceito de glúon reggeizado e, por extensão, ao Pomeron
+  BFKL. O resultado central — o propagador do glúon reggeizado — será o
+  ingrediente fundamental do modelo do Capítulo 5.
+
+  A lógica narrativa é: (i) por que a perturbação ordem a ordem falha em
+  altas energias → (ii) como surgem logaritmos de s em cada ordem →
+  (iii) resoma dessas contribuições → (iv) o glúon reggeizado como
+  objeto efetivo.
+
+----------------------------------------------------------------------
+4.1  Motivação: Resoma de Logaritmos Dominantes em Energia
+----------------------------------------------------------------------
+
+  Em colisões hadrônicas a altas energias, o produto αs ln s pode tornar-se
+  da ordem da unidade mesmo quando αs ≪ 1. Nessa situação, termos do tipo
+  (αs ln s)^n dominam a ordem n da expansão perturbativa e não podem ser
+  desprezados — a expansão ordem a ordem perde seu caráter assintótico.
+
+  O formalismo BFKL (Balitsky-Fadin-Kuraev-Lipatov) realiza a resoma
+  sistemática dessas contribuições até n → ∞, tanto na aproximação de
+  logaritmos dominantes (LLA) quanto na próxima ordem (NLLA).
+
+  [Fonte: Cap. 5.1 atual do TCC — dois primeiros parágrafos]
+
+----------------------------------------------------------------------
+4.2  Amplitude de Born: Espalhamento qq com Troca de Um Glúon
+----------------------------------------------------------------------
+
+  Considera o espalhamento entre quarks ao nível de Born, no limite de altas
+  energias s ≫ |t|. O glúon trocado tem quadrimomento q escrito na
+  parametrização de Sudakov:
+
+      q = ρ p₁ + σ p₂ + q_⊥
+
+  Usando a aproximação de altas energias nos vértices, obtém a amplitude
+  de Born em ordem dominante:
+
+      A^(0)(s,t) = 8παs C₁ s/t
+
+  Observa que não há logaritmos de s nessa ordem, como esperado.
+
+  [Fonte: Cap. 5.1.1 atual do TCC, primeira parte — Figuras 5.1, eqs. (5.1)–(5.7)]
+
+----------------------------------------------------------------------
+4.3  Logaritmos em Ordem Seguinte: Diagramas de Caixa
+----------------------------------------------------------------------
+
+  Na próxima ordem perturbativa (NLO, dois glúons), os diagramas relevantes
+  para logaritmos de energia são exclusivamente os diagramas de caixa
+  (box e crossed box), mostrados nas Figuras 5.2 e 5.3. Diagramas de
+  autoenergia e correções de vértice fornecem contribuições subdominantes.
+
+  Usando relações de dispersão e as regras de Cutkosky, calcula a parte
+  imaginária da amplitude em NLO:
+
+      Im A^(1)(s,t) = 4αs² s C₄ ∫ d²k / [k²(k−q)²]
+
+  Aplicando relações de dispersão, obtém a amplitude total em NLO:
+
+      A^(1)(s,t) = −(4αs²/π) C₄ s ln(s/t) ∫ d²k / [k²(k−q)²]
+
+  Identifica a trajetória de Regge do glúon:
+
+      ε(t) = (Nc αs)/(4π²) ∫ (−q²) d²k / [k²(k−q)²]
+
+  e reescreve A^(1) em termos de A^(0) e ε(t), mostrando que a correção
+  de um loop é proporcional a A^(0) · ε(t) · ln(s/|t|).
+
+  [Fonte: Cap. 5.1.1 atual do TCC, segunda parte — eqs. (5.8)–(5.19)]
+
+----------------------------------------------------------------------
+4.4  Resoma a Todas as Ordens: O Glúon Reggeizado
+----------------------------------------------------------------------
+
+  Prosseguindo para NNLO e além, identifica o padrão:
+
+      A^(n)(s,t) = A^(0)(s,t) · (1/n!) [ε(t) ln(s/|t|)]^n
+
+  A resoma da série exponencial fornece:
+
+      A₈(s,t) = A^(0)(s,t) · (s/|t|)^{ε(t)}
+
+  Mostra que esse resultado pode ser interpretado como a amplitude de Born
+  calculada com um propagador de glúon modificado:
+
+      D_μν(ŝ, q²) = −i g_μν/q² · (ŝ/k²)^{ε_G(q²)}
+
+  Este é o propagador do glúon reggeizado (Reggeon): um objeto efetivo
+  que incorpora a resoma completa de todos os diagramas virtuais de
+  múltiplos glúons. As linhas verticais nas escadas de glúons da equação
+  BFKL são precisamente glúons reggeizados.
+
+  Para troca de singleto de cor (ao contrário do octeto), uma configuração
+  de escada de glúons reggeizados corresponde a um estado ligado —
+  o Pomeron BFKL. Isso fornece a motivação QCD profunda para a trajetória
+  do Pomeron introduzida fenomenologicamente no Capítulo 3.
+
+  [Fonte: Cap. 5.1.1 atual do TCC, parte final — eqs. (5.19)–(5.24)]
+
+----------------------------------------------------------------------
+4.5  O Pomeron BFKL e a Conexão com o Modelo Fenomenológico
+----------------------------------------------------------------------
+
+  O Pomeron BFKL possui intercept αP^{BFKL}(0) = 1 + (12αs ln2)/π,
+  que em LLA é numericamente ≈ 1.5 — um valor muito maior que o intercept
+  fenomenológico do Pomeron suave (≈ 1.08). Isso indica que o Pomeron BFKL
+  puro não descreve os dados de baixa energia: correções NLO e efeitos
+  não-perturbativos são essenciais.
+
+  A ideia central que conecta este capítulo ao próximo é que a Reggeização
+  não se limita a glúons individuais: ao considerar a Reggeização do próprio
+  Pomeron, obtém-se uma modificação da amplitude do modelo LN que incorpora
+  o fator (s̃)^{αP(t)−1}. Essa é a "Reggeização do Pomeron", e sua forma
+  explícita será dada pelas expressões (6) do artigo de referência
+  (Bopsin et al. 2022), que constitui a base do Capítulo 5.
+
+  [Fonte: Cap. 4.1 atual do TCC, parágrafos sobre Reggeização do glúon]
+
+
+========================================================================
+CAPÍTULO 5 — MODELO DE DOIS GLÚONS COM PROPAGADORES NÃO-PERTURBATIVOS
+========================================================================
+
+  Com o formalismo de Regge (Cap. 3) e o mecanismo de Reggeização (Cap. 4)
+  estabelecidos, este capítulo constrói o modelo central da dissertação:
+  o modelo de Landshoff-Nachtmann (LN) reggeizado, com propagadores de
+  glúon não-perturbativos que incorporam uma massa dinâmica.
+
+----------------------------------------------------------------------
+5.1  O Pomeron como Troca de Dois Glúons: Proposta de Low-Nussinov
+----------------------------------------------------------------------
+
+  Em 1975, Low e Nussinov propuseram independentemente que o Pomeron,
+  para possuir os números quânticos corretos (C = +1, singleto de cor),
+  deve ser interpretado, em ordem mais baixa, como a troca de dois glúons.
+  As primeiras tentativas perturbativas com esse modelo conduziram à
+  amplitude:
+
+      A(s,t) = is (8/9) np² αs² [T₁ − T₂]
+
+  onde T₁ representa a contribuição quando ambos os glúons se acoplam ao
+  mesmo quark e T₂ quando se acoplam a quarks distintos.
+
+  Embora o modelo perturbativo não descrevesse bem os dados de espalhamento,
+  ele revelou um problema fundamental: a amplitude possui uma singularidade
+  em −t = 0, originada do polo do propagador perturbativo do glúon em q² = 0.
+
+  [Fonte: Cap. 4.1 atual do TCC, primeiros parágrafos]
+
+----------------------------------------------------------------------
+5.2  O Modelo de Landshoff-Nachtmann e o Acoplamento Quark-Pomeron
+----------------------------------------------------------------------
+
+  Landshoff e Nachtmann (1987) propuseram que o propagador do glúon é
+  intrinsecamente modificado na região do infravermelho — finito em q² = 0 —
+  eliminando a singularidade. No modelo LN, o Pomeron é interpretado como
+  a troca de dois glúons que se acoplam predominantemente ao mesmo quark
+  dentro do hádron, com amplitude:
+
+      iβ₀² (ū γ^μ u)(ū γ_μ u)
+
+  onde β₀ representa a força do acoplamento quark-Pomeron:
+
+      β₀² = (1/36π²) ∫ d²k [g² D(k²)]²
+
+  A convergência dessa integral exige que D(k²) seja não-perturbativo —
+  um propagador que remova o polo em q² por algum mecanismo não-perturbativo.
+  Isso conecta naturalmente o modelo LN ao conceito de massa dinâmica do
+  glúon, desenvolvido na próxima seção.
+
+  [Fonte: Cap. 4.1 atual do TCC — eq. (4.2) e (4.3)]
+
+----------------------------------------------------------------------
+5.3  O Modelo Reggeizado: Incorporando a Trajetória do Pomeron
+----------------------------------------------------------------------
+
+  Como discutido no Capítulo 4, a Reggeização do Pomeron no modelo LN
+  conduz à reescrita da amplitude como:
+
+      A(s,t) = is [s̃^{αP(t)−1}] (8/9) np² [T̃₁ − T̃₂]
+
+  onde αP(t) = 1 + ε + α'P t é a trajetória de Regge do Pomeron,
+  s̃ ≡ s/s₀ (com s₀ = 1 GeV² a escala de massa), e as contribuições
+  T̃₁ e T̃₂ são:
+
+      T̃₁ = ∫ d²k ᾱ(q/2+k) D(q/2+k) ᾱ(q/2−k) D(q/2−k) [Gp(q,0)]²
+
+      T̃₂ = ∫ d²k ᾱ(q/2+k) D(q/2+k) ᾱ(q/2−k) D(q/2−k)
+                × Gp(q, k−q/2) [2Gp(q,0) − Gp(q, k−q/2)]
+
+  A função Gp(q,k) é a convolução das funções de onda do próton:
+
+      Gp(q,k) = ∫ d²p dα ψ*(α,p) ψ(α, p−k−αq)
+
+  onde ψ(α,p) é a amplitude para o quark ter momento transverso p e
+  fração longitudinal α. Em particular, Gp(q,0) = F₁(q²) é o fator
+  de forma elástico do próton.
+
+  Para o fator de forma, adota-se a expansão cumulante generalizada
+  (motivada pelo comportamento não-exponencial de dσ/dt observado pelo TOTEM):
+
+      F₁(q²) = exp[−(a₁|t| + a₂|t|²)]
+
+  onde a₁ e a₂ são parâmetros livres do ajuste.
+
+  [Fonte: Cap. 4.1 atual do TCC — eqs. (4.6)–(4.9); artigo Bopsin et al. 2022,
+   Seção II, eqs. (6)–(10)]
+
+  As seções de choque são obtidas das amplitudes via:
+
+      σ_tot(s) = Im A(s, t=0) / s
+      dσ/dt(s,t) = |A(s,t)|² / (16π s²)
+
+----------------------------------------------------------------------
+5.4  Input Não-Perturbativo: Massa Dinâmica do Glúon
+----------------------------------------------------------------------
+
+  Esta seção é o coração do modelo. Explica que a dinâmica não-perturbativa
+  da QCD gera uma massa dinâmica m(q²) para o glúon — confirmada por cálculos
+  de QCD na rede (SU(2) e SU(3)) e pelas equações de Schwinger-Dyson. O
+  propagador do glúon é finito na região do infravermelho, e esta massa
+  evita o polo de Landau na constante de acoplamento efetiva.
+
+  [Fonte: Cap. 4.1.1 atual do TCC; artigo Bopsin et al. 2022, Seção III]
+
+  5.4.1  A Carga Efetiva da QCD e o Propagador não-Perturbativo
+
+    A carga efetiva ᾱ(q²) é a generalização não-perturbativa do acoplamento
+    perturbativo αs(q²), obtida via técnica de pinch:
+
+        ᾱ(q²) = [q² + m²(q²)] d̂(q²)
+
+    onde d̂(q²) = g² Δ̂(q²) é formado pelas soluções de Schwinger-Dyson
+    para a auto-energia do glúon Δ̂(q²). Isso conduz a:
+
+        1/ᾱ(q²) = b₀ ln[(q² + m²(q²))/Λ²]
+
+    que se reduz ao acoplamento perturbativo de LO quando m(q²) → 0.
+    O propagador de Cornwall, no espaço euclidiano, tem a forma:
+
+        D⁻¹(q²) = [q² + m²(q²)] b g² ln[(q² + 4m²(q²))/Λ²]
+
+  5.4.2  Modelos para a Massa Dinâmica: m²_log e m²_pl
+
+    Duas formas funcionais para m²(q²), obtidas via versão não linear das
+    equações de Schwinger-Dyson, são utilizadas:
+
+    (a) Massa logarítmica (Cornwall generalizado):
+
+        m²_log(q²) = m²g { ln[(q²+ρm²g)/Λ²] / ln[(ρm²g)/Λ²] }^{−1−γ₁}
+
+        com γ₁ = −6(1 + c₂ − c₁)/5, c₁ ∈ [0.15, 0.4], c₂ ∈ [−1.07, −0.92]
+
+    (b) Massa lei de potência:
+
+        m²_pl(q²) = m⁴g / (q² + m²g) · { ln[(q²+ρm²g)/Λ²] / ln[(ρm²g)/Λ²] }^{γ₂−1}
+
+        com γ₂ = (4 + 6c₁)/5, c₁ ∈ [0.7, 1.3]
+
+    Em ambos os casos, ρ ∈ [1.0, 8.0] e mg ∈ [300, 800] MeV, com os valores
+    ρ = 4, γ₁ = 0.084 e γ₂ = 2.36 fixados pela minimização de χ²/ν.
+
+  5.4.3  A Combinação ᾱᵢ(q²)D(q²): Convergência Garantida
+
+    A combinação que entra nas integrais T̃₁ e T̃₂ é:
+
+        1/[ᾱᵢ(q²)D(q²)] = b₀[q² + m²ᵢ(q²)] ln[(q² + 4m²ᵢ(q²))/Λ²]
+
+    onde i = log, pl. Esta combinação exibe pontos fixos no infravermelho
+    (ᾱᵢ finite quando q² → 0), evitando o polo de Landau e garantindo a
+    convergência das integrais do modelo.
+
+  [Fonte: Cap. 4.1.1 atual do TCC; artigo Bopsin et al. 2022, Seção III,
+   eqs. (13)–(24)]
+
+
+========================================================================
+CAPÍTULO 6 — UNITARIZAÇÃO: O ESQUEMA EICONAL
+========================================================================
+
+  Com o modelo de Born construído (Cap. 5), este capítulo aborda o problema
+  central da unitarização. Como discutido na Introdução, o intercept
+  supercrítico do Pomeron (αP(0) > 1) viola o limite de Froissart-Martin
+  em energias suficientemente altas. A solução é unitarizar a amplitude de
+  Born, somando contribuições de múltiplas trocas de Pomeron de forma
+  consistente com a unitariedade no canal-s.
+
+----------------------------------------------------------------------
+6.1  Motivação Física: Múltiplas Trocas de Pomeron
+----------------------------------------------------------------------
+
+  O crescimento da seção de choque com a energia, descrito pelo Pomeron
+  com αP(0) = 1 + ε > 1, inevitavelmente viola o limite de Froissart-Martin
+  σ_tot ≤ C ln²s em alguma escala de energia. Contrariando expectativas
+  de que essa escala seria muito superior às energias do LHC, análises
+  difratvas em √s = 13 TeV revelam que a razão entre o acoplamento de
+  troca de dois Pomerons e de um Pomeron é R ≈ 0,6 — consistente com
+  R = 0.5 encontrado por Donnachie e Landshoff.
+
+  Isso indica que a troca de múltiplos Pomerons (PP, PPP, ...) já é
+  relevante nas energias do LHC. O intercept efetivo do Pomeron não
+  representa apenas a troca simples, mas incorpora implicitamente efeitos
+  de reespalhamento. A unitarização deve, portanto, somar sistematicamente
+  toda a série de trocas: P + PP + PPP + ...
+
+  [Fonte: Cap. 6.1 atual do TCC — manter, condensar]
+
+----------------------------------------------------------------------
+6.2  Dois Esquemas de Unitarização no Canal-s
+----------------------------------------------------------------------
+
+  Partindo da equação de unitariedade no espaço-b (Seção 2.3):
+
+      2 Im H(s,b) = |H(s,b)|² + G_in(s,b)
+
+  e definindo ρ(s,b) = Re H / Im H, obtém-se H da equação quadrática:
+
+      Im H(s,b) = [1 ± √(1 − (1+ρ²) G_in)] / (1+ρ²)
+
+  Os sinais negativo e positivo correspondem, respectivamente, aos esquemas
+  eiconal (EE) e matriz-U (MU). Discute brevemente as diferenças: ambos
+  mapeiam χ(s,b) no círculo unitário e convergem em baixas energias, mas
+  diferem em altas energias ao incorporarem diferentes diagramas de alta
+  ordem.
+
+  Apresenta o argumento de inconsistência da matriz-U com as regras AGK:
+  a contribuição inelástica obtida pela equação de unitariedade tende a zero
+  no limite assintótico, enquanto a soma de Pomerons cortados pelas regras
+  AGK resulta em 2 — uma contradição que torna a matriz-U inadequada para
+  o Pomeron supercrítico. Isso justifica a escolha exclusiva da eiconalização
+  nesta dissertação.
+
+  [Fonte: Cap. 6.1 e 6.1.1 atual do TCC]
+
+----------------------------------------------------------------------
+6.3  O Esquema Eiconal
+----------------------------------------------------------------------
+
+  Com o sinal negativo em (6.2), o esquema eiconal estabelece:
+
+      H(s,b) = i [1 − e^{iχ(s,b)}]
+
+  e a amplitude unitarizada é (cf. Seção 2.3, Eq. (2.59)):
+
+      A^{[EE]}(s,t) = is ∫₀^∞ b db J₀(bq) [1 − e^{iχ(s,b)}]
+
+  Os limites impostos pela unitariedade são:
+
+      0 ≤ Im H(s,b) ≤ (1+ρ²)⁻¹
+      G_in(s,b) = 1 − e^{−2 Im χ(s,b)} ≥ 0
+
+  No limite de absorção completa (χ puramente imaginário, ρ = 0):
+  Im H → 1, e consequentemente σ_el/σ_tot → 1/2. Esse é o chamado
+  limite do disco negro, ao qual o próton se aproxima progressivamente
+  com o aumento da energia.
+
+  NOTA: As equações do espaço-b desenvolvidas formalmente na Seção 2.3
+  assumem aqui seu significado físico completo — a função eiconal χ(s,b)
+  é construída a partir da amplitude de Born do modelo (Seção 6.4 abaixo),
+  e não é mais um artifício cinemático abstrato.
+
+  [Fonte: Cap. 6.1.1 atual do TCC — eqs. (6.13)–(6.17)]
+
+----------------------------------------------------------------------
+6.4  Input do Pomeron: Amplitude de Born no Espaço-b
+----------------------------------------------------------------------
+
+  O input χ(s,b) é obtido diretamente da amplitude de Born do modelo LN
+  reggeizado (Cap. 5) via transformada de Fourier-Bessel:
+
+      χᵢ(s,b) = (1/s) ∫ d²q/(2π) e^{iq·b} Fᵢ(s,t)
+
+  onde Fᵢ é a amplitude de Born para a troca do Pomeron (i = +, componente
+  de cruzamento par) e do Reggeon (i = −, cruzamento ímpar):
+
+      F±(s,t) = ½ [F^{pp}(s,t) ± F^{pp̄}(s,t)]
+
+  As funções de Born no espaço-b são:
+
+      h±(s,b) = (1/2s) ∫ q dq J₀(bq) F±(s,−q²)
+
+  com a fase eiconalizada χ±(s,b) ≡ 2h±(s,b).
+
+  A amplitude final para pp e pp̄ é recuperada via transformada inversa:
+
+      A^{pp}_{pp̄}(s,t) = s ∫₀^∞ b db J₀(bq) H^{pp}_{pp̄}(s,b)
+
+  com as seções de choque obtidas das relações da Seção 2.3.
+
+  [Fonte: Cap. 6.1.2 atual do TCC]
+
+----------------------------------------------------------------------
+6.5  Parâmetros Livres e Procedimento de Ajuste
+----------------------------------------------------------------------
+
+  O modelo possui quatro parâmetros livres no ajuste: mg (massa dinâmica
+  do glúon no infravermelho), ε (intercept efetivo do Pomeron), a₁ e a₂
+  (parâmetros do fator de forma do próton na expansão cumulante).
+
+  Os parâmetros fixos são: α'P = 0.25 GeV⁻², nf = 3, Λ = 284 MeV, e os
+  parâmetros γ₁, γ₂, ρ da massa dinâmica (fixados pela minimização de χ²/ν).
+
+  Dois ensembles de dados do LHC são considerados:
+    - Ensemble A: dados ATLAS de dσ/dt em 7, 8 e 13 TeV
+    - Ensemble T: dados TOTEM de dσ/dt em 7, 8 e 13 TeV
+
+  Os ajustes são realizados no intervalo |t|_min ≤ |t| ≤ 0.2 GeV², com
+  χ² minimizado via método padrão (90% CL). Os erros estatístico e
+  sistemático dos dados são somados em quadratura.
+
+  [Fonte: artigo Bopsin et al. 2022, Seção IV]
+
+
+========================================================================
+CAPÍTULO 7 — RESULTADOS E DISCUSSÃO
+========================================================================
+
+  [Este capítulo apresenta os resultados numéricos dos ajustes e sua
+   interpretação física. É novo em relação ao TCC — corresponde à extensão
+   do trabalho de referência (Bopsin et al. 2022) para a eiconalização.]
+
+----------------------------------------------------------------------
+7.1  Parâmetros Ajustados e Qualidade dos Ajustes
+----------------------------------------------------------------------
+
+  Tabela com os valores de mg, ε, a₁, a₂ para os quatro casos
+  (Ensemble A × m_log, Ensemble A × m_pl, Ensemble T × m_log,
+   Ensemble T × m_pl), com erros e χ²/ν.
+
+  Discute: o ε obtido não é sensível ao tipo de massa dinâmica (log vs. pl)
+  para um dado ensemble; a diferença entre ensembles A e T reflete a tensão
+  experimental ATLAS-TOTEM (≈ 1.4σ em 7 TeV, 2.6σ em 8 TeV). O mg varia
+  ≈ 7% entre ensembles e ≈ 18% entre modelos de massa para o mesmo ensemble.
+
+----------------------------------------------------------------------
+7.2  Seção de Choque Diferencial dσ/dt
+----------------------------------------------------------------------
+
+  Figura: dσ/dt vs. |t| para √s = 7, 8 e 13 TeV, comparando as curvas
+  do modelo (m_log e m_pl) com os dados ATLAS (Ensemble A) e TOTEM
+  (Ensemble T) separadamente.
+
+  Discute as estruturas observadas: a região de cone difratvo (|t| pequeno),
+  a posição do dip (dip de difração) e a região de grande |t|. Comenta
+  como a eiconalização afeta o perfil de dσ/dt em relação ao modelo
+  sem unitarização, em particular nas regiões além do cone.
+
+----------------------------------------------------------------------
+7.3  Seção de Choque Total σ_tot(s)
+----------------------------------------------------------------------
+
+  Figura: σ_tot vs. √s, mostrando os quatro cenários do modelo e comparando
+  com dados de ISR, SPS, Tevatron e LHC. Destaca que os cenários com
+  Ensemble T prevêm σ_tot ≈ 111 mb a 13 TeV, enquanto Ensemble A prevê
+  ≈ 104 mb — refletindo diretamente a discrepância TOTEM-ATLAS.
+
+  Discute o comportamento logarítmico de σ_tot com s e a consistência
+  com o limite de Froissart após a eiconalização.
+
+----------------------------------------------------------------------
+7.4  Parâmetro ρ(s) e Slope B
+----------------------------------------------------------------------
+
+  Figura: ρ vs. √s para pp e pp̄, comparado com dados experimentais.
+  Discute como a eiconalização modifica a parte real da amplitude e
+  a sensibilidade do modelo ao dado recente do TOTEM (ρ ≈ 0.09 a 13 TeV).
+
+----------------------------------------------------------------------
+7.5  O Acoplamento Quark-Pomeron β₀
+----------------------------------------------------------------------
+
+  Usando os valores ajustados de mg, calcula β₀ via:
+
+      β₀² = (1/36π²) ∫ d²k [ᾱ(k²) D(k²)]²
+
+  Apresenta os valores obtidos para os quatro casos e compara com:
+    (i)  O valor de β₀ obtido no TCC (modelo sem eiconalização)
+    (ii) Valores de QCD na rede
+    (iii) Outros modelos fenomenológicos da literatura
+
+  Discute o que a eiconalização muda em β₀: como a unitarização
+  redistribui a força do acoplamento, e se os valores são robustos
+  com respeito às escolhas de ensemble e modelo de massa.
+
+----------------------------------------------------------------------
+7.6  Perfil de Opacidade no Espaço-b
+----------------------------------------------------------------------
+
+  Figura: Im H(s,b) vs. b para várias energias (ISR, Tevatron, LHC 7, 13 TeV).
+  Mostra o alargamento progressivo do perfil e o crescimento da opacidade
+  central com a energia — evidência de aproximação ao limite do disco negro.
+  Compara o perfil eiconalizado com o input de Born (χ/2), evidenciando
+  o papel físico da unitarização.
+
+----------------------------------------------------------------------
+7.7  Discussão Geral
+----------------------------------------------------------------------
+
+  Sintetiza os resultados: o modelo LN reggeizado eiconalizado descreve
+  com boa qualidade os dados de dσ/dt do LHC. A massa dinâmica do glúon
+  é um ingrediente essencial — sem ela as integrais divergem no IR e
+  o modelo colapsa. Os dois modelos de massa (log e pl) produzem
+  resultados fenomenologicamente equivalentes, o que indica robustez
+  do framework.
+
+  Discute as limitações: o modelo não descreve a região de grande |t|
+  (onde o Oderon pode ser relevante), não inclui spin do próton e
+  utiliza uma parametrização simplificada para a função de onda do próton.
+
+
+========================================================================
+CAPÍTULO 8 — CONCLUSÕES E PERSPECTIVAS
+========================================================================
+
+----------------------------------------------------------------------
+8.1  Sumário dos Resultados
+----------------------------------------------------------------------
+
+  Construímos um modelo de espalhamento hadrônico baseado na troca de
+  dois glúons reggeizados com propagadores não-perturbativos (modelo LN
+  reggeizado), e unitarizamos a amplitude pelo esquema eiconal. O modelo
+  descreve com precisão os dados de seção de choque diferencial elástica
+  do LHC a 7, 8 e 13 TeV. O acoplamento quark-Pomeron β₀ obtido é
+  consistente com valores de QCD na rede, estabelecendo uma conexão
+  quantitativa entre fenomenologia hadrônica e a dinâmica não-perturbativa
+  da QCD.
+
+----------------------------------------------------------------------
+8.2  Principais Conclusões Físicas
+----------------------------------------------------------------------
+
+  (i)   Correções de unitarização são quantitativamente relevantes nas
+        energias do LHC: a eiconalização é necessária para descrever
+        os dados de dσ/dt sem violar o limite de Froissart.
+
+  (ii)  A massa dinâmica do glúon é um ingrediente físico essencial:
+        ela remove o polo de Landau, garante a convergência das integrais
+        do modelo e conecta a fenomenologia hadrônica à dinâmica não
+        perturbativa da QCD.
+
+  (iii) Os dois modelos de massa dinâmica (m_log e m_pl) produzem
+        previsões compatíveis — robustez fenomenológica do framework.
+
+  (iv)  O perfil de opacidade Im H(s,b) mostra crescimento central e
+        alargamento progressivo com a energia, evidenciando aproximação
+        ao regime de disco negro nas energias do LHC.
+
+  (v)   A tensão experimental TOTEM-ATLAS propaga-se de forma controlada
+        para os parâmetros do modelo, resultando em dois cenários
+        distintos mas internamente consistentes para σ_tot(s).
+
+----------------------------------------------------------------------
+8.3  Perspectivas e Trabalhos Futuros
+----------------------------------------------------------------------
+
+  - Inclusão do Oderon: para a descrição da região de grande |t| e da
+    diferença pp − pp̄ em altas energias.
+  - Extensão da análise para |t| > 0.2 GeV², usando relações de dispersão
+    para obter Re A(s,t) e descrever a região do dip.
+  - Estudo comparativo com o esquema da matriz-U nas mesmas condições,
+    para quantificar as diferenças nas previsões assintóticas.
+  - Refinamento do propagador via soluções mais recentes das equações de
+    Schwinger-Dyson com vértice de três glúons melhorado.
+  - Extensão para espalhamentos γp e γγ (relevante para HERA e futuros
+    colisores de elétrons-íons).
+  - Conexão com funções de distribuição de pártons (PDFs) via fator de
+    forma do próton — acesso à estrutura interna do hádron.
+
+
+========================================================================
+PÓS-TEXTUAIS
+========================================================================
+
+APÊNDICE A — Detalhes do Cálculo BFKL
+  - Derivação completa dos diagramas de um loop (box e crossed box)
+  - Cálculo explícito de Im A^(1) via regras de Cutkosky
+  - Demonstração da resoma e obtenção do propagador reggeizado
+
+APÊNDICE B — Equações de Schwinger-Dyson e Massa Dinâmica
+  - Técnica de pinch e invariância de calibre
+  - Dedução das formas funcionais m²_log e m²_pl
+  - Parâmetros e condição de massa no UV
+
+APÊNDICE C — Procedimento Numérico de Ajuste
+  - Dados experimentais utilizados (tabela completa com referências)
+  - Método de minimização e estimativa de erros
+  - Correlações entre parâmetros
+
+REFERÊNCIAS BIBLIOGRÁFICAS
+
+
+========================================================================
+NOTAS DE REORGANIZAÇÃO: MAPEAMENTO TEXTO ATUAL → NOVA ESTRUTURA
+========================================================================
+
+  Cap. 1 (Introdução atual, §1–3)     → Seção 1.1 (manter, expandir)
+  Cap. 1 (Introdução atual, §4–6)     → Seção 1.2 (Regge/Pomeron)
+  Cap. 1 (Introdução atual, §7–fim)   → Seção 1.3 (Froissart) + 1.4
+  Cap. 2.1 (Cinemática)               → Seção 2.1 (manter integralmente)
+  Cap. 2.2 (Ondas Parciais)           → Seção 2.2 (manter integralmente)
+  Cap. 2.2.1 (Eiconal cinemático)     → Seção 2.3 (remover menção a esquemas)
+  Cap. 3.1–3.2 (Regge)                → Seções 3.1–3.3 (manter, com ajustes)
+  [ausente no TCC]                    → Seção 3.4 O Pomeron (REDIGIR)
+  Cap. 5.1 (Fenomenologia BFKL)       → Seção 4.1 (mover para ANTES do modelo)
+  Cap. 5.1.1 (Equação BFKL)          → Seções 4.2–4.5 (expandir)
+  Cap. 4.1 (Modelo LN reggeizado)     → Seções 5.1–5.3 (mover para DEPOIS do BFKL)
+  Cap. 4.1.1 (Input não-perturbativo) → Seção 5.4 (expandir com 3 subseções)
+  Cap. 6.1 (Motivação eiconalização)  → Seção 6.1 (manter, condensar)
+  Cap. 6.1.1 (Esquemas unitarização)  → Seções 6.2–6.3 (expandir argumento AGK)
+  Cap. 6.1.2 (Input Pomeron)          → Seção 6.4 (manter)
+
+REDUNDÂNCIAS A RESOLVER:
+  - Eqs. (2.57)–(2.64) do Cap. 2 e eqs. (6.1)–(6.6) do Cap. 6 atual
+    são as mesmas. Manter apenas na Seção 2.3 (uso cinemático/formal).
+    Na Seção 6.3, abrir com a motivação física e referenciar Cap. 2.
+  - A definição de σ_tot e dσ/dt via amplitude aparece no Cap. 4.1 e
+    no Cap. 4.1 do artigo. Consolidar na Seção 5.3 e referenciar daí.
+  - O argumento de exclusão da matriz-U aparece no Cap. 1 e no Cap. 6.1.
+    Mover integralmente para a Seção 6.2 e manter apenas a antecipação
+    no Cap. 1.
+
+PONTOS QUE PRECISAM SER REDIGIDOS DO ZERO (não existem no TCC atual):
+  - Seção 3.4 (O Pomeron como trajetória de Regge): usar material do
+    Cap. 1 e início do Cap. 4 atual, reorganizar e expandir.
+  - Seção 4.5 (Pomeron BFKL e conexão com fenomenologia): antecipação
+    do modelo LN reggeizado.
+  - Capítulo 7 inteiro: resultados numéricos da eiconalização (dados do
+    artigo Bopsin et al. 2022 + extensão).
+  - Seção 7.5 (β₀): comparação entre modelo com e sem eiconalização.
+  - Cap. 8 (Conclusões): redigir com base nos resultados finais.
+
+========================================================================
