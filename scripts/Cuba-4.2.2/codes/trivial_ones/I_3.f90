@@ -109,7 +109,7 @@ program integral_I3
   ! parameter inside the integrand_I3 subroutine below to match.
   !----------------------------------------------------------------------------
   real(8), parameter :: MU    = 1.0d0    ! infrared regulator (must be > 0)
-  real(8), parameter :: Q_MAX = 4.0d0    ! upper limit of q integration
+  real(8), parameter :: Q_MAX = 5.0d0    ! upper limit of q integration
 
   !----------------------------------------------------------------------------
   ! CUBA CUHRE SETTINGS
@@ -134,11 +134,11 @@ program integral_I3
   integer, parameter :: NDIM    = 3          ! integration dimensions: k, phi, q
   integer, parameter :: NCOMP   = 1          ! number of integrands
   integer, parameter :: NVEC    = 1          ! number of points passed to integrand per call
-  real(8), parameter :: EPSREL  = 1d-8       ! desired relative error on the result
-  real(8), parameter :: EPSABS  = 1d-12      ! desired absolute error on the result
+  real(8), parameter :: EPSREL  = 1d-10       ! desired relative error on the result
+  real(8), parameter :: EPSABS  = 1d-16      ! desired absolute error on the result
   integer, parameter :: FLAGS   = 0          ! verbosity flag: 0 = silent
-  integer, parameter :: MINEVAL = 0          ! minimum number of integrand evaluations
-  integer, parameter :: MAXEVAL = 10000000   ! maximum number of integrand evaluations
+  integer, parameter :: MINEVAL = 1000000          ! minimum number of integrand evaluations
+  integer, parameter :: MAXEVAL = 1000000000   ! maximum number of integrand evaluations
   integer, parameter :: KEY     = 0          ! cubature rule: 0 = Cuba chooses automatically
 
   ! STATEFILE: file to save/restore integration state (' ' = disabled)

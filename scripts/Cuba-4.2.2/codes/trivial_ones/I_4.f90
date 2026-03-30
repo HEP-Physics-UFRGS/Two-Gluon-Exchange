@@ -134,7 +134,7 @@ program integral_I4
   real(8), parameter :: EPSREL  = 1d-8       ! desired relative error on the result
   real(8), parameter :: EPSABS  = 1d-12      ! desired absolute error on the result
   integer, parameter :: FLAGS   = 0          ! verbosity flag: 0 = silent
-  integer, parameter :: MINEVAL = 0          ! minimum number of integrand evaluations
+  integer, parameter :: MINEVAL = 100000          ! minimum number of integrand evaluations
   integer, parameter :: MAXEVAL = 10000000   ! maximum number of integrand evaluations
   integer, parameter :: KEY     = 0          ! cubature rule: 0 = Cuba chooses automatically
 
