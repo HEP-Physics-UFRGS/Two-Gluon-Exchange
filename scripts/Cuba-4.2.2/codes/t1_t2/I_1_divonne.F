@@ -55,20 +55,27 @@ program integral_ID
   use params_mod
   implicit none
 
-  ! Cuba SUAVE settings
-  integer,   parameter :: NDIM      = 2
-  integer,   parameter :: NCOMP     = 1
-  integer,   parameter :: NVEC      = 1
-  real(8),   parameter :: EPSREL    = 1.0d-8
-  real(8),   parameter :: EPSABS    = 1.0d-16
-  integer,   parameter :: VERBOSE   = 0
-  integer,   parameter :: LAST      = 4
-  integer,   parameter :: SEED      = 0
-  integer,   parameter :: MINEVAL   = 50000
-  integer,   parameter :: MAXEVAL   = 100000000
-  integer,   parameter :: NNEW      = 1000
-  integer,   parameter :: NMIN      = 2
-  real(8),   parameter :: FLATNESS  = 25.0d0
+  ! Cuba DIVONNE settings
+  integer,   parameter :: NDIM         = 2
+  integer,   parameter :: NCOMP        = 1
+  integer,   parameter :: NVEC         = 1
+  real(8),   parameter :: EPSREL       = 1.0d-8
+  real(8),   parameter :: EPSABS       = 1.0d-16
+  integer,   parameter :: VERBOSE      = 0
+  integer,   parameter :: LAST         = 4
+  integer,   parameter :: SEED         = 0
+  integer,   parameter :: MINEVAL      = 5000000
+  integer,   parameter :: MAXEVAL      = 300000000
+  integer,   parameter :: KEY1         = 47
+  integer,   parameter :: KEY2         = 1
+  integer,   parameter :: KEY3         = 1
+  integer,   parameter :: MAXPASS      = 5
+  real(8),   parameter :: BORDER       = 0.0d0
+  real(8),   parameter :: MAXCHISQ     = 10.0d0
+  real(8),   parameter :: MINDEVIATION = 0.25d0
+  integer,   parameter :: NGIVEN       = 0
+  integer,   parameter :: LDXGIVEN     = NDIM
+  integer,   parameter :: NEXTRA       = 0
   character(len=1), parameter :: STATEFILE = ' '
   integer(8) :: SPIN = -1
 
@@ -78,17 +85,20 @@ program integral_ID
 
   external :: integrand_ID
 
-  ! Call Cuba SUAVE
-  call suave(NDIM, NCOMP, integrand_ID, 0, NVEC,          &
-             EPSREL, EPSABS, VERBOSE + LAST, SEED,         &
-             MINEVAL, MAXEVAL, NNEW, NMIN, FLATNESS,       &
-             STATEFILE, SPIN,                              &
-             nregions, neval, fail, integral, error, prob)
+  ! Call Cuba DIVONNE
+  call divonne(NDIM, NCOMP, integrand_ID, 0, NVEC,                   &
+               EPSREL, EPSABS, VERBOSE + LAST, SEED,                  &
+               MINEVAL, MAXEVAL,                                       &
+               KEY1, KEY2, KEY3, MAXPASS,                             &
+               BORDER, MAXCHISQ, MINDEVIATION,                        &
+               NGIVEN, LDXGIVEN, 0, NEXTRA, 0,                        &
+               STATEFILE, SPIN,                                        &
+               nregions, neval, fail, integral, error, prob)
 
   ! Print results
   write(*,*)
   write(*,'(a)') '  +----------------------------------------------------------+'
-  write(*,'(a)') '  |           Cuba SUAVE  --  Result  I_D                    |'
+  write(*,'(a)') '  |           Cuba DIVONNE  --  Result  I_D                  |'
   write(*,'(a)') '  +----------------------------------------------------------+'
   write(*,'(a,f10.5,a)') '  |   Q2      = ', Q2,     '  [GeV^2]                   |'
   write(*,'(a,f10.5,a)') '  |   mg      = ', MG,     '  [GeV]                     |'

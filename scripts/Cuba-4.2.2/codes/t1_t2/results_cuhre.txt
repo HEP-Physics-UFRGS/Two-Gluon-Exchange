@@ -1,7 +1,5 @@
 gfortran -ffree-form -O2 -o I_1 I_1.F -lcuba -lm
 
-obs: validando com python
-
 ================================================
 =======================I1=======================
 ================================================
@@ -9,7 +7,7 @@ obs: validando com python
 k = [0, inf]
 phi = [0, 2pi]
 
-=======================cuhre=======================
+-----------------------------------------------------
 q2 = 0 -> I1 = 6.535426898116, 3.3933E-14
 
 CONFIG minima para mesmo resultado:
@@ -117,6 +115,46 @@ user	0m0,003s
 sys	0m0,004s
 
 
+================================================
+=======================I2.1=======================
+================================================
+
+sqrt_s = 7000 -> s = 49000000
+
+k = [0, s]
+phi = [0, 2pi]
+
+-----------------------------------------------------
+q2 = 0 -> I2.1 = 6.535426897837, 1.7204E-17
+integer,   parameter :: NDIM    = 2
+  integer,   parameter :: NCOMP   = 1
+  integer,   parameter :: NVEC    = 1
+  real(8),   parameter :: EPSREL  = 1.0d-8
+  real(8),   parameter :: EPSABS  = 1.0d-16
+  integer,   parameter :: FLAGS   = 0
+  integer,   parameter :: MINEVAL = 500
+  integer,   parameter :: MAXEVAL = 5000
+  integer,   parameter :: KEY     = 0
+  
+real	0m0,006s
+user	0m0,005s
+sys	0m0,005s
+-----------------------------------------------------
+q2 = 1 -> I2.1 = 0.000653798769, 9.0260E-19
+  integer,   parameter :: MINEVAL = 50000
+  integer,   parameter :: MAXEVAL = 80000
+
+real	0m0,022s
+user	0m0,021s
+sys	0m0,039s
+-----------------------------------------------------
+q2 = 4 -> I2.1 = 0.0, 1.1322E-18
+  integer,   parameter :: MINEVAL = 50
+  integer,   parameter :: MAXEVAL = 500
+real	0m0,006s
+user	0m0,004s
+sys	0m0,003s
+
 =======================I3=======================
 k = [0, inf]
 phi = [0, 2pi]
@@ -156,4 +194,18 @@ I4 = 2.425383356239, 8.5839E-16
 real	0m1,321s
 user	0m1,981s
 sys	0m3,097s
+
+
+=======================I4.1=======================
+k = [0, 49_000_000]
+phi = [0, 2pi]
+q2 = [0, 5.0]
+
+I4 = 2.425787432738, 2.7159E-13
+  integer,   parameter :: MINEVAL = 10000000
+  integer,   parameter :: MAXEVAL = 30000000
+  
+real	0m3,281s
+user	0m4,589s
+sys	0m6,233s
 
