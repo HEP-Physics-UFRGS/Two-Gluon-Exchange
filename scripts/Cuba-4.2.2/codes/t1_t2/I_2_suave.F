@@ -32,7 +32,7 @@ module params_mod
   implicit none
 
   ! ---- PHYSICAL PARAMETERS (edit these) ------------------------------------
-  real(8), parameter :: Q2     = 0.0d0       ! external momentum squared [GeV^2]
+  real(8), parameter :: Q2     = 4.0d0       ! external momentum squared [GeV^2]
   real(8), parameter :: MG     = 0.380d0       ! gluon mass parameter mg [GeV]
   real(8), parameter :: LAMBDA = 0.284d0      ! QCD scale Lambda [GeV]
   real(8), parameter :: RHO    = 4.0d0       ! IR regulator rho in m2log
@@ -55,29 +55,22 @@ program integral_ID
   use params_mod
   implicit none
 
-  ! Cuba DIVONNE settings
-  integer,   parameter :: NDIM         = 2
-  integer,   parameter :: NCOMP        = 1
-  integer,   parameter :: NVEC         = 1
-  real(8),   parameter :: EPSREL       = 1.0d-8
-  real(8),   parameter :: EPSABS       = 1.0d-16
-  integer,   parameter :: VERBOSE      = 0
-  integer,   parameter :: LAST         = 4
-  integer,   parameter :: SEED         = 0
-  integer,   parameter :: MINEVAL      = 5000000
-  integer,   parameter :: MAXEVAL      = 300000000
-  integer,   parameter :: KEY1         = 9
-  integer,   parameter :: KEY2         = 9
-  integer,   parameter :: KEY3         = 1
-  integer,   parameter :: MAXPASS      = 5
-  real(8),   parameter :: BORDER       = 0.0d0
-  real(8),   parameter :: MAXCHISQ     = 5.0d0
-  real(8),   parameter :: MINDEVIATION = 0.25d0
-  integer,   parameter :: NGIVEN       = 0
-  integer,   parameter :: LDXGIVEN     = NDIM
-  integer,   parameter :: NEXTRA       = 0
+  ! Cuba CUHRE settings
+  integer,   parameter :: NDIM      = 2
+  integer,   parameter :: NCOMP     = 1
+  integer,   parameter :: NVEC      = 1
+  real(8),   parameter :: EPSREL    = 1.0d-3
+  real(8),   parameter :: EPSABS    = 1.0d-16
+  integer,   parameter :: VERBOSE   = 0
+  integer,   parameter :: LAST      = 4
+  integer,   parameter :: SEED      = 0
+  integer,   parameter :: MINEVAL   = 500
+  integer,   parameter :: MAXEVAL   = 5000
+  integer,   parameter :: NNEW      = 500
+  integer,   parameter :: NMIN      = 2
+  real(8),   parameter :: FLATNESS  = 75.0d0
   character(len=1), parameter :: STATEFILE = ' '
-  integer(8) :: SPIN = -1
+  integer :: SPIN = -1
 
   ! Cuba output
   integer :: nregions, neval, fail
@@ -85,20 +78,17 @@ program integral_ID
 
   external :: integrand_ID
 
-  ! Call Cuba DIVONNE
-  call divonne(NDIM, NCOMP, integrand_ID, 0, NVEC,                   &
-               EPSREL, EPSABS, VERBOSE + LAST, SEED,                  &
-               MINEVAL, MAXEVAL,                                       &
-               KEY1, KEY2, KEY3, MAXPASS,                             &
-               BORDER, MAXCHISQ, MINDEVIATION,                        &
-               NGIVEN, LDXGIVEN, 0, NEXTRA, 0,                        &
-               STATEFILE, SPIN,                                        &
-               nregions, neval, fail, integral, error, prob)
+  ! Call Cuba CUHRE
+  call suave(NDIM, NCOMP, integrand_ID, 0, NVEC,          &
+             EPSREL, EPSABS, VERBOSE + LAST, SEED,         &
+             MINEVAL, MAXEVAL, NNEW, NMIN, FLATNESS,       &
+             STATEFILE, SPIN,                              &
+             nregions, neval, fail, integral, error, prob)
 
   ! Print results
   write(*,*)
   write(*,'(a)') '  +----------------------------------------------------------+'
-  write(*,'(a)') '  |           Cuba DIVONNE  --  Result  I_D                  |'
+  write(*,'(a)') '  |           Cuba CUHRE  --  Result  I_D                    |'
   write(*,'(a)') '  +----------------------------------------------------------+'
   write(*,'(a,f10.5,a)') '  |   Q2      = ', Q2,     '  [GeV^2]                   |'
   write(*,'(a,f10.5,a)') '  |   mg      = ', MG,     '  [GeV]                     |'
@@ -155,9 +145,9 @@ subroutine integrand_ID(ndim, xx, ncomp, ff, userdata)
     return
   end if
 
-  k   = t / (1.0d0 - t)
+  k   = 10.0d0 * t
   phi = TWOPI * r
-  jac = TWOPI / (1.0d0 - t)**2
+  jac = TWOPI * 10.0d0
 
   qkp2  = 0.25d0*Q2 + Q_VAL*k*cos(phi) + k*k
   qkm2  = 0.25d0*Q2 - Q_VAL*k*cos(phi) + k*k

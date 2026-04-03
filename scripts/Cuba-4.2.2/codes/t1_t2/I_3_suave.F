@@ -3,7 +3,7 @@
 ! I_D.F
 !
 ! Integral:
-!   I = INT_0^{2pi} dphi  INT_0^inf  k dk  [T1 - T2]
+!   I = INT_0^5 dq  INT_0^{2pi} dphi  INT_0^inf  k dk  [T1 - T2]
 !
 !   T1 = alpha_D(qkp2) * alpha_D(qkm2) * Gp(q2)^2
 !   T2 = alpha_D(qkp2) * alpha_D(qkm2) * Gp(f) * [2*Gp(q2) - Gp(f)]
@@ -14,10 +14,12 @@
 !   qkp2       = q2/4 + sqrt(q2)*k*cos(phi) + k^2
 !   qkm2       = q2/4 - sqrt(q2)*k*cos(phi) + k^2
 !   f          = q2 + 9*|k^2 - q2/4|
+!   q2         = q^2,  q in [0, 5] GeV
 !
 ! Variable substitution (maps k in [0,inf) to t in [0,1)):
-!   k = t/(1-t),  dk/dt = 1/(1-t)^2
-!   phi = 2*pi*r, r in [0,1]
+!   k   = t/(1-t),  dk/dt = 1/(1-t)^2
+!   phi = 2*pi*r,   r in [0,1]
+!   q   = Q_MAX*s,  s in [0,1]  (linear map, jacobian = Q_MAX)
 !
 ! COMPILE:
 !   gfortran -ffree-form -O2 -o I_D I_D.F -lcuba -lm
@@ -32,7 +34,6 @@ module params_mod
   implicit none
 
   ! ---- PHYSICAL PARAMETERS (edit these) ------------------------------------
-  real(8), parameter :: Q2     = 0.0d0       ! external momentum squared [GeV^2]
   real(8), parameter :: MG     = 0.380d0       ! gluon mass parameter mg [GeV]
   real(8), parameter :: LAMBDA = 0.284d0      ! QCD scale Lambda [GeV]
   real(8), parameter :: RHO    = 4.0d0       ! IR regulator rho in m2log
@@ -40,10 +41,8 @@ module params_mod
   real(8), parameter :: B0     = 0.71619724391D0   ! beta-function coeff b0
   real(8), parameter :: A1     = 1.491d0       ! Gp first coeff  [GeV^-2]
   real(8), parameter :: A2     = 2.77d0      ! Gp second coeff [GeV^-4]
+  real(8), parameter :: Q_MAX  = 5.0d0       ! upper limit of q integral [GeV]
   ! --------------------------------------------------------------------------
-
-  ! Derived (do not edit)
-  real(8), parameter :: Q_VAL  = sqrt(Q2)    ! |q| = sqrt(q2)
 
 end module params_mod
 
@@ -55,29 +54,22 @@ program integral_ID
   use params_mod
   implicit none
 
-  ! Cuba DIVONNE settings
-  integer,   parameter :: NDIM         = 2
-  integer,   parameter :: NCOMP        = 1
-  integer,   parameter :: NVEC         = 1
-  real(8),   parameter :: EPSREL       = 1.0d-8
-  real(8),   parameter :: EPSABS       = 1.0d-16
-  integer,   parameter :: VERBOSE      = 0
-  integer,   parameter :: LAST         = 4
-  integer,   parameter :: SEED         = 0
-  integer,   parameter :: MINEVAL      = 5000000
-  integer,   parameter :: MAXEVAL      = 300000000
-  integer,   parameter :: KEY1         = 9
-  integer,   parameter :: KEY2         = 9
-  integer,   parameter :: KEY3         = 1
-  integer,   parameter :: MAXPASS      = 5
-  real(8),   parameter :: BORDER       = 0.0d0
-  real(8),   parameter :: MAXCHISQ     = 5.0d0
-  real(8),   parameter :: MINDEVIATION = 0.25d0
-  integer,   parameter :: NGIVEN       = 0
-  integer,   parameter :: LDXGIVEN     = NDIM
-  integer,   parameter :: NEXTRA       = 0
+  ! Cuba CUHRE settings
+  integer,   parameter :: NDIM      = 2
+  integer,   parameter :: NCOMP     = 1
+  integer,   parameter :: NVEC      = 1
+  real(8),   parameter :: EPSREL    = 1.0d-3
+  real(8),   parameter :: EPSABS    = 1.0d-16
+  integer,   parameter :: VERBOSE   = 0
+  integer,   parameter :: LAST      = 4
+  integer,   parameter :: SEED      = 0
+  integer,   parameter :: MINEVAL   = 50000000
+  integer,   parameter :: MAXEVAL   = 500000000
+  integer,   parameter :: NNEW      = 1000
+  integer,   parameter :: NMIN      = 2
+  real(8),   parameter :: FLATNESS  = 100.0d0
   character(len=1), parameter :: STATEFILE = ' '
-  integer(8) :: SPIN = -1
+  integer :: SPIN = -1
 
   ! Cuba output
   integer :: nregions, neval, fail
@@ -85,22 +77,19 @@ program integral_ID
 
   external :: integrand_ID
 
-  ! Call Cuba DIVONNE
-  call divonne(NDIM, NCOMP, integrand_ID, 0, NVEC,                   &
-               EPSREL, EPSABS, VERBOSE + LAST, SEED,                  &
-               MINEVAL, MAXEVAL,                                       &
-               KEY1, KEY2, KEY3, MAXPASS,                             &
-               BORDER, MAXCHISQ, MINDEVIATION,                        &
-               NGIVEN, LDXGIVEN, 0, NEXTRA, 0,                        &
-               STATEFILE, SPIN,                                        &
-               nregions, neval, fail, integral, error, prob)
+  ! Call Cuba CUHRE
+  call suave(NDIM, NCOMP, integrand_ID, 0, NVEC,          &
+             EPSREL, EPSABS, VERBOSE + LAST, SEED,         &
+             MINEVAL, MAXEVAL, NNEW, NMIN, FLATNESS,       &
+             STATEFILE, SPIN,                              &
+             nregions, neval, fail, integral, error, prob)
 
   ! Print results
   write(*,*)
   write(*,'(a)') '  +----------------------------------------------------------+'
-  write(*,'(a)') '  |           Cuba DIVONNE  --  Result  I_D                  |'
+  write(*,'(a)') '  |           Cuba CUHRE  --  Result  I_D (triple)           |'
   write(*,'(a)') '  +----------------------------------------------------------+'
-  write(*,'(a,f10.5,a)') '  |   Q2      = ', Q2,     '  [GeV^2]                   |'
+  write(*,'(a,f10.5,a)') '  |   q_max   = ', Q_MAX,  '  [GeV]                      |'
   write(*,'(a,f10.5,a)') '  |   mg      = ', MG,     '  [GeV]                     |'
   write(*,'(a,f10.5,a)') '  |   Lambda  = ', LAMBDA, '  [GeV]                     |'
   write(*,'(a,f10.5,a)') '  |   rho     = ', RHO,    '                            |'
@@ -127,7 +116,10 @@ end program integral_ID
 
 !=============================================================================
 ! SUBROUTINE integrand_ID
-! Called by Cuba at each integration point (xx(1), xx(2)) in [0,1]^2.
+! Called by Cuba at each integration point (xx(1), xx(2), xx(3)) in [0,1]^3.
+!   xx(1) -> t  (maps k in [0,inf))
+!   xx(2) -> r  (maps phi in [0,2pi))
+!   xx(3) -> s  (maps q  in [0,Q_MAX])
 !=============================================================================
 subroutine integrand_ID(ndim, xx, ncomp, ff, userdata)
   use params_mod
@@ -141,7 +133,7 @@ subroutine integrand_ID(ndim, xx, ncomp, ff, userdata)
 
   real(8), parameter :: TWOPI = 6.28318530717958647692d0
 
-  real(8) :: t, r, k, phi, jac
+  real(8) :: t, r, s, k, phi, q, q2, q_val, jac
   real(8) :: qkp2, qkm2, f_arg
   real(8) :: aD_p, aD_m
   real(8) :: Gp_q2, Gp_f
@@ -149,21 +141,26 @@ subroutine integrand_ID(ndim, xx, ncomp, ff, userdata)
 
   t = xx(1)
   r = xx(2)
+  s = xx(3)
 
   if (t >= 1.0d0) then
     ff(1) = 0.0d0
     return
   end if
 
-  k   = t / (1.0d0 - t)
-  phi = TWOPI * r
-  jac = TWOPI / (1.0d0 - t)**2
+  k     = t / (1.0d0 - t)
+  phi   = TWOPI * r
+  q     = Q_MAX * s
+  q2    = q * q
+  q_val = q
+  ! jacobian: dk/dt * dphi/dr * dq/ds = 1/(1-t)^2 * 2pi * Q_MAX
+  jac   = TWOPI * Q_MAX / (1.0d0 - t)**2
 
-  qkp2  = 0.25d0*Q2 + Q_VAL*k*cos(phi) + k*k
-  qkm2  = 0.25d0*Q2 - Q_VAL*k*cos(phi) + k*k
-  f_arg = Q2 + 9.0d0 * abs(k*k - 0.25d0*Q2)
+  qkp2  = 0.25d0*q2 + q_val*k*cos(phi) + k*k
+  qkm2  = 0.25d0*q2 - q_val*k*cos(phi) + k*k
+  f_arg = q2 + 9.0d0 * abs(k*k - 0.25d0*q2)
 
-  Gp_q2 = exp(-A1*Q2    - A2*Q2*Q2)
+  Gp_q2 = exp(-A1*q2    - A2*q2*q2)
   Gp_f  = exp(-A1*f_arg - A2*f_arg*f_arg)
 
   call eval_alpha_D(qkp2, MG, LAMBDA, RHO, GAMMA1, B0, aD_p)

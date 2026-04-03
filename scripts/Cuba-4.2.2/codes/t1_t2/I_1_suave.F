@@ -32,7 +32,7 @@ module params_mod
   implicit none
 
   ! ---- PHYSICAL PARAMETERS (edit these) ------------------------------------
-  real(8), parameter :: Q2     = 0.0d0       ! external momentum squared [GeV^2]
+  real(8), parameter :: Q2     = 4.0d0       ! external momentum squared [GeV^2]
   real(8), parameter :: MG     = 0.380d0       ! gluon mass parameter mg [GeV]
   real(8), parameter :: LAMBDA = 0.284d0      ! QCD scale Lambda [GeV]
   real(8), parameter :: RHO    = 4.0d0       ! IR regulator rho in m2log
@@ -64,11 +64,11 @@ program integral_ID
   integer,   parameter :: VERBOSE   = 0
   integer,   parameter :: LAST      = 4
   integer,   parameter :: SEED      = 0
-  integer,   parameter :: MINEVAL   = 50000
-  integer,   parameter :: MAXEVAL   = 100000000
-  integer,   parameter :: NNEW      = 1000
+  integer,   parameter :: MINEVAL   = 50
+  integer,   parameter :: MAXEVAL   = 500
+  integer,   parameter :: NNEW      = 500
   integer,   parameter :: NMIN      = 2
-  real(8),   parameter :: FLATNESS  = 25.0d0
+  real(8),   parameter :: FLATNESS  = 1.0d0
   character(len=1), parameter :: STATEFILE = ' '
   integer(8) :: SPIN = -1
 
