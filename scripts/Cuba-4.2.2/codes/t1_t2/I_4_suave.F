@@ -34,6 +34,7 @@ module params_mod
   implicit none
 
   ! ---- PHYSICAL PARAMETERS (edit these) ------------------------------------
+  real(8), parameter :: K_MAX = 10.0d0   ! upper limit of k integral [GeV]
   real(8), parameter :: MG     = 0.380d0       ! gluon mass parameter mg [GeV]
   real(8), parameter :: LAMBDA = 0.284d0      ! QCD scale Lambda [GeV]
   real(8), parameter :: RHO    = 4.0d0       ! IR regulator rho in m2log
@@ -55,15 +56,19 @@ program integral_ID
   implicit none
 
   ! Cuba CUHRE settings
-  integer,   parameter :: NDIM    = 3
-  integer,   parameter :: NCOMP   = 1
-  integer,   parameter :: NVEC    = 1
-  real(8),   parameter :: EPSREL  = 1.0d-8
-  real(8),   parameter :: EPSABS  = 1.0d-16
-  integer,   parameter :: FLAGS   = 0
-  integer,   parameter :: MINEVAL = 50000000
-  integer,   parameter :: MAXEVAL = 100000000
-  integer,   parameter :: KEY     = 0
+  integer,   parameter :: NDIM      = 3
+  integer,   parameter :: NCOMP     = 1
+  integer,   parameter :: NVEC      = 1
+  real(8),   parameter :: EPSREL    = 1.0d-4
+  real(8),   parameter :: EPSABS    = 1.0d-16
+  integer,   parameter :: VERBOSE   = 0
+  integer,   parameter :: LAST      = 4
+  integer,   parameter :: SEED      = 0
+  integer,   parameter :: MINEVAL   = 5000000
+  integer,   parameter :: MAXEVAL   = 50000000
+  integer,   parameter :: NNEW      = 1000000
+  integer,   parameter :: NMIN      = 2
+  real(8),   parameter :: FLATNESS  = 75.0d0
   character(len=1), parameter :: STATEFILE = ' '
   integer :: SPIN = -1
 
@@ -74,15 +79,11 @@ program integral_ID
   external :: integrand_ID
 
   ! Call Cuba CUHRE
-  call cuhre(NDIM, NCOMP, integrand_ID, 0,   &
-             NVEC,                            &
-             EPSREL, EPSABS,                  &
-             FLAGS,                           &
-             MINEVAL, MAXEVAL,                &
-             KEY,                             &
-             STATEFILE, SPIN,                 &
-             nregions, neval, fail,           &
-             integral, error, prob)
+  call suave(NDIM, NCOMP, integrand_ID, 0, NVEC,          &
+             EPSREL, EPSABS, VERBOSE + LAST, SEED,         &
+             MINEVAL, MAXEVAL, NNEW, NMIN, FLATNESS,       &
+             STATEFILE, SPIN,                              &
+             nregions, neval, fail, integral, error, prob)
 
   ! Print results
   write(*,*)
@@ -148,14 +149,14 @@ subroutine integrand_ID(ndim, xx, ncomp, ff, userdata)
     return
   end if
 
-  k     = t / (1.0d0 - t)
+  k     = 10.0d0 * t
   phi   = TWOPI * r
   q     = Q_MAX * s
   q2    = q * q
   q_val = q
   ! jacobian: dk/dt * dphi/dr * dq/ds = 1/(1-t)^2 * 2pi * Q_MAX
-  jac   = TWOPI * Q_MAX / (1.0d0 - t)**2
-
+  jac   = TWOPI * Q_MAX * 10.0d0
+  
   qkp2  = 0.25d0*q2 + q_val*k*cos(phi) + k*k
   qkm2  = 0.25d0*q2 - q_val*k*cos(phi) + k*k
   f_arg = q2 + 9.0d0 * abs(k*k - 0.25d0*q2)

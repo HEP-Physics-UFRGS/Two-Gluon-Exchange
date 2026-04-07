@@ -334,7 +334,7 @@ CAPÍTULO 2 — FORMALISMO DO ESPALHAMENTO ELÁSTICO
     - A construção de χ(b,s) a partir de uma amplitude de Born física
       será tratada posteriormente
 
-[ ] Conexão com capítulos futuros
+[DONE] Conexão com capítulos futuros
     - Esquemas de unitarização discutidos no Capítulo 6
     - Espaço-b como representação natural da unitariedade
   NOTA IMPORTANTE: A função de perfil Γ e as relações acima são resultados
@@ -363,18 +363,18 @@ CAPÍTULO 3 — TEORIA DE REGGE E O POMERON
 3.1  Motivação: Por que a Expansão em Ondas Parciais não Basta
 ----------------------------------------------------------------------
 
-  [ ] Limitações da expansão em ondas parciais (canal-s)
+  [DONE] Limitações da expansão em ondas parciais (canal-s)
     - Expansão (Eq. 2.45) bem definida no domínio físico
     - Não admite continuação analítica direta para o canal-t
 
-[ ] Manifestação das singularidades do canal-t
+[DONE] Manifestação das singularidades do canal-t
     - Aparecem apenas indiretamente
     - Refletidas nas propriedades de convergência da série
 
-[ ] Consequência física
+[DONE] Consequência física
     - Dificuldade em descrever de forma unificada diferentes canais de reação
 
-[ ] Motivação teórica
+[DONE] Motivação teórica
     - Extensão do momento angular para valores complexos
 
   [Fonte: início do Cap. 3.1 atual do TCC]
@@ -383,26 +383,26 @@ CAPÍTULO 3 — TEORIA DE REGGE E O POMERON
 3.2  Convergência das Ondas Parciais e a Elipse de Lehmann
 ----------------------------------------------------------------------
 
-  [ ] Convergência da série de ondas parciais
+  [DONE] Convergência da série de ondas parciais
     - Considerada no plano complexo: z = cos θ
     - Limitada pela elipse de Lehmann
 
-[ ] Elipse de Lehmann
+[DONE] Elipse de Lehmann
     - Equação:
         • x²/χ² + y²/(χ² − 1) = 1
     - Parâmetro:
         • χ = cosh η(s) > 1
     - Fronteira determinada pela singularidade mais próxima no canal-t
 
-[ ] Interpretação analítica
+[DONE] Interpretação analítica
     - Reflete a estrutura analítica da amplitude em canais cruzados
     - Conecta propriedades do canal-s com singularidades do canal-t
 
-[ ] Limitações da expansão
+[DONE] Limitações da expansão
     - Para |t| grandes: divergência da série
     - Para |u| grandes: divergência da série
 
-[ ] Consequência teórica
+[DONE] Consequência teórica
     - Necessidade de uma representação alternativa para a amplitude
   [Fonte: Cap. 3.1 atual do TCC, segunda metade + Figura 3.1]
 
@@ -410,30 +410,30 @@ CAPÍTULO 3 — TEORIA DE REGGE E O POMERON
 3.3  Momento Angular Complexo e a Representação de Watson-Sommerfeld
 ----------------------------------------------------------------------
 
-  [ ] Continuação analítica das ondas parciais
+  [DONE] Continuação analítica das ondas parciais
     - Coeficientes Aₗ(s) estendidos para ℓ complexo
     - Hipóteses:
         • Singularidades isoladas
         • Decaimento adequado para |ℓ| → ∞
 
-[ ] Representação de Watson-Sommerfeld
+[DONE] Representação de Watson-Sommerfeld
     - Reescrita da expansão:
         • A(s,z) = [soma finita] − (1/2i) ∫_C (2ℓ+1) A(ℓ,s) Pₗ(−z)/sin(πℓ) dℓ
 
-[ ] Deformação do contorno no plano complexo
+[DONE] Deformação do contorno no plano complexo
     - Contorno original: C
     - Novo contorno: C' = (a−i∞, a+i∞)
     - Deslocamento para a esquerda no plano de ℓ
 
-[ ] Polos de Regge
+[DONE] Polos de Regge
     - Coleta dos resíduos nos polos αᵢ(s)
     - Representação final da amplitude em termos desses polos
 
-[ ] Limite assintótico
+[DONE] Limite assintótico
     - Condição: |z| → ∞ (equivalente a s → ∞ no canal-t)
     - Domínio do polo mais à direita
 
-[ ] Comportamento assintótico da amplitude
+[DONE] Comportamento assintótico da amplitude
     - Expressão:
         • A(s,t) ~_{s→∞} −β(t) · s^{α(t)} / sin[πα(t)]
     - α(t): trajetória de Regge dominante

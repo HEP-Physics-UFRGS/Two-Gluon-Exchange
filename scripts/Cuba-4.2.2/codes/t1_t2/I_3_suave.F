@@ -22,7 +22,7 @@
 !   q   = Q_MAX*s,  s in [0,1]  (linear map, jacobian = Q_MAX)
 !
 ! COMPILE:
-!   gfortran -ffree-form -O2 -o I_D I_D.F -lcuba -lm
+!   gfortran -ffree-form -O2 -o I_3_suave I_3_suave.F -lcuba -lm
 !=============================================================================
 
 
@@ -55,19 +55,19 @@ program integral_ID
   implicit none
 
   ! Cuba CUHRE settings
-  integer,   parameter :: NDIM      = 2
+  integer,   parameter :: NDIM      = 3
   integer,   parameter :: NCOMP     = 1
   integer,   parameter :: NVEC      = 1
-  real(8),   parameter :: EPSREL    = 1.0d-3
+  real(8),   parameter :: EPSREL    = 1.0d-4
   real(8),   parameter :: EPSABS    = 1.0d-16
   integer,   parameter :: VERBOSE   = 0
   integer,   parameter :: LAST      = 4
   integer,   parameter :: SEED      = 0
-  integer,   parameter :: MINEVAL   = 50000000
-  integer,   parameter :: MAXEVAL   = 500000000
-  integer,   parameter :: NNEW      = 1000
+  integer,   parameter :: MINEVAL   = 5000000
+  integer,   parameter :: MAXEVAL   = 50000000
+  integer,   parameter :: NNEW      = 1000000
   integer,   parameter :: NMIN      = 2
-  real(8),   parameter :: FLATNESS  = 100.0d0
+  real(8),   parameter :: FLATNESS  = 75.0d0
   character(len=1), parameter :: STATEFILE = ' '
   integer :: SPIN = -1
 

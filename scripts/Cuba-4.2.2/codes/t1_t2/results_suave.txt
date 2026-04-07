@@ -224,7 +224,26 @@ k = [0, inf]
 phi = [0, 2pi]
 q2 = [0, 5.0]
 
-I3 = 
+I3 = 2.425781048403, 2.3847E-04
+
+  integer,   parameter :: NDIM      = 3
+  integer,   parameter :: NCOMP     = 1
+  integer,   parameter :: NVEC      = 1
+  real(8),   parameter :: EPSREL    = 1.0d-4
+  real(8),   parameter :: EPSABS    = 1.0d-16
+  integer,   parameter :: VERBOSE   = 0
+  integer,   parameter :: LAST      = 4
+  integer,   parameter :: SEED      = 0
+  integer,   parameter :: MINEVAL   = 5000000
+  integer,   parameter :: MAXEVAL   = 50000000
+  integer,   parameter :: NNEW      = 1000000
+  integer,   parameter :: NMIN      = 2
+  real(8),   parameter :: FLATNESS  = 75.0d0
+
+
+real	0m9,779s
+user	0m13,964s
+sys	0m0,797s
 
 
 =======================I4=======================
@@ -232,13 +251,48 @@ k = [0, 10]
 phi = [0, 2pi]
 q2 = [0, 5.0]
 
-I4 = 
+I4 = 2.425384694293, 2.3963E-04
 
+  integer,   parameter :: NDIM      = 3
+  integer,   parameter :: NCOMP     = 1
+  integer,   parameter :: NVEC      = 1
+  real(8),   parameter :: EPSREL    = 1.0d-4
+  real(8),   parameter :: EPSABS    = 1.0d-16
+  integer,   parameter :: VERBOSE   = 0
+  integer,   parameter :: LAST      = 4
+  integer,   parameter :: SEED      = 0
+  integer,   parameter :: MINEVAL   = 5000000
+  integer,   parameter :: MAXEVAL   = 50000000
+  integer,   parameter :: NNEW      = 1000000
+  integer,   parameter :: NMIN      = 2
+  real(8),   parameter :: FLATNESS  = 75.0d0
+  
+  real	0m20,906s
+user	0m27,151s
+sys	0m1,421s
 
 =======================I4.1=======================
 k = [0, 49_000_000]
 phi = [0, 2pi]
 q2 = [0, 5.0]
 
-I4 = 
+I4 = 2.425758669276, 2.4231E-04
+
+  integer,   parameter :: NDIM      = 3
+  integer,   parameter :: NCOMP     = 1
+  integer,   parameter :: NVEC      = 1
+  real(8),   parameter :: EPSREL    = 1.0d-4
+  real(8),   parameter :: EPSABS    = 1.0d-16
+  integer,   parameter :: VERBOSE   = 0
+  integer,   parameter :: LAST      = 4
+  integer,   parameter :: SEED      = 0
+  integer,   parameter :: MINEVAL   = 5000000
+  integer,   parameter :: MAXEVAL   = 50000000
+  integer,   parameter :: NNEW      = 100000
+  integer,   parameter :: NMIN      = 2
+  real(8),   parameter :: FLATNESS  = 100.0d0
+
+real	0m15,515s
+user	0m22,165s
+sys	0m0,660s
 
