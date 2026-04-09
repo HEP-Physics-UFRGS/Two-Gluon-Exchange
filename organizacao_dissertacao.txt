@@ -439,7 +439,7 @@ CAPÍTULO 3 — TEORIA DE REGGE E O POMERON
     - α(t): trajetória de Regge dominante
     - β(t): resíduo associado
 
-[ ] Aproximação fenomenológica
+[DONE] Aproximação fenomenológica
     - Trajetória linear:
         • α(t) = α(0) + α' t
 
