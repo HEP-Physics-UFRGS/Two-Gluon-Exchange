@@ -1,0 +1,227 @@
+ ***************************************************************************
+  MINUIT RELEASE 96.03  INITIALIZED.   DIMENSIONS 100/ 50  EPSMAC=  0.89E-15
+ ***************************************************************************
+                          MINUIT DATA BLOCK NO.   1
+ ***************************************************************************
+ ENTER MINUIT TITLE, or "SET INPUT n" : 
+ ENTER MINUIT TITLE, or "SET INPUT n" : 
+ 'Parametros de minimizacao de curva sigmagg'      
+ ******************************************************************************
+ ENTER MINUIT PARAMETER DEFINITION:     
+ ENTER MINUIT PARAMETER DEFINITION:     
+     1 'A1        '   0.75300E-01  0.10000E-02    0.50000E-01  0.10000    
+ ENTER MINUIT PARAMETER DEFINITION:     
+     2 'A2        '   0.90000      0.10000E-04    0.25000       1.0000    
+ ENTER MINUIT PARAMETER DEFINITION:     
+     3 'A3        '    1.3730      0.10000E-02    0.80000       2.0000    
+ ENTER MINUIT PARAMETER DEFINITION:     
+     4 'A4        '    2.5000      0.10000E-02     1.0000       3.0000    
+ ENTER MINUIT PARAMETER DEFINITION:     
+
+ MINUIT: FIRST CALL TO USER FUNCTION, WITH IFLAG=1
+
+ FCN=   36225.26     FROM PARAMETR  STATUS=RESET          2 CALLS        2 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+
+  EXT PARAMETER               CURRENT GUESS      PHYSICAL LIMITS       
+  NO.   NAME        VALUE          ERROR       NEGATIVE      POSITIVE  
+   1      A1       0.75300E-01   0.10000E-02   0.50000E-01   0.10000    
+   2      A2       0.90000       0.10000E-04   0.25000        1.0000    
+   3      A3        1.3730       0.10000E-02   0.80000        2.0000    
+   4      A4        2.5000       0.10000E-02    1.0000        3.0000    
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    1 **SET ERRORDEF    7.779    
+ **********
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    2 **FIX    1.000    
+ **********
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    3 **MIGRAD 
+ **********
+ START MIGRAD MINIMIZATION.  STRATEGY 1.  CONVERGENCE WHEN EDM .LT. 0.78E-03
+
+ FCN=   29357.03     FROM MIGRAD    STATUS=INITIATE      29 CALLS       31 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME        VALUE          ERROR          SIZE      DERIVATIVE 
+   1      A1       0.75300E-01     fixed    
+   2      A2       0.89052       0.10000E-04  -0.36456E-01   0.18639E+06
+   3      A3        1.3730       0.10000E-02    0.0000        8471.0    
+   4      A4        2.5000       0.10000E-02    0.0000       -269.05    
+                               ERR DEF=  7.78    
+
+ MIGRAD MINIMIZATION HAS CONVERGED.
+
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+
+ FCN=   516.1970     FROM MIGRAD    STATUS=CONVERGED    168 CALLS      170 TOTAL
+                     EDM=  0.49E-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME        VALUE          ERROR          SIZE      DERIVATIVE 
+   1      A1       0.75300E-01     fixed    
+   2      A2       0.82522       0.95235E-03   0.12011E-04   0.15044    
+   3      A3       0.84526       0.26889E-01   0.47205E-03   0.35941E-02
+   4      A4        1.0000       0.35278E-01   0.10666E-02** at limit **
+                               ERR DEF=  7.78    
+
+ EXTERNAL ERROR MATRIX.    NDIM=  50    NPAR=  3    ERR DEF=  7.78    
+  0.907E-06 0.167E-05 0.408E-11
+  0.167E-05 0.726E-03-0.315E-10
+  0.408E-11-0.315E-10 0.725E-11
+
+ PARAMETER  CORRELATION COEFFICIENTS
+       NO.  GLOBAL     2     3     4
+        2  0.06495  1.000 0.065 0.002
+        3  0.06494  0.065 1.000-0.000
+        4  0.00168  0.002-0.000 1.000
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    4 **RELEASE    1.000    
+ **********
+                    PARAMETER   1, A1         RESTORED TO VARIABLE.
+ MINUIT WARNING IN RELease 
+ ============== VARIABLE   4 IS AT ITS LOWER ALLOWED LIMIT
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    5 **MIGRAD 
+ **********
+ START MIGRAD MINIMIZATION.  STRATEGY 1.  CONVERGENCE WHEN EDM .LT. 0.78E-03
+
+ FCN=   516.1970     FROM MIGRAD    STATUS=INITIATE      12 CALLS      182 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME        VALUE          ERROR          SIZE      DERIVATIVE 
+   1      A1       0.75300E-01   0.10000E-02   0.10000E-02   -49.238    
+   2      A2       0.82522       0.95235E-03   0.12011E-04   0.34860E-01
+   3      A3       0.84526       0.26889E-01   0.47205E-03   0.20673E-02
+   4      A4        1.0000       0.35278E-01   0.10666E-02   0.42814    
+                               ERR DEF=  7.78    
+
+ MIGRAD MINIMIZATION HAS CONVERGED.
+
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+
+ FCN=   496.0458     FROM MIGRAD    STATUS=CONVERGED    376 CALLS      546 TOTAL
+                     EDM=  0.21E-03    STRATEGY= 1      ERROR MATRIX ACCURATE 
+
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME        VALUE          ERROR          SIZE      DERIVATIVE 
+   1      A1       0.95608E-01   0.97155E-02   0.93872E-04  -0.12931    
+   2      A2       0.88404       0.31931E-01   0.14654E-04   0.24864    
+   3      A3       0.91901       0.41829E-01   0.28600E-03   0.13953    
+   4      A4        1.0000       0.33928E-01   0.10266E-02** at limit **
+                               ERR DEF=  7.78    
+
+ EXTERNAL ERROR MATRIX.    NDIM=  50    NPAR=  4    ERR DEF=  7.78    
+  0.115E-03 0.343E-03 0.351E-03-0.511E-13
+  0.343E-03 0.102E-02 0.105E-02 0.475E-11
+  0.351E-03 0.105E-02 0.176E-02-0.429E-10
+ -0.511E-13 0.475E-11-0.429E-10 0.143E-10
+
+ PARAMETER  CORRELATION COEFFICIENTS
+       NO.  GLOBAL     1     2     3     4
+        1  0.99950  1.000 0.999 0.781-0.000
+        2  0.99950  0.999 1.000 0.780 0.000
+        3  0.78120  0.781 0.780 1.000-0.000
+        4  0.00134 -0.000 0.000-0.000 1.000
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    6 **MIGRAD 
+ **********
+ START MIGRAD MINIMIZATION.  STRATEGY 1.  CONVERGENCE WHEN EDM .LT. 0.78E-03
+
+ FCN=   496.0458     FROM MIGRAD    STATUS=INITIATE       8 CALLS      554 TOTAL
+                     EDM=  0.14E-03    STRATEGY= 1      ERROR MATRIX ACCURATE 
+
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME        VALUE          ERROR          SIZE      DERIVATIVE 
+   1      A1       0.95608E-01   0.97155E-02   0.93872E-04  -0.12947    
+   2      A2       0.88404       0.31931E-01   0.14654E-04   0.24829    
+   3      A3       0.91901       0.41829E-01   0.28600E-03   0.31323E-01
+   4      A4        1.0000       0.33928E-01   0.10266E-02** at limit **
+                               ERR DEF=  7.78    
+ MIGRAD FAILS TO FIND IMPROVEMENT
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+
+ FCN=   496.0458     FROM HESSE     STATUS=OK            27 CALLS      637 TOTAL
+                     EDM=  0.35E-05    STRATEGY= 1      ERROR MATRIX ACCURATE 
+
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME        VALUE          ERROR          SIZE      DERIVATIVE 
+   1      A1       0.95609E-01   0.33918E-03   0.93875E-04  -0.12805    
+   2      A2       0.88404       0.80135E-04   0.14668E-04   0.24616    
+   3      A3       0.91901       0.26206E-01   0.28680E-03   0.13863    
+   4      A4        1.0000       0.33928E-01   0.10265E-02** at limit **
+                               ERR DEF=  7.78    
+
+ MIGRAD MINIMIZATION HAS CONVERGED.
+
+ FCN=   496.0458     FROM MIGRAD    STATUS=CONVERGED    103 CALLS      649 TOTAL
+                     EDM=  0.30E-06  STRATEGY=1  ERROR MATRIX UNCERTAINTY=  1.8%
+
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME        VALUE          ERROR          SIZE      DERIVATIVE 
+   1      A1       0.95609E-01   0.34028E-03   0.39452E-06  -0.11490    
+   2      A2       0.88404       0.80129E-04   0.51209E-09   0.17082    
+   3      A3       0.91901       0.89701E-02  -0.48660E-05   0.17352E-01
+   4      A4        1.0000       0.33953E-01  -0.14912E-05** at limit **
+                               ERR DEF=  7.78    
+
+ EXTERNAL ERROR MATRIX.    NDIM=  50    NPAR=  4    ERR DEF=  7.78    
+  0.116E-06 0.151E-08 0.604E-07-0.452E-11
+  0.151E-08 0.642E-08-0.752E-08-0.277E-13
+  0.604E-07-0.752E-08 0.805E-04-0.131E-10
+ -0.452E-11-0.277E-13-0.131E-10 0.113E-10
+
+ PARAMETER  CORRELATION COEFFICIENTS
+       NO.  GLOBAL     1     2     3     4
+        1  0.05907  1.000 0.055 0.020-0.004
+        2  0.05650  0.055 1.000-0.010-0.000
+        3  0.02291  0.020-0.010 1.000-0.000
+        4  0.00397 -0.004-0.000-0.000 1.000
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    7 **HESSE 
+ **********
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+
+ FCN=   496.0458     FROM HESSE     STATUS=OK            25 CALLS      674 TOTAL
+                     EDM=  0.72E-04    STRATEGY= 1      ERROR MATRIX ACCURATE 
+
+  EXT PARAMETER                                INTERNAL      INTERNAL  
+  NO.   NAME        VALUE          ERROR       STEP SIZE       VALUE   
+   1      A1       0.95609E-01   0.60681E-02   0.93877E-04   0.96905    
+   2      A2       0.88404       0.18710E-01   0.11594E-05   0.76257    
+   3      A3       0.91901       0.32435E-01   0.28680E-03  -0.93006    
+   4      A4        1.0000       0.33928E-01   0.10265E-02   -1.5708    
+                                 WARNING -   - ABOVE PARAMETER IS AT LIMIT.
+                               ERR DEF=  7.78    
+
+ EXTERNAL ERROR MATRIX.    NDIM=  50    NPAR=  4    ERR DEF=  7.78    
+  0.393E-04 0.117E-03 0.121E-03-0.113E-11
+  0.117E-03 0.351E-03 0.359E-03 0.964E-12
+  0.121E-03 0.359E-03 0.105E-02-0.412E-10
+ -0.113E-11 0.964E-12-0.412E-10 0.113E-10
+
+ PARAMETER  CORRELATION COEFFICIENTS
+       NO.  GLOBAL     1     2     3     4
+        1  0.99855  1.000 0.999 0.592-0.000
+        2  0.99854  0.999 1.000 0.590 0.000
+        3  0.59197  0.592 0.590 1.000-0.000
+        4  0.00134 -0.000 0.000-0.000 1.000
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    8 **RETURN 
+ **********
+
+ CALL TO USER FUNCTION WITH IFLAG = 3
+
+ ..........MINUIT TERMINATED AND RETURNS TO USER PROGRAM.            

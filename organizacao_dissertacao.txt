@@ -462,13 +462,13 @@ CAPÍTULO 3 — TEORIA DE REGGE E O POMERON
     - Problema:
         • Contradição com dados experimentais para √s ≳ 10 GeV
 
-[ ] Necessidade fenomenológica
+[DONE] Necessidade fenomenológica
     - Introdução de um objeto com:
         • Intercepto α(0) ≥ 1
     - Objetivo:
         • Descrever o crescimento de σ_tot com a energia
 
-[ ] Pomeron
+[DONE] Pomeron
     - Trajetória dominante em altas energias
     - Números quânticos:
         • C = +1
@@ -480,13 +480,13 @@ CAPÍTULO 3 — TEORIA DE REGGE E O POMERON
     - Papel físico:
         • Controla σ_tot em processos elásticos e difrativos
 
-[ ] Parâmetros fenomenológicos do Pomeron
+[DONE] Parâmetros fenomenológicos do Pomeron
     - Intercepto supercrítico:
         • α_P(0) ≈ 1.08
     - Slope:
         • α'_P ≈ 0.25 GeV⁻²
 
-[ ] Origem em QCD
+[DONE] Origem em QCD
     - Caráter singleto de cor ligado à estrutura do vácuo
     - Interpretação em ordem mais baixa:
         • Troca de dois glúons
@@ -520,23 +520,23 @@ CAPÍTULO 4 — O FORMALISMO BFKL E O GLÚON REGGEIZADO
 4.1  Motivação: Resoma de Logaritmos Dominantes em Energia
 ----------------------------------------------------------------------
 
-  [ ] Regime de altas energias em colisões hadrônicas
+  [DONE] Regime de altas energias em colisões hadrônicas
     - Produto relevante: αs ln s
     - Pode ser da ordem da unidade mesmo com αs ≪ 1
 
-[ ] Problema na expansão perturbativa
+[DONE] Problema na expansão perturbativa
     - Termos dominantes:
         • (αs ln s)^n na ordem n
     - Consequência:
         • Não podem ser desprezados
         • Perda do caráter assintótico da expansão ordem a ordem
 
-[ ] Formalismo BFKL
+[DONE] Formalismo BFKL
     - Desenvolvido por Balitsky, Fadin, Kuraev e Lipatov
     - Objetivo:
         • Ressoma sistemática das contribuições dominantes
 
-[ ] Níveis de aproximação
+[DONE] Níveis de aproximação
     - LLA (Leading Logarithmic Approximation)
         • Ressoma de termos dominantes (αs ln s)^n
     - NLLA (Next-to-Leading Logarithmic Approximation)
@@ -548,26 +548,26 @@ CAPÍTULO 4 — O FORMALISMO BFKL E O GLÚON REGGEIZADO
 4.2  Amplitude de Born: Espalhamento qq com Troca de Um Glúon
 ----------------------------------------------------------------------
 
-  [ ] Espalhamento quark-quark no nível de Born
+  [DONE] Espalhamento quark-quark no nível de Born
     - Regime: altas energias (s ≫ |t|)
     - Troca de glúon dominante
 
-[ ] Parametrização de Sudakov
+[DONE] Parametrização de Sudakov
     - Quadrimomento do glúon:
         • q = ρ p₁ + σ p₂ + q_⊥
     - Componentes:
         • Longitudinais (ρ p₁, σ p₂)
         • Transversal (q_⊥)
 
-[ ] Aproximação de altas energias
+[DONE] Aproximação de altas energias
     - Simplificação dos vértices de interação
     - Retenção dos termos dominantes em s
 
-[ ] Amplitude de Born (ordem dominante)
+[DONE] Amplitude de Born (ordem dominante)
     - Expressão:
         • A^(0)(s,t) = 8π α_s C₁ (s/t)
 
-[ ] Estrutura energética
+[DONE] Estrutura energética
     - Ausência de logaritmos de s nessa ordem
     - Consistência com a expectativa perturbativa em nível de Born
   [Fonte: Cap. 5.1.1 atual do TCC, primeira parte — Figuras 5.1, eqs. (5.1)–(5.7)]
@@ -576,7 +576,7 @@ CAPÍTULO 4 — O FORMALISMO BFKL E O GLÚON REGGEIZADO
 4.3  Logaritmos em Ordem Seguinte: Diagramas de Caixa
 ----------------------------------------------------------------------
 
-  [ ] Ordem perturbativa NLO (dois glúons)
+  [DONE] Ordem perturbativa NLO (dois glúons)
     - Regime: altas energias
     - Diagramas relevantes para logaritmos de energia:
         • Box
@@ -585,23 +585,23 @@ CAPÍTULO 4 — O FORMALISMO BFKL E O GLÚON REGGEIZADO
         • Autoenergia
         • Correções de vértice
 
-[ ] Cálculo da parte imaginária da amplitude
+[DONE] Cálculo da parte imaginária da amplitude
     - Ferramentas:
         • Relações de dispersão
         • Regras de Cutkosky
     - Resultado:
         • Im A^(1)(s,t) = 4 α_s² s C₄ ∫ d²k / [k² (k−q)²]
 
-[ ] Reconstrução da amplitude total em NLO
+[DONE] Reconstrução da amplitude total em NLO
     - Uso de relações de dispersão
     - Expressão:
         • A^(1)(s,t) = −(4 α_s²/π) C₄ s ln(s/t) ∫ d²k / [k² (k−q)²]
 
-[ ] Trajetória de Regge do glúon
+[DONE] Trajetória de Regge do glúon
     - Definição:
         • ε(t) = (N_c α_s)/(4π²) ∫ (−q²) d²k / [k² (k−q)²]
 
-[ ] Estrutura da correção de um loop
+[DONE] Estrutura da correção de um loop
     - Reescrita da amplitude:
         • Proporcional a A^(0) · ε(t) · ln(s/|t|)
     - Interpretação:
@@ -612,39 +612,39 @@ CAPÍTULO 4 — O FORMALISMO BFKL E O GLÚON REGGEIZADO
 4.4  Resoma a Todas as Ordens: O Glúon Reggeizado
 ----------------------------------------------------------------------
 
-  [ ] Estrutura em ordens superiores (NNLO e além)
+  [DONE] Estrutura em ordens superiores (NNLO e além)
     - Padrão geral:
         • A^(n)(s,t) = A^(0)(s,t) · (1/n!) [ε(t) ln(s/|t|)]^n
     - Crescimento controlado por potências de logaritmos de energia
 
-[ ] Ressoma da série perturbativa
+[DONE] Ressoma da série perturbativa
     - Soma exponencial dos termos:
         • A₈(s,t) = A^(0)(s,t) · (s/|t|)^{ε(t)}
     - Interpretação:
         • Comportamento tipo Regge emergente
 
-[ ] Interpretação em termos de propagador efetivo
+[DONE] Interpretação em termos de propagador efetivo
     - Amplitude equivalente à de Born com propagador modificado:
         • D_μν(ŝ, q²) = −i g_μν/q² · (ŝ/k²)^{ε_G(q²)}
 
-[ ] Glúon reggeizado (Reggeon)
+[DONE] Glúon reggeizado (Reggeon)
     - Objeto efetivo que incorpora:
         • Ressoma completa de diagramas virtuais de múltiplos glúons
     - Papel na dinâmica:
         • Linhas verticais nas escadas BFKL representam glúons reggeizados
 
-[ ] Estruturas de cor
+[DONE] Estruturas de cor
     - Troca no canal de octeto:
         • Associada ao glúon reggeizado
     - Troca no canal singleto de cor:
         • Configuração tipo escada de glúons reggeizados
 
-[ ] Pomeron BFKL
+[DONE] Pomeron BFKL
     - Estado ligado de glúons reggeizados (singleto de cor)
     - Interpretação:
         • Realização em QCD do Pomeron
 
-[ ] Conexão teórica
+[DONE] Conexão teórica
     - Fundamentação microscópica (QCD) da trajetória de Regge
     - Justificativa para o Pomeron introduzido fenomenologicamente no Capítulo 3
 
@@ -701,32 +701,32 @@ CAPÍTULO 5 — MODELO DE DOIS GLÚONS COM PROPAGADORES NÃO-PERTURBATIVOS
 5.1  O Pomeron como Troca de Dois Glúons: Proposta de Low-Nussinov
 ----------------------------------------------------------------------
 
-  [ ] Proposta de Low e Nussinov (1975)
+  [DONE] Proposta de Low e Nussinov (1975)
     - Interpretação do Pomeron em ordem mais baixa:
         • Troca de dois glúons
     - Justificativa:
         • Números quânticos corretos (C = +1, singleto de cor)
 
-[ ] Primeiras abordagens perturbativas
+[DONE] Primeiras abordagens perturbativas
     - Construção da amplitude de espalhamento
     - Expressão:
         • A(s,t) = i s (8/9) n_p² α_s² [T₁ − T₂]
 
-[ ] Estrutura das contribuições
+[DONE] Estrutura das contribuições
     - T₁:
         • Dois glúons acoplados ao mesmo quark
     - T₂:
         • Glúons acoplados a quarks distintos
 
-[ ] Limitações do modelo perturbativo
+[DONE] Limitações do modelo perturbativo
     - Falha em descrever adequadamente os dados experimentais
 
-[ ] Problema fundamental identificado
+[DONE] Problema fundamental identificado
     - Presença de singularidade em −t = 0
     - Origem:
         • Polo do propagador perturbativo do glúon em q² = 0
 
-[ ] Consequência teórica
+[DONE] Consequência teórica
     - Necessidade de incorporar efeitos não-perturbativos
     - Motivação para modificar o propagador do glúon
 
@@ -736,14 +736,14 @@ CAPÍTULO 5 — MODELO DE DOIS GLÚONS COM PROPAGADORES NÃO-PERTURBATIVOS
 5.2  O Modelo de Landshoff-Nachtmann e o Acoplamento Quark-Pomeron
 ----------------------------------------------------------------------
 
-  [ ] Proposta de Landshoff e Nachtmann (1987)
+  [DONE] Proposta de Landshoff e Nachtmann (1987)
     - Modificação do propagador do glúon no infravermelho
     - Propriedade essencial:
         • Propagador finito em q² = 0
     - Consequência:
         • Eliminação da singularidade presente no modelo perturbativo
 
-[ ] Interpretação do Pomeron no modelo LN
+[DONE] Interpretação do Pomeron no modelo LN
     - Troca de dois glúons
     - Acoplamento dominante:
         • Ao mesmo quark dentro do hádron
@@ -754,19 +754,19 @@ CAPÍTULO 5 — MODELO DE DOIS GLÚONS COM PROPAGADORES NÃO-PERTURBATIVOS
     - Interpretação:
         • Correntes de quarks acopladas via troca efetiva (Pomeron)
 
-[ ] Acoplamento quark–Pomeron
+[DONE] Acoplamento quark–Pomeron
     - Definição de β₀:
         • β₀² = (1/36π²) ∫ d²k [g² D(k²)]²
     - Papel:
         • Mede a intensidade do acoplamento efetivo
 
-[ ] Condição de consistência
+[DONE] Condição de consistência
     - Convergência da integral exige:
         • D(k²) não-perturbativo
     - Necessidade:
         • Remoção do polo em q² = 0
 
-[ ] Interpretação física
+[DONE] Interpretação física
     - Modificação infravermelha do propagador do glúon
     - Inclusão de efeitos não-perturbativos da QCD
 
@@ -780,24 +780,24 @@ CAPÍTULO 5 — MODELO DE DOIS GLÚONS COM PROPAGADORES NÃO-PERTURBATIVOS
 5.3  O Modelo Reggeizado: Incorporando a Trajetória do Pomeron
 ----------------------------------------------------------------------
 
-  [ ] Reggeização do Pomeron no modelo LN
+  [DONE] Reggeização do Pomeron no modelo LN
     - Reescrita da amplitude:
         • A(s,t) = i s [s̃^{α_P(t) − 1}] (8/9) n_p² [T̃₁ − T̃₂]
     - Definição:
         • s̃ ≡ s / s₀, com s₀ = 1 GeV²
 
-[ ] Trajetória de Regge do Pomeron
+[DONE] Trajetória de Regge do Pomeron
     - Forma:
         • α_P(t) = 1 + ε + α'_P t
 
-[ ] Contribuições dinâmicas
+[DONE] Contribuições dinâmicas
     - T̃₁:
         • ∫ d²k ᾱ(q/2+k) D(q/2+k) ᾱ(q/2−k) D(q/2−k) [G_p(q,0)]²
     - T̃₂:
         • ∫ d²k ᾱ(q/2+k) D(q/2+k) ᾱ(q/2−k) D(q/2−k)
           × G_p(q, k−q/2) [2G_p(q,0) − G_p(q, k−q/2)]
 
-[ ] Função G_p(q,k)
+[DONE] Função G_p(q,k)
     - Definição:
         • G_p(q,k) = ∫ d²p dα ψ*(α,p) ψ(α, p−k−αq)
     - Interpretação:
@@ -805,12 +805,12 @@ CAPÍTULO 5 — MODELO DE DOIS GLÚONS COM PROPAGADORES NÃO-PERTURBATIVOS
     - Caso particular:
         • G_p(q,0) = F₁(q²) (fator de forma elástico)
 
-[ ] Função de onda do próton
+[DONE] Função de onda do próton
     - ψ(α,p):
         • Amplitude para o quark com momento transverso p
         • Fração longitudinal α
 
-[ ] Fator de forma do próton
+[DONE] Fator de forma do próton
     - Parametrização (expansão cumulante generalizada):
         • F₁(q²) = exp[−(a₁|t| + a₂|t|²)]
     - Motivação:
@@ -818,7 +818,7 @@ CAPÍTULO 5 — MODELO DE DOIS GLÚONS COM PROPAGADORES NÃO-PERTURBATIVOS
     - Parâmetros livres:
         • a₁, a₂
 
-[ ] Cálculo de observáveis
+[DONE] Cálculo de observáveis
     - Seção de choque total:
         • σ_tot(s) = Im A(s, t=0) / s
     - Seção de choque diferencial:
@@ -837,7 +837,7 @@ CAPÍTULO 5 — MODELO DE DOIS GLÚONS COM PROPAGADORES NÃO-PERTURBATIVOS
     - Núcleo dinâmico do modelo
     - Inclusão de efeitos não-perturbativos da QCD
 
-[ ] Massa dinâmica do glúon
+[DONE] Massa dinâmica do glúon
     - Geração dinâmica: m(q²)
     - Evidências:
         • QCD na rede (SU(2), SU(3))
@@ -846,7 +846,7 @@ CAPÍTULO 5 — MODELO DE DOIS GLÚONS COM PROPAGADORES NÃO-PERTURBATIVOS
         • Propagador finito no infravermelho
         • Remoção do polo de Landau na carga efetiva
 
-[ ] 5.4.1 Carga efetiva da QCD
+[DONE] 5.4.1 Carga efetiva da QCD
     - Definição:
         • ᾱ(q²) = [q² + m²(q²)] d̂(q²)
     - Composição:
@@ -856,11 +856,11 @@ CAPÍTULO 5 — MODELO DE DOIS GLÚONS COM PROPAGADORES NÃO-PERTURBATIVOS
     - Limite perturbativo:
         • Recupera α_s(q²) quando m(q²) → 0
 
-[ ] Propagador não-perturbativo (Cornwall)
+[DONE] Propagador não-perturbativo (Cornwall)
     - Forma euclidiana:
         • D⁻¹(q²) = [q² + m²(q²)] b g² ln[(q² + 4m²(q²))/Λ²]
 
-[ ] 5.4.2 Modelos para a massa dinâmica
+[DONE] 5.4.2 Modelos para a massa dinâmica
 
     - (a) Massa logarítmica (m²_log)
         • m²_log(q²) = m_g² { ln[(q²+ρm_g²)/Λ²] / ln[(ρm_g²)/Λ²] }^{−1−γ₁}
@@ -884,20 +884,20 @@ CAPÍTULO 5 — MODELO DE DOIS GLÚONS COM PROPAGADORES NÃO-PERTURBATIVOS
         • γ₁ = 0.084
         • γ₂ = 2.36 (via minimização de χ²/ν)
 
-[ ] 5.4.3 Combinação ᾱᵢ(q²)D(q²)
+[DONE] 5.4.3 Combinação ᾱᵢ(q²)D(q²)
     - Forma inversa:
         • 1/[ᾱᵢ(q²)D(q²)] = b₀ [q² + m²ᵢ(q²)] ln[(q² + 4m²ᵢ(q²))/Λ²]
     - Índice:
         • i = log, pl
 
-[ ] Propriedades no infravermelho
+[DONE] Propriedades no infravermelho
     - Existência de pontos fixos:
         • ᾱᵢ(q²) finita quando q² → 0
     - Consequências:
         • Ausência de polo de Landau
         • Regularização dinâmica
 
-[ ] Consistência do modelo
+[DONE] Consistência do modelo
     - Convergência garantida das integrais T̃₁ e T̃₂
     - Implementação consistente de efeitos não-perturbativos
   [Fonte: Cap. 4.1.1 atual do TCC; artigo Bopsin et al. 2022, Seção III,
@@ -919,19 +919,19 @@ CAPÍTULO 6 — UNITARIZAÇÃO: O ESQUEMA EICONAL
 6.1  Motivação Física: Múltiplas Trocas de Pomeron
 ----------------------------------------------------------------------
 
-  [ ] Crescimento da seção de choque
+  [DONE] Crescimento da seção de choque
     - Descrito pelo Pomeron com:
         • α_P(0) = 1 + ε > 1
     - Consequência:
         • Crescimento com a energia s
 
-[ ] Violação do limite de Froissart-Martin
+[DONE] Violação do limite de Froissart-Martin
     - Limite teórico:
         • σ_tot ≤ C ln²s
     - Problema:
         • Crescimento tipo potência eventualmente viola o limite
 
-[ ] Evidência experimental (LHC)
+[DONE] Evidência experimental (LHC)
     - Energia: √s = 13 TeV
     - Resultado:
         • Razão entre troca dupla e simples:
@@ -939,16 +939,16 @@ CAPÍTULO 6 — UNITARIZAÇÃO: O ESQUEMA EICONAL
     - Comparação:
         • Consistente com R = 0.5 (Donnachie e Landshoff)
 
-[ ] Interpretação física
+[DONE] Interpretação física
     - Trocas múltiplas de Pomerons já relevantes no LHC:
         • PP, PPP, ...
 
-[ ] Consequência para o intercept efetivo
+[DONE] Consequência para o intercept efetivo
     - α_P efetivo não representa apenas troca simples
     - Incorpora:
         • Efeitos de reespalhamento (multi-interações)
 
-[ ] Necessidade de unitarização
+[DONE] Necessidade de unitarização
     - Construção consistente da amplitude requer:
         • Soma sistemática das contribuições
             ◦ P + PP + PPP + ...
@@ -962,25 +962,25 @@ CAPÍTULO 6 — UNITARIZAÇÃO: O ESQUEMA EICONAL
 6.2  Dois Esquemas de Unitarização no Canal-s
 ----------------------------------------------------------------------
 
-  [ ] Equação de unitariedade no espaço de impacto (espaço-b)
+[DONE] Equação de unitariedade no espaço de impacto (espaço-b)
     - Relação fundamental:
         • 2 Im H(s,b) = |H(s,b)|² + G_in(s,b)
 
-[ ] Definição auxiliar
+[DONE] Definição auxiliar
     - Razão:
         • ρ(s,b) = Re H / Im H
 
-[ ] Solução da equação de unitariedade
+[DONE] Solução da equação de unitariedade
     - Forma quadrática para Im H(s,b):
         • Im H(s,b) = [1 ± √(1 − (1 + ρ²) G_in)] / (1 + ρ²)
 
-[ ] Esquemas de unitarização
+[DONE] Esquemas de unitarização
     - Sinal negativo:
         • Eiconal (EE)
     - Sinal positivo:
         • Matriz-U (MU)
 
-[ ] Comparação entre os esquemas
+[DONE] Comparação entre os esquemas
     - Similaridades:
         • Mapeiam χ(s,b) no círculo unitário
         • Coincidem no regime de baixas energias
