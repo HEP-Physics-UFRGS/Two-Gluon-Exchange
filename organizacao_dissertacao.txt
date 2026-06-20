@@ -988,7 +988,7 @@ CAPÍTULO 6 — UNITARIZAÇÃO: O ESQUEMA EICONAL
         • Divergem em altas energias
         • Incorporam diferentes classes de diagramas de alta ordem
 
-[ ] Problema da matriz-U
+[DONE] Problema da matriz-U
     - Inconsistência com as regras AGK
     - Resultado da unitariedade:
         • Contribuição inelástica → 0 no limite assintótico
@@ -997,7 +997,7 @@ CAPÍTULO 6 — UNITARIZAÇÃO: O ESQUEMA EICONAL
     - Consequência:
         • Contradição teórica
 
-[ ] Escolha do esquema na dissertação
+[DONE] Escolha do esquema na dissertação
     - Exclusão da matriz-U
     - Adoção da eiconalização (EE)
     - Justificativa:
@@ -1009,21 +1009,21 @@ CAPÍTULO 6 — UNITARIZAÇÃO: O ESQUEMA EICONAL
 6.3  O Esquema Eiconal
 ----------------------------------------------------------------------
 
-  [ ] Esquema eiconal (sinal negativo)
+  [DONE] Esquema eiconal (sinal negativo)
     - Definição:
         • H(s,b) = i [1 − e^{iχ(s,b)}]
 
-[ ] Amplitude unitarizada (representação eiconal)
+[DONE] Amplitude unitarizada (representação eiconal)
     - Expressão:
         • A^{[EE]}(s,t) = i s ∫₀^∞ b db J₀(bq) [1 − e^{iχ(s,b)}]
 
-[ ] Limites de unitariedade
+[DONE] Limites de unitariedade
     - Para a função H(s,b):
         • 0 ≤ Im H(s,b) ≤ (1 + ρ²)⁻¹
     - Função inelástica:
         • G_in(s,b) = 1 − e^{−2 Im χ(s,b)} ≥ 0
 
-[ ] Limite de absorção completa
+[DONE] Limite de absorção completa
     - Condições:
         • χ puramente imaginário
         • ρ = 0
@@ -1052,23 +1052,23 @@ CAPÍTULO 6 — UNITARIZAÇÃO: O ESQUEMA EICONAL
 6.4  Input do Pomeron: Amplitude de Born no Espaço-b
 ----------------------------------------------------------------------
 
-  [ ] Construção do input eiconal χ(s,b)
+  [DONE] Construção do input eiconal χ(s,b)
     - Obtido da amplitude de Born do modelo LN reggeizado (Cap. 5)
     - Transformada de Fourier-Bessel:
         • χᵢ(s,b) = (1/s) ∫ d²q/(2π) e^{i q·b} Fᵢ(s,t)
 
-[ ] Decomposição em componentes de cruzamento
+[DONE] Decomposição em componentes de cruzamento
     - Definição:
         • F±(s,t) = ½ [F^{pp}(s,t) ± F^{pp̄}(s,t)]
     - Interpretação:
         • i = + → componente de cruzamento par (Pomeron)
         • i = − → componente de cruzamento ímpar (Reggeon)
 
-[ ] Funções de Born no espaço-b
+[DONE] Funções de Born no espaço-b
     - Definição:
         • h±(s,b) = (1/2s) ∫ q dq J₀(bq) F±(s, −q²)
 
-[ ] Fase eiconal
+[DONE] Fase eiconal
     - Relação:
         • χ±(s,b) ≡ 2 h±(s,b)
 
@@ -1076,7 +1076,7 @@ CAPÍTULO 6 — UNITARIZAÇÃO: O ESQUEMA EICONAL
     - Transformada inversa:
         • A^{pp}_{pp̄}(s,t) = s ∫₀^∞ b db J₀(bq) H^{pp}_{pp̄}(s,b)
 
-[ ] Observáveis físicos
+[DONE] Observáveis físicos
     - Seções de choque:
         • Obtidas a partir de A(s,t)
         • Relações estabelecidas na Seção 2.3

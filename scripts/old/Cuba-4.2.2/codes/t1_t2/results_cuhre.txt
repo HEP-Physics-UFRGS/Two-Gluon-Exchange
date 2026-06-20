@@ -1,0 +1,211 @@
+gfortran -ffree-form -O2 -o I_1 I_1.F -lcuba -lm
+
+================================================
+=======================I1=======================
+================================================
+
+k = [0, inf]
+phi = [0, 2pi]
+
+-----------------------------------------------------
+q2 = 0 -> I1 = 6.535426898116, 3.3933E-14
+
+CONFIG minima para mesmo resultado:
+  real(8),   parameter :: EPSREL  = 1.0d-8
+  real(8),   parameter :: EPSABS  = 1.0d-16
+  integer,   parameter :: FLAGS   = 0
+  integer,   parameter :: MINEVAL = 5000
+  integer,   parameter :: MAXEVAL = 10000
+  integer,   parameter :: KEY     = 0
+  
+TIMER:
+real	0m0,006s
+user	0m0,007s
+sys	0m0,005s
+-----------------------------------------------------
+q2 = 1 -> I1 = 0.000653798769, 2.7003E-18
+
+CONFIG minima para mesmo resultado:
+  integer,   parameter :: NDIM    = 2
+  integer,   parameter :: NCOMP   = 1
+  integer,   parameter :: NVEC    = 1
+  real(8),   parameter :: EPSREL  = 1.0d-8
+  real(8),   parameter :: EPSABS  = 1.0d-16
+  integer,   parameter :: FLAGS   = 0
+  integer,   parameter :: MINEVAL = 50
+  integer,   parameter :: MAXEVAL = 30000
+  integer,   parameter :: KEY     = 0
+ 
+TIMER:
+real	0m0,015s
+user	0m0,016s
+sys	0m0,022s
+-----------------------------------------------------
+q2 = 4 -> I1 = 0, 2.5142E-17
+
+CONFIG minima para mesmo resultado:
+  integer,   parameter :: NDIM    = 2
+  integer,   parameter :: NCOMP   = 1
+  integer,   parameter :: NVEC    = 1
+  real(8),   parameter :: EPSREL  = 1.0d-8
+  real(8),   parameter :: EPSABS  = 1.0d-16
+  integer,   parameter :: FLAGS   = 0
+  integer,   parameter :: MINEVAL = 10
+  integer,   parameter :: MAXEVAL = 500
+  integer,   parameter :: KEY     = 0
+
+TIMER:
+real	0m0,006s
+user	0m0,004s
+sys	0m0,003s
+
+================================================
+=======================I2=======================
+================================================
+
+k = [0, 10]
+phi = [0, 2pi]
+
+-----------------------------------------------------
+q2 = 0 -> I2 = 6.534465035573, 8.3974E-16
+CONFIG minima
+  integer,   parameter :: NDIM    = 2
+  integer,   parameter :: NCOMP   = 1
+  integer,   parameter :: NVEC    = 1
+  real(8),   parameter :: EPSREL  = 1.0d-8
+  real(8),   parameter :: EPSABS  = 1.0d-16
+  integer,   parameter :: FLAGS   = 0
+  integer,   parameter :: MINEVAL = 2000
+  integer,   parameter :: MAXEVAL = 3000
+  integer,   parameter :: KEY     = 0
+  
+TIMER
+real	0m0,005s
+user	0m0,004s
+sys	0m0,004s
+-----------------------------------------------------
+q2 = 1 -> I2 = 0.000653607310, 1.6559E-16
+  integer,   parameter :: NDIM    = 2
+  integer,   parameter :: NCOMP   = 1
+  integer,   parameter :: NVEC    = 1
+  real(8),   parameter :: EPSREL  = 1.0d-8
+  real(8),   parameter :: EPSABS  = 1.0d-16
+  integer,   parameter :: FLAGS   = 0
+  integer,   parameter :: MINEVAL = 50
+  integer,   parameter :: MAXEVAL = 50000
+  integer,   parameter :: KEY     = 0
+
+real	0m0,013s
+user	0m0,008s
+sys	0m0,022s
+-----------------------------------------------------
+q2 = 4 -> I2 = 0, 8.0019E-18
+  integer,   parameter :: NDIM    = 2
+  integer,   parameter :: NCOMP   = 1
+  integer,   parameter :: NVEC    = 1
+  real(8),   parameter :: EPSREL  = 1.0d-8
+  real(8),   parameter :: EPSABS  = 1.0d-16
+  integer,   parameter :: FLAGS   = 0
+  integer,   parameter :: MINEVAL = 50
+  integer,   parameter :: MAXEVAL = 500
+  integer,   parameter :: KEY     = 0
+  
+real	0m0,005s
+user	0m0,003s
+sys	0m0,004s
+
+
+================================================
+=======================I2.1=======================
+================================================
+
+sqrt_s = 7000 -> s = 49000000
+
+k = [0, s]
+phi = [0, 2pi]
+
+-----------------------------------------------------
+q2 = 0 -> I2.1 = 6.535426897837, 1.7204E-17
+integer,   parameter :: NDIM    = 2
+  integer,   parameter :: NCOMP   = 1
+  integer,   parameter :: NVEC    = 1
+  real(8),   parameter :: EPSREL  = 1.0d-8
+  real(8),   parameter :: EPSABS  = 1.0d-16
+  integer,   parameter :: FLAGS   = 0
+  integer,   parameter :: MINEVAL = 500
+  integer,   parameter :: MAXEVAL = 5000
+  integer,   parameter :: KEY     = 0
+  
+real	0m0,006s
+user	0m0,005s
+sys	0m0,005s
+-----------------------------------------------------
+q2 = 1 -> I2.1 = 0.000653798769, 9.0260E-19
+  integer,   parameter :: MINEVAL = 50000
+  integer,   parameter :: MAXEVAL = 80000
+
+real	0m0,022s
+user	0m0,021s
+sys	0m0,039s
+-----------------------------------------------------
+q2 = 4 -> I2.1 = 0.0, 1.1322E-18
+  integer,   parameter :: MINEVAL = 50
+  integer,   parameter :: MAXEVAL = 500
+real	0m0,006s
+user	0m0,004s
+sys	0m0,003s
+
+=======================I3=======================
+k = [0, inf]
+phi = [0, 2pi]
+q2 = [0, 5.0]
+
+I3 = 2.425787432857, 2.5823E-14 
+  integer,   parameter :: NDIM    = 3
+  integer,   parameter :: NCOMP   = 1
+  integer,   parameter :: NVEC    = 1
+  real(8),   parameter :: EPSREL  = 1.0d-8
+  real(8),   parameter :: EPSABS  = 1.0d-16
+  integer,   parameter :: FLAGS   = 0
+  integer,   parameter :: MINEVAL = 5000000
+  integer,   parameter :: MAXEVAL = 10000000
+  integer,   parameter :: KEY     = 0
+
+real	0m1,338s
+user	0m1,853s
+sys	0m3,241s
+
+=======================I4=======================
+k = [0, 10]
+phi = [0, 2pi]
+q2 = [0, 5.0]
+
+I4 = 2.425383356239, 8.5839E-16 
+  integer,   parameter :: NDIM    = 3
+  integer,   parameter :: NCOMP   = 1
+  integer,   parameter :: NVEC    = 1
+  real(8),   parameter :: EPSREL  = 1.0d-8
+  real(8),   parameter :: EPSABS  = 1.0d-16
+  integer,   parameter :: FLAGS   = 0
+  integer,   parameter :: MINEVAL = 5000000
+  integer,   parameter :: MAXEVAL = 7000000
+  integer,   parameter :: KEY     = 0
+  
+real	0m1,321s
+user	0m1,981s
+sys	0m3,097s
+
+
+=======================I4.1=======================
+k = [0, 49_000_000]
+phi = [0, 2pi]
+q2 = [0, 5.0]
+
+I4 = 2.425787432738, 2.7159E-13
+  integer,   parameter :: MINEVAL = 10000000
+  integer,   parameter :: MAXEVAL = 30000000
+  
+real	0m3,281s
+user	0m4,589s
+sys	0m6,233s
+

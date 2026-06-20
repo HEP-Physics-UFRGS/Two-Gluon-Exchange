@@ -1,0 +1,84 @@
+=======================================================================================
+eikonal minimization - temp code 
+=======================================================================================
+
+def otimization(total_cost_func, initial_params, initial_params_low, initial_params_high, model_type: str, ensemble: str):
+    print('\n')
+    print(80 * '-')
+    print(f"Iniciando otimização dos parâmetros usando LeastSquares para {model_type} em {ensemble.upper()}")
+
+    start_time = time.time()
+    
+    m = Minuit(total_cost_func, 
+               eps=initial_params['epsilon'],
+               mg=initial_params['mg'],
+               a1=initial_params['a1'],
+               a2=initial_params['a2'])
+    # Configurações adicionais
+    down = 0.99
+    up = 2- down
+
+    m.fixed['a1'] = True
+    m.fixed['a2'] = True
+
+    m.limits['mg'] = (down * initial_params['mg'], up *initial_params['mg'])
+    m.limits['eps'] = (down * initial_params['epsilon'], up *initial_params['epsilon'])
+    # m.limits['a2'] = (down * initial_params['a2'], up * initial_params['a2'])
+    # m.limits['a1'] = (down * initial_params['a1'], up * initial_params['a1'])
+
+    # Configurações adicionais
+    m.strategy = 2
+    # m.errordef = 7.79
+    m.tol = 1e-1
+    
+    m.migrad(ncall = 300)
+    m.fixed = False
+    m.migrad(ncall=300)
+    m.hesse()
+
+
+    print(f'Finalizado a minimização para {model_type} em {ensemble}')
+
+    execution_time = time.time() - start_time
+    
+    minutes = int(execution_time // 60)
+    seconds = execution_time % 60
+    print(f'Tempo de execução para {model_type} em {ensemble}: {minutes} min {seconds:.2f} s \n')
+    
+    print(f"Parâmetros otimizados para {model_type} em {ensemble}: \n")
+    print(f'mg: {m.values["mg"]} ± {m.errors["mg"]}')
+    print(f'eps: {m.values["eps"]} ± {m.errors["eps"]}')
+    print(f'a1: {m.values["a1"]} ± {m.errors["a1"]}')
+    print(f'a2: {m.values["a2"]} ± {m.errors["a2"]}')
+    print(f'chi2/ndof: {m.fval / m.ndof}')
+
+
+    return m
+
+mg: 0.4180641579656885 ± 0.0014395940312822153
+eps: 0.07454700148986279 ± 0.0001827378779679853
+a1: 1.629124206348583 ± 0.04004901818828671
+a2: 1.8102543444811932 ± 0.29045249836099496
+chi2/ndof: 0.5573832190237528
+
+
+-----------------------------------------------------------------------------
+# m.limits['mg'] = (down * initial_params['mg'], up *initial_params['mg'])
+# m.limits['eps'] = (down * initial_params['epsilon'], up *initial_params['epsilon'])
+# m.limits['a2'] = (down * initial_params['a2'], up * initial_params['a2'])
+# m.limits['a1'] = (down * initial_params['a1'], up * initial_params['a1'])
+
+mg: 0.38899774374880625 ± 0.004912823698902291
+eps: 0.06157724504616897 ± 0.002205589629955562
+a1: 1.4949244433147018 ± 0.04793907649520721
+a2: 2.1586490643273226 ± 0.3089248984750019
+chi2/ndof: 0.24011860342539107
+-----------------------------------------------------------------------------
+# m.fixed['a1'] = True
+# m.fixed['a2'] = True
+
+mg: 0.38903562078069565 ± 0.004909070991117667
+eps: 0.06158776936935236 ± 0.0022037959924521913
+a1: 1.4946192603588058 ± 0.04798505345528732
+a2: 2.1616149439592975 ± 0.30931225093707937
+chi2/ndof: 0.24011723177387226

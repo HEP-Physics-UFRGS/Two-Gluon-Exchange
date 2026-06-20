@@ -1,0 +1,127 @@
+ ***************************************************************************
+  MINUIT RELEASE 96.03  INITIALIZED.   DIMENSIONS 100/ 50  EPSMAC=  0.89E-15
+ ***************************************************************************
+                          MINUIT DATA BLOCK NO.   1
+ ***************************************************************************
+ ENTER MINUIT TITLE, or "SET INPUT n" : 
+ ENTER MINUIT TITLE, or "SET INPUT n" : 
+ 'Parametros de minimizacao de curva sigmagg'      
+ ******************************************************************************
+ ENTER MINUIT PARAMETER DEFINITION:     
+ ENTER MINUIT PARAMETER DEFINITION:     
+     1 'A1        '   0.90000      0.10000E-04    0.30000      0.90000    
+ MINUIT WARNING IN PARAM DEF
+ ============== STARTING VALUE IS AT LIMIT.
+ MINUIT WARNING IN PARAMETR
+ ============== VARIABLE   1 IS AT ITS UPPER ALLOWED LIMIT
+ MINUIT WARNING IN PARAMETR
+ ============== VARIABLE   1 BROUGHT BACK INSIDE LIMITS.  
+ ENTER MINUIT PARAMETER DEFINITION:     
+     2 'A2        '    1.3730      0.10000E-04    0.10000E-04   5.0000    
+ ENTER MINUIT PARAMETER DEFINITION:     
+
+ MINUIT: FIRST CALL TO USER FUNCTION, WITH IFLAG=1
+
+ FCN=   80954.92     FROM PARAMETR  STATUS=RESET          2 CALLS        2 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+
+  EXT PARAMETER               CURRENT GUESS      PHYSICAL LIMITS       
+  NO.   NAME        VALUE          ERROR       NEGATIVE      POSITIVE  
+   1      A1       0.90000       0.10000E-04   0.30000       0.90000    
+   2      A2        1.3730       0.10000E-04   0.10000E-04    5.0000    
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    1 **SET ERRORDEF    4.605    
+ **********
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    2 **SIMPLEX 
+ **********
+ START SIMPLEX MINIMIZATION.    CONVERGENCE WHEN EDM .LT.  0.46E+00
+
+ FCN=   30792.72     FROM SIMPLEX   STATUS=PROGRESS      11 CALLS       13 TOTAL
+                     EDM=  0.50E+05    STRATEGY= 1      NO ERROR MATRIX       
+
+  EXT PARAMETER               CURRENT GUESS      PHYSICAL LIMITS       
+  NO.   NAME        VALUE          ERROR       NEGATIVE      POSITIVE  
+   1      A1       0.83313       0.10000E-04   0.30000       0.90000    
+   2      A2        1.3766       0.10000E-04   0.10000E-04    5.0000    
+                               ERR DEF=  4.61    
+ SIMPLEX MINIMIZATION HAS CONVERGED.
+
+ FCN=   346.2233     FROM SIMPLEX   STATUS=PROGRESS      76 CALLS       78 TOTAL
+                     EDM=  0.12E+00    STRATEGY= 1      NO ERROR MATRIX       
+
+  EXT PARAMETER               CURRENT GUESS      PHYSICAL LIMITS       
+  NO.   NAME        VALUE          ERROR       NEGATIVE      POSITIVE  
+   1      A1       0.74690       0.10000E-04   0.30000       0.90000    
+   2      A2       0.79783       0.10000E-04   0.10000E-04    5.0000    
+                               ERR DEF=  4.61    
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    3 **MIGRAD 
+ **********
+ START MIGRAD MINIMIZATION.  STRATEGY 1.  CONVERGENCE WHEN EDM .LT. 0.46E-03
+
+ FCN=   346.2233     FROM MIGRAD    STATUS=INITIATE       8 CALLS       86 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+
+  EXT PARAMETER               CURRENT GUESS       STEP         FIRST   
+  NO.   NAME        VALUE          ERROR          SIZE      DERIVATIVE 
+   1      A1       0.74690       0.10000E-04   0.26109E-03    172.66    
+   2      A2       0.79783       0.10000E-04   0.16416E-02    92.322    
+                               ERR DEF=  4.61    
+
+ MIGRAD MINIMIZATION HAS CONVERGED.
+
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+
+ FCN=   346.2093     FROM MIGRAD    STATUS=CONVERGED     30 CALLS      108 TOTAL
+                     EDM=  0.11E-03    STRATEGY= 1      ERROR MATRIX ACCURATE 
+
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME        VALUE          ERROR          SIZE      DERIVATIVE 
+   1      A1       0.74693       0.17430E-02   0.12438E-04  -0.56207    
+   2      A2       0.79757       0.22017E-01   0.22447E-04   -2.9267    
+                               ERR DEF=  4.61    
+
+ EXTERNAL ERROR MATRIX.    NDIM=  50    NPAR=  2    ERR DEF=  4.61    
+  0.304E-05-0.345E-04
+ -0.345E-04 0.485E-03
+
+ PARAMETER  CORRELATION COEFFICIENTS
+       NO.  GLOBAL     1     2
+        1  0.89899  1.000-0.899
+        2  0.89899 -0.899 1.000
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    4 **HESSE 
+ **********
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+
+ FCN=   346.2093     FROM HESSE     STATUS=OK            10 CALLS      118 TOTAL
+                     EDM=  0.11E-03    STRATEGY= 1      ERROR MATRIX ACCURATE 
+
+  EXT PARAMETER                                INTERNAL      INTERNAL  
+  NO.   NAME        VALUE          ERROR       STEP SIZE       VALUE   
+   1      A1       0.74693       0.17427E-02   0.24876E-05    2.6298    
+   2      A2       0.79757       0.22013E-01   0.44895E-05  -0.74909    
+                               ERR DEF=  4.61    
+
+ EXTERNAL ERROR MATRIX.    NDIM=  50    NPAR=  2    ERR DEF=  4.61    
+  0.304E-05-0.345E-04
+ -0.345E-04 0.485E-03
+
+ PARAMETER  CORRELATION COEFFICIENTS
+       NO.  GLOBAL     1     2
+        1  0.89896  1.000-0.899
+        2  0.89896 -0.899 1.000
+ ENTER MINUIT COMMAND:                  
+ **********
+ **    5 **RETURN 
+ **********
+
+ CALL TO USER FUNCTION WITH IFLAG = 3
+
+ ..........MINUIT TERMINATED AND RETURNS TO USER PROGRAM.            
