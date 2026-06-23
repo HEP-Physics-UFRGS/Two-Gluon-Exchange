@@ -1,3 +1,0 @@
-down | strategy | migrad
-0.92 | 2 | 70
-0.99 | 2 | 85
