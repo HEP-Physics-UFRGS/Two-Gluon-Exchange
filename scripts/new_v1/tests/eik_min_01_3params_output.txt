@@ -1,0 +1,12 @@
+/tmp/ipykernel_10805/939602129.py:2: FutureWarning: The 'delim_whitespace' keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep='\s+'`` instead
+  atlas_data = pd.read_csv('../../data/data_0_1/ens_atlas_difc0_2.dat', delim_whitespace=True, header=None)
+/tmp/ipykernel_10805/3243314166.py:25: IntegrationWarning: The occurrence of roundoff error is detected, which prevents 
+  the requested tolerance from being achieved.  The error may be 
+  underestimated.
+  imag_part, _ = quad(integrand_imag, 0, q_max_chi, epsrel=eps_rel, epsabs=eps_abs, limit=limit)
+q² = 0.011000, |T|² = 1.705148e+02
+q² = 0.013200, |T|² = 1.641674e+02
+q² = 0.016000, |T|² = 1.564188e+02
+/tmp/ipykernel_10805/939602129.py:2: FutureWarning: The 'delim_whitespace' keyword in pd.read_csv is deprecated and will be removed in a future version. Use ``sep='\s+'`` instead
+  atlas_data = pd.read_csv('../../data/data_0_1/ens_atlas_difc0_2.dat', delim_whitespace=True, header=None)
+Rodando simplex 1...
