@@ -1,0 +1,825 @@
+
+\documentclass[aps,prd,twocolumn,superscriptaddress,longbibliography,nofootinbib]{revtex4-2}
+
+\usepackage{amsmath,amssymb,bm}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{placeins}
+\usepackage[hidelinks]{hyperref}
+
+\newcommand{\GeV}{\mathrm{GeV}}
+\newcommand{\MeV}{\mathrm{MeV}}
+\newcommand{\TeV}{\mathrm{TeV}}
+\newcommand{\mb}{\mathrm{mb}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\qb}{\bm q}
+\newcommand{\kb}{\bm k}
+\newcommand{\bb}{\bm b}
+\newcommand{\GG}{\mathcal G}
+\newcommand{\MB}{\mathcal M_{B}}
+\newcommand{\ME}{\mathcal M_{E}}
+\newcommand{\MU}{\mathcal M_{U}}
+\newcommand{\FB}{F_{B}}
+\newcommand{\miss}{\textcolor{red}{[insert]}}
+
+\begin{document}
+
+\title{Unitarity-driven enhancement of the dynamical gluon mass}
+
+\author{T. V. Iser}
+\affiliation{Instituto de F\'isica, Universidade Federal do Rio Grande do Sul, Porto Alegre, RS, Brazil}
+
+\author{V. Li}
+\affiliation{Instituto de F\'isica, Universidade Federal do Rio Grande do Sul, Porto Alegre, RS, Brazil}
+
+\author{E. G. S. Luna}
+\affiliation{Instituto de F\'isica, Universidade Federal do Rio Grande do Sul, Porto Alegre, RS, Brazil}
+
+\date{\today}
+
+
+\begin{abstract}
+We study the effect of $s$-channel unitarity on the dynamical gluon mass
+scale, $m_g$, extracted from high-energy elastic $pp$ scattering.  The
+elementary input is a Reggeized Landshoff--Nachtmann two-gluon exchange,
+in which the soft Pomeron is represented by a color-singlet pair of
+dynamically massive gluons.  At Born level, the logarithmic and power-law
+mass solutions give $m_g=299$--$422~\MeV$, in the usual phenomenological
+range.  When the same input is embedded in the eikonal and $U$-matrix
+schemes, the preferred values move to $m_g=749$--$1101~\MeV$.  The
+enhancement, by a factor close to $2.5$, is stable against the
+ATLAS--TOTEM data choice, the running of the gluon mass, and the
+unitarization prescription.  We trace this shift to the nonlinear mapping
+between the elementary two-gluon kernel and the physical
+impact-parameter profile.  The mass inferred from elastic scattering is
+therefore a unitarity-dressed infrared scale, fixed jointly by the
+nonperturbative gluon propagator and by multiple-exchange dynamics.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+A finite infrared gluon propagator is one of the characteristic results of nonperturbative QCD \cite{binosi1,huber1,roberts1}.  Continuum Schwinger--Dyson analyses and large-volume lattice simulations show that the Landau-gauge gluon two-point function saturates at small Euclidean momenta \cite{AguilarBinosiPapavassiliou2008,CucchieriMendes2008,Bogolubsky2009,OliveiraSilva2012}.  This behavior is naturally described in terms of a momentum-dependent dynamical gluon mass, generated without introducing an explicit gauge-symmetry-breaking mass term \cite{Cornwall1982,AguilarNataleRodrigues2003,AguilarBinosiPapavassiliou2011}.  The same mechanism leads to an infrared-finite QCD effective charge.  A central phenomenological question is how this infrared scale appears in hadronic observables.
+
+Infrared-finite gluon propagators have been used in elastic and diffractive hadron scattering, forward cross sections, photon-induced reactions, rapidity-gap survival, and small-$x$ processes \cite{HalzenKreinNatale1993,GayDucatiHalzenNatale1993,LunaEtAl2005,LunaNatale2006,Luna2006}.  These applications usually favor effective gluon mass scales of a few hundred MeV \cite{HalzenKreinNatale1993,LunaEtAl2005,BopsinEtAl2023}.  In Landshoff--Nachtmann (LN) models, the soft Pomeron is represented by a color-singlet pair of nonperturbative gluons; the infrared-finite propagator removes the singularity of the perturbative two-gluon exchange \cite{LandshoffNachtmann1987,HalzenKreinNatale1993,GayDucatiHalzenNatale1993}.  In a recent Reggeized implementation of this mechanism, forward LHC elastic data were described at Born level with gluon mass scales below about $450~\MeV$ \cite{BopsinEtAl2023}.
+
+Such determinations, however, identify the one-Pomeron input with the physical elastic amplitude.  At LHC energies, this identification is no longer innocuous.  Even in the forward cone, unitarity corrections and multiple exchanges are important, and $s$-channel unitarity gives a nonlinear relation between the elementary input and the physical impact-parameter profile.  Since $m_g$ controls both the infrared strength and the transverse range of the two-gluon kernel, its fitted value may change when the same kernel is embedded in a unitary amplitude.  The question addressed here is whether the familiar few-hundred-MeV scale is an intrinsic scale of the elementary two-gluon exchange, or an effective scale produced after unitarity dressing.
+
+We answer this question by using the Reggeized nonperturbative two-gluon input of Ref.~\cite{BopsinEtAl2023} in two standard one-channel unitarization schemes: the eikonal and the $U$-matrix \cite{BaronePredazzi,Donnachie:2002en,ForshawRoss,Troshin:2007fq}.  Both schemes reproduce the Born term and the first nonlinear rescattering correction, but they differ in the weights of higher multiple exchanges and in their high-opacity limits \cite{Maneyro:2024,LunaRyskin:2024}.  Their comparison is therefore a useful test of whether the extracted infrared scale depends on the unitarization prescription.
+
+The analysis uses forward elastic $pp$ differential cross-section data at $\sqrt s=7$, $8$, and $13~\TeV$.  Because the ATLAS and TOTEM measurements show a known normalization tension in the forward region, we do not combine them.  We use two separate samples, denoted Ensemble A and Ensemble T \cite{ATLAS:2014,ATLAS:2016,ATLAS:2023,TOTEM:2013,TOTEM:2015,TOTEM:2019}.  To test the dependence on the nonperturbative input, we consider both the logarithmic and the power-law solutions of the Schwinger--Dyson gluon-mass equation \cite{AguilarPapavassiliou2008}.
+
+The pattern is simple.  At Born level, all fitted masses lie in the conventional interval, $m_g=299$--$422~\MeV$.  After unitarization, the preferred masses become $m_g=779$--$1101~\MeV$ in the eikonal scheme and $m_g=749$--$1033~\MeV$ in the $U$-matrix scheme.  The increase, close to a factor $2.5$, persists for both data ensembles and both running masses.  It is therefore not a consequence of the ATLAS--TOTEM normalization difference, nor of a particular analytic form of $m(Q^2)$, nor of one special unitarization map.
+
+The effect has a direct interpretation.  The data constrain the final unitary profile, not the elementary two-gluon exchange alone.  Once rescattering contributes to the transverse extension and curvature of the physical amplitude, the elementary kernel preferred by the fit becomes more compact.  Since the compactness of that kernel is controlled by $m_g$, the fitted mass increases.  The gluon mass extracted from high-energy elastic scattering should therefore be regarded as a unitarity-dressed infrared scale.
+
+
+\section{Reggeized two-gluon input and dynamical gluon mass}
+\label{sec:reggeized_input}
+
+The elementary QCD exchange carrying the quantum numbers of the Pomeron is a pair of gluons in a color-singlet, $C=+1$, state \cite{Low1975,Nussinov1975,GunionSoper1977,LevinRyskin1981,LandshoffNachtmann1987}.  In perturbation theory this contribution is infrared singular, because the massless gluon propagator has a pole at zero momentum transfer.  The LN mechanism avoids this singularity by replacing the perturbative propagator by an infrared-finite one.  The strength of the Pomeron-quark coupling is then controlled by the transverse integral
+\begin{equation}
+\beta_0^2=
+\frac{1}{36\pi^2}
+\int d^2k\,
+\left[g^2D(k^2)\right]^2,
+\label{eq:beta0}
+\end{equation}
+which is finite only when the infrared pole of the gluon propagator is removed by nonperturbative dynamics.
+
+An infrared-finite two-gluon exchange is still not sufficient to describe the LHC elastic data.  A non-Reggeized calculation using modern nonperturbative propagators, including refined Gribov--Zwanziger and Cornwall-type inputs, does not reproduce the ATLAS and TOTEM differential cross sections in the TeV region \cite{Canfora:2017}.  The missing ingredient is the high-energy behavior of the soft elastic amplitude.  We therefore use the Reggeized LN construction of Ref.~\cite{BopsinEtAl2023}, which supplies the effective Pomeron energy dependence while keeping the infrared QCD content of the two-gluon kernel.
+
+The Reggeized two-gluon amplitude is taken as the Born input,
+\begin{equation}
+{\cal M}_B(s,t)
+=
+i\,\frac{8}{9}\,n_p^2\,
+s\left(\frac{s}{s_0}\right)^{\alpha_{\mathbb P}(t)-1}
+\left[\widetilde T_1(s,t)-\widetilde T_2(s,t)\right],
+\label{eq:born_reggeized}
+\end{equation}
+where $n_p=3$ is the number of valence quarks in the proton, $s_0=1~\GeV^2$, $t=-q^2$, and
+\begin{equation}
+\alpha_{\mathbb P}(t)=1+\epsilon+\alpha'_{\mathbb P}t
+\label{eq:pomeron_trajectory}
+\end{equation}
+is the LN-Pomeron trajectory.  The parameter $\epsilon$ governs the energy dependence of the total and diffractive cross sections, while $\alpha'_{\mathbb P}$ governs the energy dependence of the forward slope.  We fix $\alpha'_{\mathbb P}=0.25~\GeV^{-2}$, as in standard soft-Pomeron phenomenology.
+
+The two terms in Eq.~\eqref{eq:born_reggeized} correspond to the two possible couplings of the exchanged gluons to valence quarks in the proton.  They are
+\begin{widetext}
+\begin{eqnarray}
+\widetilde T_1
+&=&
+\int_0^s d^2k\,
+\bar\alpha\left(\frac{q}{2}+k\right)
+D\left(\frac{q}{2}+k\right)
+\bar\alpha\left(\frac{q}{2}-k\right)
+D\left(\frac{q}{2}-k\right)
+\left[G_p(q,0)\right]^2,
+\label{eq:t1}
+\end{eqnarray}
+\begin{eqnarray}
+\widetilde T_2
+&=&
+\int_0^s d^2k\,
+\bar\alpha\left(\frac{q}{2}+k\right)
+D\left(\frac{q}{2}+k\right)
+\bar\alpha\left(\frac{q}{2}-k\right)
+D\left(\frac{q}{2}-k\right)
+G_p\left(q,k-\frac{q}{2}\right)
+\nonumber\\
+&&\times
+\left[
+2G_p(q,0)-G_p\left(q,k-\frac{q}{2}\right)
+\right].
+\label{eq:t2}
+\end{eqnarray}
+\end{widetext}
+Here $D$ is the nonperturbative gluon propagator, $\bar\alpha$ is the corresponding QCD effective charge, and the arguments denote transverse Euclidean momenta.  The proton factor $G_p(q,k)$ is defined by the convolution of proton wave functions \cite{BopsinEtAl2023,CudellRoss1991}.  In particular,
+\begin{equation}
+G_p(q,0)=F_1(q^2),
+\label{eq:Gp_F1}
+\end{equation}
+and, in the forward region, we use
+\begin{equation}
+F_1(q^2)=\exp[-a_1q^2].
+\label{eq:F1_param}
+\end{equation}
+With the usual approximation that the quark carries one third of the longitudinal proton momentum,
+\begin{equation}
+G_p\left(q,k-\frac{q}{2}\right)
+=
+F_1\left(q^2+9\left|k^2-\frac{q^2}{4}\right|\right).
+\label{eq:Gp_approx}
+\end{equation}
+
+The QCD input appears in Eqs.~\eqref{eq:t1} and \eqref{eq:t2} through the product $\bar\alpha(Q^2)D(Q^2)$ in the spacelike region $Q^2>0$.  We use two Schwinger--Dyson motivated running masses.  The logarithmic solution is
+\begin{equation}
+m_{\log}^2(Q^2)
+=
+m_g^2
+\left[
+\frac{\ln[(Q^2+4m_g^2)/\Lambda^2]}{\ln[4m_g^2/\Lambda^2]}
+\right]^{-1-\gamma_1},
+\label{eq:mlog}
+\end{equation}
+and the power-law solution is
+\begin{equation}
+m_{\rm pl}^2(Q^2)
+=
+\frac{m_g^4}{Q^2+m_g^2}
+\left[
+\frac{\ln[(Q^2+4m_g^2)/\Lambda^2]}{\ln[4m_g^2/\Lambda^2]}
+\right]^{\gamma_2-1}.
+\label{eq:mpl}
+\end{equation}
+In the numerical analysis we use $\gamma_1=0.084$ and $\gamma_2=2.36$, and also $\Lambda=284$ MeV and $n_f=3$, following Refs.~\cite{AguilarPapavassiliou2008,LunaNataleDosSantos2011,BopsinEtAl2023}.  Only the infrared scale $m_g=m(0)$ is fitted.
+
+For either solution, $i=\log,{\rm pl}$, the effective charge is
+\begin{equation}
+\bar\alpha_i(Q^2)
+=
+\frac{1}{b_0\ln[(Q^2+4m_i^2(Q^2))/\Lambda^2]},
+\qquad
+b_0=\frac{33-2n_f}{12\pi}.
+\label{eq:effective_charge}
+\end{equation}
+Equivalently,
+\begin{equation}
+\left[\bar\alpha_i(Q^2)D_i(Q^2)\right]^{-1}
+=
+b_0\,[Q^2+m_i^2(Q^2)]
+\ln\left[\frac{Q^2+4m_i^2(Q^2)}{\Lambda^2}\right].
+\label{eq:alphaD}
+\end{equation}
+Thus the same parameter $m_g$ controls the infrared strength and the transverse range of the elementary two-gluon exchange.
+
+The difference $\widetilde T_1-\widetilde T_2$ implements the color neutrality of the external hadrons and removes the contribution that would otherwise remain when one exchanged gluon carries vanishing transverse momentum.  The LN kernel is therefore not merely the product of two massive propagators.  It is a color-neutral two-gluon exchange dressed by the proton wave-function overlap.
+
+The amplitude in Eq.~\eqref{eq:born_reggeized} is written in the same normalization used below in the impact-parameter representation.  Thus the total cross section and the elastic differential cross section are given by
+\begin{eqnarray}
+\sigma_{\rm tot}(s)
+&=&
+\frac{4\pi}{s}\,
+\mbox{Im}\,{\cal M}_B(s,t=0),
+\label{eq:sigtot_born}
+\end{eqnarray}
+\begin{eqnarray}
+\frac{d\sigma}{dt}(s,t)
+&=&
+\frac{\pi}{s^2}\,
+\left|{\cal M}_B(s,t)\right|^2 .
+\label{eq:dsdt_born}
+\end{eqnarray}
+The eikonalized and $U$-matrix amplitudes are constructed with the same normalization.  In the following, this Reggeized two-gluon amplitude is kept as the elementary Born block.  We then examine how the fitted value of $m_g$ changes when the same block is embedded in a unitary impact-parameter amplitude.
+
+
+\section{Unitary embedding of the Reggeized two-gluon input}
+\label{sec:unitary_embedding}
+
+
+At high energies the unitarity constraint is most conveniently written
+in impact-parameter space. We denote by ${\cal A}(s,b)$ the elastic
+profile. It obeys
+\begin{equation}
+2\,\mbox{Im}\,{\cal A}(s,b)
+=
+|{\cal A}(s,b)|^2+G_{\rm inel}(s,b),
+\label{eq:unitarity_b}
+\end{equation}
+where $G_{\rm inel}(s,b)$ is real and non-negative and accounts for the
+inelastic channels. If
+$\rho(s,b)=\mbox{Re}\,{\cal A}(s,b)/\mbox{Im}\,{\cal A}(s,b)$, the two
+solutions of Eq.~\eqref{eq:unitarity_b} may be written as
+\begin{equation}
+\mbox{Im}\,{\cal A}(s,b)
+=
+\frac{
+1\pm
+\sqrt{1-(1+\rho^2)G_{\rm inel}(s,b)}
+}
+{1+\rho^2},
+\label{eq:unitarity_solutions}
+\end{equation}
+with
+\begin{equation}
+0\leq G_{\rm inel}(s,b)\leq (1+\rho^2)^{-1}.
+\label{eq:ginel_bound}
+\end{equation}
+The eikonal representation corresponds to the solution with the negative
+square root. The $U$-matrix representation corresponds to the solution
+with the positive square root.
+
+The Reggeized two-gluon amplitude constructed above is taken as the
+one-Pomeron input. In the forward region this input is predominantly
+imaginary, and we write
+\begin{equation}
+\chi(s,b)=i\,\chi_I(s,b),
+\label{eq:chi_chiI}
+\end{equation}
+with
+\begin{equation}
+\chi_I(s,b)
+=
+\frac{1}{s}
+\int_0^\infty q\,dq\,
+J_0(bq)\,
+\mbox{Im}\,{\cal M}_B(s,-q^2).
+\label{eq:chiI_def}
+\end{equation}
+Here $q=\sqrt{-t}$ and $J_0$ is the Bessel function of the first kind.
+The unitarized momentum-space amplitudes are obtained from
+\begin{equation}
+{\cal M}_X(s,t)
+=
+s\int_0^\infty b\,db\,
+J_0(bq)\,
+{\cal A}_X(s,b),
+\qquad X=E,U,
+\label{eq:unit_amplitude}
+\end{equation}
+where the labels $E$ and $U$ refer, respectively, to the eikonal and
+$U$-matrix prescriptions. The corresponding differential cross section
+is
+\begin{equation}
+\frac{d\sigma}{dt}(s,t)
+=
+\frac{\pi}{s^2}
+\left|{\cal M}_X(s,t)\right|^2 .
+\label{eq:unit_dsdt}
+\end{equation}
+
+In the eikonal scheme the profile is
+\begin{equation}
+{\cal A}_E(s,b)
+=
+i\left[
+1-\exp\left\{i\chi(s,b)\right\}
+\right].
+\label{eq:eikonal_profile}
+\end{equation}
+Using Eq.~\eqref{eq:chi_chiI}, this is the usual absorptive form
+$i[1-\exp(-\chi_I)]$. Its expansion is
+\begin{eqnarray}
+{\cal A}_E(s,b) &=& -i\sum_{n=1}^{\infty} \frac{[i\chi(s,b)]^n}{n!} \nonumber \\
+ &=& \chi + \frac{i}{2}\chi^2 - \frac{1}{6}\chi^3 - \frac{i}{24}\chi^4 + \cdots .
+\label{eq:eikonal_series_chi}
+\end{eqnarray}
+The inelastic overlap function in this representation is
+\begin{equation}
+G_{\rm inel}^{E}(s,b) = 1-\exp[-2\,\mbox{Im}\,\chi(s,b)] .
+\label{eq:ginel_eik}
+\end{equation}
+
+In the $U$-matrix scheme the profile is
+\begin{equation}
+{\cal A}_U(s,b) = \frac{\chi(s,b)}{1-i\chi(s,b)/2}.
+\label{eq:umatrix_profile}
+\end{equation}
+For the absorptive input of Eq.~\eqref{eq:chi_chiI}, this becomes
+$i\chi_I/(1+\chi_I/2)$. The expansion is
+\begin{eqnarray}
+{\cal A}_U(s,b) &=& -2i\sum_{n=1}^{\infty} \frac{[i\chi(s,b)]^n}{2^n} \nonumber \\
+&=& \chi + \frac{i}{2}\chi^2 - \frac{1}{4}\chi^3 - \frac{i}{8}\chi^4 + \cdots .
+\label{eq:umatrix_series_chi}
+\end{eqnarray}
+
+The first two terms in Eqs.~\eqref{eq:eikonal_series_chi} and
+\eqref{eq:umatrix_series_chi} are identical. Thus the Born term and the
+leading nonlinear rescattering correction are common to the two
+prescriptions. The difference starts at the next orders and becomes
+important in the high-density regime. For an absorptive input, the
+eikonal profile approaches $\mbox{Im}\,{\cal A}_E\to 1$, whereas the
+$U$-matrix profile approaches $\mbox{Im}\,{\cal A}_U\to 2$.
+
+
+The powers of $\chi$ in Eqs.~\eqref{eq:eikonal_series_chi} and
+\eqref{eq:umatrix_series_chi} have a direct physical interpretation.
+Each power represents an additional exchange of the same Reggeized
+nonperturbative two-gluon Pomeron block. The physical amplitude
+therefore contains the coherent multiple-exchange series
+\begin{equation}
+{\mathbb P}+{\mathbb P}{\mathbb P}
++{\mathbb P}{\mathbb P}{\mathbb P}+\cdots ,
+\label{eq:pomeron_series}
+\end{equation}
+where each ${\mathbb P}$ denotes the LN-type Reggeized two-gluon input.
+Unitarization does not replace the elementary exchange. It specifies how
+this exchange is iterated and mapped into a profile compatible with
+$s$-channel unitarity \cite{luna2026a}.
+
+Since the products in the series are formed in impact-parameter space,
+the corresponding momentum-space terms are transverse convolutions, not
+ordinary powers of the Born amplitude at fixed $t$. The double-exchange
+term has, schematically, the form
+\begin{equation}
+{\cal M}^{(2)}(s,q)
+\propto
+\frac{i}{s}
+\int d^2k\,
+{\cal M}_B(s,-k^2)\,
+{\cal M}_B(s,-|\mathbf q-\mathbf k|^2),
+\label{eq:double_exchange_convolution}
+\end{equation}
+with analogous convolutions at higher orders. Thus the value of $m_g$
+extracted from data is not fixed by the elementary two-gluon kernel
+alone. It is fixed after that kernel has generated the input profile
+$\chi(s,b)$ and after this profile has been embedded in a unitary
+amplitude.
+
+
+
+\section{Results and physical interpretation}
+\label{sec:results}
+\label{sec:interpretation}
+
+We fit forward elastic $pp$ differential cross-section data at LHC
+energies in the interval
+\begin{equation}
+|t|_{\rm min}\leq |t|\leq |t|_{\rm max},
+\qquad
+|t|_{\rm max}=0.11~\GeV^2 .
+\label{eq:t_range}
+\end{equation}
+The lower bound is chosen to avoid the Coulomb--nuclear interference
+region. We estimate it from $|t|_{\rm min}\simeq 10 |t|_{\rm int}$, with $|t|_{\rm int}=0.071/\sigma_{\rm tot}$ \cite{Maneyro:2024}.
+
+\begin{figure}[!t]
+\centering
+\vspace{-1.8cm}
+\includegraphics[width=\columnwidth]{Figure_1a.pdf}
+\vspace{-2.4cm} 
+\caption{Dependence of the fit quality on the upper limit
+$|t|_{\rm max}$ of the fitted interval.  The left and right panels show
+Ensemble A and Ensemble T, respectively.  The symbols correspond to the
+eikonalized logarithmic mass solution, $E_{\log}$, the eikonalized
+power-law solution, $E_{\rm pl}$, the $U$-matrix logarithmic mass
+solution, $U_{\log}$, and the $U$-matrix power-law solution,
+$U_{\rm pl}$.  The horizontal line marks $\chi^2/\nu=1$.}
+\label{fig:cut_scan}
+\end{figure}
+
+Because the ATLAS and TOTEM forward measurements are not mutually
+normalized within their quoted uncertainties, we do not combine them
+into a single data set. Ensemble A contains the ATLAS differential cross
+sections, while Ensemble T contains the corresponding TOTEM
+measurements. This separation prevents the fit from being driven toward
+an artificial average normalization and allows the stability of the
+extracted infrared scale to be tested against the experimental
+normalization choice.
+
+For each ensemble, each unitarization prescription, and each running
+mass solution, we fit the differential cross sections directly. The
+reference fit contains three free parameters, $\epsilon$, $m_{g}$, and $a_{1}$.
+
+The quality of each fit is characterized by the reduced chi-square, $\chi^2_{\rm min}/\nu$, where $\nu$ is the number of degrees of freedom.
+The quoted parameter uncertainties correspond to a $90\%$ confidence region in the three-dimensional
+parameter space. This region is defined by the hypersurface $\chi^2(\epsilon, m_{g}, a_{1}) = \chi^2_{\rm min} + 6.251$, appropriate to three fitted parameters \cite{JamesRoos1975}.
+
+The upper limit $|t|_{\rm max}$ is fixed by the minimal proton form factor in
+Eq.~\eqref{eq:F1_param}.  We have scanned the quality of the fits as
+$|t|_{\rm max}$ is increased, keeping the same one-parameter form
+factor.  As shown in Fig.~\ref{fig:cut_scan}, the values of
+$\chi^2/\nu$ rise rapidly once the fit is extended beyond the strict
+forward domain; in one of the analyses they already exceed unity when
+$|t|_{\rm max}=0.12~\GeV^2$.  This behavior indicates that the data then
+start to resolve transverse structure not contained in the minimal
+proton factor.  We therefore choose $|t|_{\rm max}=0.11~\GeV^2$ as the
+largest conservative interval that can be described without introducing
+a further shape parameter in the form factor.
+
+%\begin{figure*}[!t]
+%\begin{center}
+%\includegraphics[height=.32\textheight]{Figure_2a.pdf}
+%\caption{The differential $pp$ elastic cross sections in the forward
+%region, compared with the unitarized nonperturbative two-gluon-exchange
+%model. Panel (a) shows the ATLAS data, while panel (b) shows the TOTEM
+%data, at $\sqrt{s}=7$, $8$, and $13~\TeV$. The curves correspond to the
+%eikonalized logarithmic mass solution, $E_{\log}$, the eikonalized
+%power-law solution, $E_{\rm pl}$, the $U$-matrix logarithmic mass
+%solution, $U_{\log}$, and the $U$-matrix power-law solution,
+%$U_{\rm pl}$. The insets show a magnified view around the 13 TeV data
+%point at $|t|\simeq 0.050~\GeV^2$.}
+%\label{fig:dsdt_fits}
+%\end{center}
+%\end{figure*}
+
+
+\begin{figure*}[!t]
+\centering
+\vspace{-1.9cm}  
+\begin{minipage}{0.49\textwidth}
+\centering
+\includegraphics[width=\textwidth]{dif_atlas.pdf}
+\end{minipage}
+\hfill
+\begin{minipage}{0.49\textwidth}
+\centering
+\includegraphics[width=\textwidth]{dif_totem.pdf}
+\end{minipage}
+\vspace{-2.4cm}
+\caption{The differential $pp$ elastic cross sections in the forward region, compared with the unitarized nonperturbative two-gluon-exchange model. The left panel shows the ATLAS data, while the right panel shows the TOTEM data, at $\sqrt{s}=7$, $8$, and $13~\TeV$. The curves correspond to the eikonalized logarithmic mass solution, $E_{\log}$, the eikonalized power-law solution, $E_{\rm pl}$, the $U$-matrix logarithmic mass solution, $U_{\log}$, and the $U$-matrix power-law solution, $U_{\rm pl}$. The insets show a magnified view around the 13 TeV data point at $|t|\simeq 0.050~\GeV^2$.}
+\label{fig:dsdt_fits}
+\end{figure*}
+
+
+
+\begin{figure}
+\centering
+\vspace{-1.8cm}  
+\includegraphics[width=\columnwidth]{Figure_3a.pdf}
+\vspace{-2.4cm}  
+\caption{Total $pp$ cross sections obtained from the same amplitudes
+fitted to the forward differential data.  The upper panel corresponds to
+fits to Ensemble A, and the lower panel to fits to Ensemble T.  The
+curves show the predictions obtained with $E_{\log}$, $E_{\rm pl}$,
+$U_{\log}$, and $U_{\rm pl}$.  The separation between the two panels
+reflects the ATLAS--TOTEM normalization difference, whereas the small
+spread among the four curves shows that the total cross section is
+weakly affected by the choice of running mass or unitarization scheme.}
+\label{fig:sigtot_predictions}
+\end{figure}
+
+
+
+Figure~\ref{fig:dsdt_fits} shows the corresponding differential
+cross-section curves in the forward region.  The four unitarized
+solutions give a stable description of the ATLAS and TOTEM ensembles at
+$\sqrt{s}=7$, $8$, and $13~\TeV$ over the range used in the fits.  The
+same fitted amplitudes also determine the total cross section through
+Eq.~\eqref{eq:sigtot_born}.  The resulting predictions are shown in
+Fig.~\ref{fig:sigtot_predictions}.  They follow the ATLAS and TOTEM
+normalization patterns associated with the corresponding differential
+data sets, while retaining very small sensitivity to the logarithmic or
+power-law running of the gluon mass and to the eikonal or $U$-matrix
+unitarization map.
+
+
+Table~\ref{tab:log_results} gives the results obtained with the
+logarithmic running mass. At Born level, the fitted masses remain in the
+usual few-hundred-MeV range. After unitarization, the preferred scale is
+much larger. The Born fits give $m_g=299$--$355~\MeV$, whereas the
+eikonal fits give $m_g=779$--$907~\MeV$ and the $U$-matrix fits give
+$m_g=749$--$856~\MeV$.
+
+\begin{table*}
+\centering
+\caption{Fit parameters of the LN Pomeron obtained from fits to
+$\dd\sigma^{pp}/\dd t$ using the logarithmic running mass
+$m_{\log}(Q^2)$ in Eq.~\eqref{eq:mlog}. Ensemble A denotes the ATLAS
+forward data set and Ensemble T denotes the TOTEM forward data set.
+The quoted errors correspond to a $90\%$ confidence level.}
+\begin{ruledtabular}
+\begin{tabular}{lcccccc}
+ & \multicolumn{2}{c}{Born}
+ & \multicolumn{2}{c}{Eikonal}
+ & \multicolumn{2}{c}{$U$-matrix}\\
+\cline{2-3}\cline{4-5}\cline{6-7}
+ & Ensemble A & Ensemble T
+ & Ensemble A & Ensemble T
+ & Ensemble A & Ensemble T \\
+\hline
+$m_g$ $(\MeV)$
+& $299\pm15$ & $355\pm13$
+& $779\pm64$ & $907\pm70$
+& $749\pm46$ & $856\pm51$ \\
+$\epsilon$
+& $0.0644\pm0.0061$ & $0.0898\pm0.0054$
+& $0.0988\pm0.0092$ & $0.127\pm0.011$
+& $0.0866\pm0.0091$ & $0.1108\pm0.0087$ \\
+$a_1$ $(\GeV^{-2})$
+& $1.29\pm0.11$ & $1.699\pm0.070$
+& $1.226\pm0.082$ & $1.046\pm0.044$
+& $1.464\pm0.064$ & $1.388\pm0.043$ \\
+\hline
+$\nu$
+& $74$ & $199$ & $74$ & $199$ & $74$ & $199$ \\
+$\chi^2/\nu$
+& $0.17$ & $0.16$ & $0.27$ & $0.74$ & $0.17$ & $0.39$ \\
+\end{tabular}
+\end{ruledtabular}
+\label{tab:log_results}
+\end{table*}
+
+The enhancement is measured by
+\begin{equation}
+R_E=\frac{m_g^E}{m_g^B},
+\qquad
+R_U=\frac{m_g^U}{m_g^B}.
+\label{eq:enhancement_ratios}
+\end{equation}
+For the logarithmic mass, Table~\ref{tab:log_results} gives
+\begin{eqnarray}
+R_E^A\simeq 2.61,
+\qquad
+R_U^A\simeq 2.51,\\
+R_E^T\simeq 2.55,
+\qquad
+R_U^T\simeq 2.41.
+\end{eqnarray}
+The two ensembles give similar ratios, and the two unitarization schemes
+lead to comparable enhancements. Thus the upward shift is not a
+consequence of the ATLAS--TOTEM normalization tension, nor of the
+specific high-density completion of one unitarity map.
+
+Table~\ref{tab:pl_results} gives the corresponding results for the
+power-law running mass. The same pattern is found. The Born values,
+$m_g=363$--$422~\MeV$, remain in the conventional range, while the
+eikonal and $U$-matrix fits require $m_g=947$--$1101~\MeV$ and
+$m_g=906$--$1033~\MeV$, respectively.
+
+\begin{table*}
+\centering
+\caption{Fit parameters of the LN Pomeron obtained from fits to
+$\dd\sigma^{pp}/\dd t$ using the power-law running mass
+$m_{\rm pl}(Q^2)$ in Eq.~\eqref{eq:mpl}. Ensemble A denotes the ATLAS
+forward data set and Ensemble T denotes the TOTEM forward data set.
+The quoted errors correspond to a $90\%$ confidence level.}
+\begin{ruledtabular}
+\begin{tabular}{lcccccc}
+ & \multicolumn{2}{c}{Born}
+ & \multicolumn{2}{c}{Eikonal}
+ & \multicolumn{2}{c}{$U$-matrix} \\
+\cline{2-3}\cline{4-5}\cline{6-7}
+ & Ensemble A & Ensemble T
+ & Ensemble A & Ensemble T
+ & Ensemble A & Ensemble T\\
+\hline
+$m_g$ $(\MeV)$
+& $363\pm19$ & $422\pm16$
+& $947\pm24$ & $1101\pm55$
+& $906\pm53$ & $1033\pm65$ \\
+$\epsilon$
+& $0.0646\pm0.0062$ & $0.0869\pm0.0055$
+& $0.0993\pm0.0039$ & $0.1278\pm0.0012$
+& $0.0869\pm0.0091$ & $0.1110\pm0.0095$ \\
+$a_1$ $(\GeV^{-2})$
+& $1.42\pm0.12$ & $1.778\pm0.081$
+& $1.343\pm0.088$ & $1.136\pm0.023$
+& $1.587\pm0.058$ & $1.485\pm0.040$ \\
+\hline
+$\nu$
+& $74$ & $199$ & $74$ & $199$ & $74$ & $199$ \\
+$\chi^2/\nu$
+& $0.10$ & $0.09$ & $0.30$ & $0.76$ & $0.19$ & $0.42$ \\
+\end{tabular}
+\end{ruledtabular}
+\label{tab:pl_results}
+\end{table*}
+
+
+\begin{figure*}[t]
+\begin{center}
+\includegraphics[height=.31\textheight]{Figure_4a.pdf}
+\caption{The dynamical gluon mass scale $m_g$ under different schemes
+for the elastic scattering amplitude. Results are shown for the Born
+input, the eikonalized amplitude, and the $U$-matrix amplitude, using
+the logarithmic mass solution in panel (a) and the power-law mass
+solution in panel (b). The shaded horizontal band indicates the previous
+Born-level mass window.}
+\label{fig:mg_summary}
+\end{center}
+\end{figure*}
+
+For the power-law solution one obtains
+\begin{eqnarray}
+R_E^A\simeq 2.61,
+\qquad
+R_U^A\simeq 2.50,\\
+R_E^T\simeq 2.61,
+\qquad
+R_U^T\simeq 2.45.
+\end{eqnarray}
+These values are essentially the same as those obtained with the
+logarithmic running mass. The result is therefore not controlled by the
+particular analytic form used for $m(Q^2)$. It is mainly controlled by
+the unitarity embedding of the Reggeized two-gluon kernel.
+
+
+
+The remaining fit parameters do not undergo a comparable qualitative
+change. The intercept parameter $\epsilon$ remains positive in all
+cases, so that the input is still a supercritical LN Pomeron. Its
+numerical value adjusts to the way rescattering dresses the Born energy
+dependence. The parameter $a_1$, which sets the leading transverse scale
+in the proton overlap, remains of natural hadronic size. The dominant
+readjustment induced by unitarization is therefore in the infrared
+gluonic kernel, as indicated by the systematic increase of $m_g$.
+
+This pattern has a simple physical interpretation. At Born level, the
+single Reggeized two-gluon exchange must reproduce, by itself, the
+normalization, the forward slope, and the mild curvature of the data. A
+smaller gluon mass gives a longer-ranged and stronger infrared kernel,
+which helps the Born amplitude mimic the observed transverse extension
+of the physical profile. After unitarization, this role is changed. The
+data constrain the final unitary profile, while the Reggeized two-gluon
+exchange is only the input from which that profile is built.
+
+Once multiple exchanges contribute to the transverse structure of the
+amplitude, the elementary two-gluon kernel can be shorter ranged. Since
+its correlation length scales as
+\begin{equation}
+\ell_g\sim \frac{1}{m_g},
+\label{eq:correlation_length}
+\end{equation}
+a more compact elementary kernel corresponds to a larger fitted value of
+$m_g$. The mass still belongs to the elementary nonperturbative
+two-gluon input, but its numerical value is fixed only after this input
+has been mapped into a unitary profile. It is, in this sense, a
+unitarity-dressed infrared scale.
+
+This interpretation is supported by the near constancy of the ratios
+$m_g^{E,U}/m_g^B$ for the logarithmic and power-law masses. The two mass
+functions approach the perturbative regime differently and give
+different absolute Born-level masses. Nevertheless, after unitarization,
+both require nearly the same relative upward displacement. The
+enhancement is therefore not mainly a property of a particular mass
+ansatz; it reflects how the transverse two-gluon kernel is sampled once
+$s$-channel unitarity is imposed.
+
+The present one-channel model is not intended to describe the whole
+pre-dip region. If the minimal proton form factor is pushed beyond the
+range in Eq.~\eqref{eq:t_range}, the fit quality deteriorates rapidly,
+as shown in Fig.~\ref{fig:cut_scan}. This indicates that additional
+transverse structure, a more complete real part, or diffractive-channel
+effects may become important at larger $|t|$. These refinements can
+affect the detailed description outside the forward cone, but they do
+not change the forward-cone conclusion: unitarity corrections drive the
+extracted infrared mass upward.
+
+%\FloatBarrier
+
+
+\section{Conclusions}
+\label{sec:conclusions}
+
+We have examined how $s$-channel unitarity affects the gluon mass scale
+extracted from forward elastic $pp$ scattering. The starting point was
+the same Reggeized LN two-gluon input in all cases. We changed only the
+way in which this input is embedded in the physical amplitude, comparing
+the Born approximation with the eikonal and $U$-matrix constructions.
+The analysis was carried out for the logarithmic and power-law running
+masses, and for ATLAS and TOTEM data treated as separate ensembles.
+
+The result is unambiguous. At Born level the fitted masses remain in the
+usual phenomenological window, $m_g=299$--$422~\MeV$. After
+unitarization, the same input requires substantially larger values,
+$m_g=749$--$1101~\MeV$. The relative increase is close to $2.5$ in all
+cases. Its persistence under the change of data ensemble, mass running,
+and unitarization prescription shows that the shift is not a
+normalization effect, nor a peculiarity of a particular ansatz for
+$m(Q^2)$, nor a consequence of one special high-density limit.
+
+The physical origin is the nonlinear map from the elementary two-gluon
+kernel to the unitary impact-parameter profile. At Born level the kernel
+itself must account for the observed transverse extension of the forward
+amplitude. Once multiple exchanges are included, part of this transverse
+structure is generated by rescattering. The elementary kernel selected
+by the fit can then be more compact, and this corresponds to a larger
+infrared mass. Thus the mass obtained from elastic scattering is not the
+gluon mass of an isolated one-Pomeron exchange. It is a
+unitarity-dressed infrared scale, fixed by the nonperturbative
+propagator together with the many-body dynamics required by unitarity.
+
+The cut dependence reinforces this interpretation. The reference domain
+was chosen as the largest forward interval in which the minimal
+one-parameter proton form factor gives a stable description. When the
+upper cut is increased beyond this domain, the quality of the fits
+rapidly deteriorates, signaling sensitivity to additional transverse
+structure not included in the present one-channel model. Such effects
+are important for extending the analysis toward the pre-dip region, but
+they do not alter the message obtained here: quantitative extractions of
+the infrared gluon mass from high-energy diffraction must include the
+unitarity dressing of the scattering amplitude.
+
+\begin{acknowledgments}
+
+The authors thank A.~A.~Natale and M.~N.~Ferreira for useful discussions. This research was partially supported by the Coordena\c{c}\~ao de Aperfei\c{c}oamento de Pessoal de N\'{\i}vel Superior (CAPES), and by the Conselho Nacional de Desenvolvimento Cient\'{\i}fico e Tecnol\'ogico (CNPq).
+
+\end{acknowledgments}
+
+\begin{thebibliography}{99}
+
+\bibitem{binosi1} D.~Binosi and J.~Papavassiliou, Phys. Rep. \textbf{479}, 1 (2009).
+
+\bibitem{huber1} M.~Q.~Huber, Phys. Rep. \textbf{879}, 1 (2020).
+
+\bibitem{roberts1} C.~D.~Roberts, Symmetry \textbf{12}, 1468 (2020).
+
+\bibitem{AguilarBinosiPapavassiliou2008} A.~C.~Aguilar, D.~Binosi, and J.~Papavassiliou, Phys. Rev. D \textbf{78}, 025010 (2008).
+
+\bibitem{CucchieriMendes2008} A.~Cucchieri and T.~Mendes, Phys. Rev. Lett. \textbf{100}, 241601 (2008).
+
+\bibitem{Bogolubsky2009} I.~L.~Bogolubsky, E.~-M.~Ilgenfritz, M.~M\"uller-Preussker, and A.~Sternbeck, Phys. Lett. B \textbf{676}, 69 (2009).
+
+\bibitem{OliveiraSilva2012} O.~Oliveira and P.~J.~Silva, Phys. Rev. D \textbf{86}, 114513 (2012).
+
+\bibitem{Cornwall1982} J.~M.~Cornwall, Phys. Rev. D \textbf{26}, 1453 (1982).
+
+\bibitem{AguilarNataleRodrigues2003} A.~C.~Aguilar, A.~A.~Natale, and P.~S.~Rodrigues da Silva, Phys. Rev. Lett. \textbf{90}, 152001 (2003).
+
+\bibitem{AguilarBinosiPapavassiliou2011} A.~C.~Aguilar, D.~Binosi, and J.~Papavassiliou, Phys. Rev. D \textbf{84}, 085026 (2011).
+
+\bibitem{HalzenKreinNatale1993} F.~Halzen, G.~I.~Krein, and A.~A.~Natale, Phys. Rev. D \textbf{47}, 295 (1993).
+
+\bibitem{GayDucatiHalzenNatale1993} M.~B.~Gay Ducati, F.~Halzen, and A.~A.~Natale, Phys. Rev. D \textbf{48}, 2324 (1993).
+
+\bibitem{LunaEtAl2005} E.~G.~S.~Luna, A.~F.~Martini, M.~J.~Menon, A.~Mihara, and A.~A.~Natale, Phys. Rev. D \textbf{72}, 034019 (2005).
+
+\bibitem{LunaNatale2006} E.~G.~S.~Luna and A.~A.~Natale, Phys. Rev. D \textbf{73}, 074019 (2006).
+
+\bibitem{Luna2006} E.~G.~S.~Luna, Phys. Lett. B \textbf{641}, 171 (2006).
+
+\bibitem{BopsinEtAl2023} G.~B.~Bopsin, E.~G.~S.~Luna, A.~A.~Natale, and M.~Pel\'aez, Phys. Rev. D \textbf{107}, 114011 (2023).
+
+\bibitem{LandshoffNachtmann1987} P.~V.~Landshoff and O.~Nachtmann, Z. Phys. C \textbf{35}, 405 (1987).
+
+\bibitem{BaronePredazzi} V.~Barone and E.~Predazzi, {\it High-Energy Particle Diffraction} (Springer, Berlin, 2002).
+
+\bibitem{Donnachie:2002en} S.~Donnachie, G.~Dosch, P.~Landshoff, and O.~Nachtmann, {\it Pomeron Physics and QCD} (Cambridge University Press, Cambridge, 2002).
+
+\bibitem{ForshawRoss} J.~R.~Forshaw and D.~A.~Ross, {\it Quantum Chromodynamics and the Pomeron} (Cambridge University Press, Cambridge, 1997).
+
+\bibitem{Troshin:2007fq} S.~M.~Troshin and N.~E.~Tyurin, Int. J. Mod. Phys. A \textbf{22}, 4437 (2007).
+
+\bibitem{Maneyro:2024} M.~Maneyro, E.~G.~S.~Luna, and M.~Pel\'aez, Phys. Rev. D \textbf{110}, 074011 (2024).
+
+\bibitem{LunaRyskin:2024} E.~G.~S.~Luna and M.~G.~Ryskin, Phys. Rev. D \textbf{110}, 094007 (2024).
+
+\bibitem{ATLAS:2014} G.~Aad {\it et al.} (ATLAS Collaboration), Nucl. Phys. B \textbf{889}, 486 (2014).
+
+\bibitem{ATLAS:2016} M.~Aaboud {\it et al.} (ATLAS Collaboration), Phys. Lett. B \textbf{761}, 158 (2016).
+
+\bibitem{ATLAS:2023} G.~Aad {\it et al.} (ATLAS Collaboration), Eur. Phys. J. C \textbf{83}, 441 (2023).
+
+\bibitem{TOTEM:2013} G.~Antchev {\it et al.} (TOTEM Collaboration), EPL \textbf{101}, 21002 (2013).
+
+\bibitem{TOTEM:2015} G.~Antchev {\it et al.} (TOTEM Collaboration), Nucl. Phys. B \textbf{899}, 527 (2015).
+
+\bibitem{TOTEM:2019} G.~Antchev {\it et al.} (TOTEM Collaboration), Eur. Phys. J. C \textbf{79}, 861 (2019).
+
+\bibitem{AguilarPapavassiliou2008} A.~C.~Aguilar and J.~Papavassiliou, Eur. Phys. J. A \textbf{35}, 189 (2008).
+
+\bibitem{Low1975} F.~E.~Low, Phys. Rev. D \textbf{12}, 163 (1975).
+
+\bibitem{Nussinov1975} S.~Nussinov, Phys. Rev. Lett. \textbf{34}, 1286 (1975).
+
+\bibitem{GunionSoper1977} J.~F.~Gunion and D.~E.~Soper, Phys. Rev. D \textbf{15}, 2617 (1977).
+
+\bibitem{LevinRyskin1981} E.~M.~Levin and M.~G.~Ryskin, Sov. J. Nucl. Phys. \textbf{34}, 619 (1981).
+
+\bibitem{Canfora:2017} F.~E.~Canfora, D.~Dudal, I.~F.~Justo, P.~Pais, P.~Salgado-Rebolledo, L.~Rosa, and D.~Vercauteren, Eur. Phys. J. C \textbf{78}, 542 (2018).
+
+\bibitem{CudellRoss1991} J. R. Cudell and D. A. Ross, Nucl. Phys. B \textbf{359}, 247 (1991).  
+
+\bibitem{LunaNataleDosSantos2011} E.~G.~S.~Luna, A.~A.~Natale, and A.~L.~dos Santos, Phys. Lett. B \textbf{698}, 52 (2011).
+
+\bibitem{luna2026a} E.~G.~S.~Luna, arXiv:hep-ph/2607.11504.  
+
+\bibitem{JamesRoos1975} F.~James and M.~Roos, Comput. Phys. Commun. \textbf{10}, 343 (1975).
+
+\end{thebibliography}
+
+\end{document}
